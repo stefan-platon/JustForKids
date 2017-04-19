@@ -1,0 +1,70 @@
+body {
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    height: auto;
+    width: auto;
+    margin-left: auto;
+    margin-right: auto;
+    background: center darkgoldenrod;
+}
+
+.page-title {
+    color: gold;
+    font-size: 50px;
+    font-family: Arial;
+    padding:0;
+    margin-left: auto;
+    margin-right: auto;
+    width: 80%;
+}
+
+.list-items {
+    height: auto;
+    width: 80%;
+    margin-right: auto;
+    margin-left: auto;
+    border: solid 5px red;
+    background: chartreuse;
+}
+
+.filler{
+    height: 100%;
+}
+
+.item {
+    height: 135px;
+    width: 100px;
+    margin: 20px;
+    float: left;
+}
+
+.item-title{
+    height:auto;
+    width:auto;
+    text-align: center;
+}
+
+.item-thumbnail {
+    height: 80px;
+    width: 80px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 10px;
+    transition: width .15s ease-in-out, height .15s ease-in-out;
+}
+
+.item-image{
+    height: auto;
+    width: auto;
+    box-shadow: 0  5px 10px 0 rgba(0,0,0,2);
+}
+
+.item-thumbnail:hover {
+    height: 100px;
+    width: 100px;
+}
+
