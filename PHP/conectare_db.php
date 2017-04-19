@@ -1,5 +1,4 @@
 <?php
-
 //Oracle DB user name
 $username = 'STUDENT';
 
@@ -18,5 +17,4 @@ $connection_string
 
 if(!$connection)
     echo "Conexiune esuata.";
-
 ?>
