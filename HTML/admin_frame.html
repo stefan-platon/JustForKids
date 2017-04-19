@@ -19,10 +19,10 @@
     <div class="dropdown_1">
         <button type = "button" class = "btn" >Utilizatori</button>
         <div class = "dropdown-content">
-            <button type = "button" class = "btn">Cauta utilizator</button>
-            <button type = "button" class = "btn">Sterge utilizator</button>
-            <button type = "button" class = "btn">Gaseste utilizatori</button>
-            <form action="../PHP/admin_reset_difficulty.php" method="post">
+            <button type = "button" class = "btn" onclick="return loadDoc(1);">Cauta utilizator</button>
+            <button type = "button" class = "btn" onclick="return loadDoc(2);">Sterge utilizator</button>
+            <button type = "button" class = "btn" onclick="return loadDoc(7);">Gaseste utilizatori</button>
+            <form action="admin_reset_difficulty.php" method="post">
                 <button type="submit" class="btn">Reset dificultate</button>
             </form>
             <button type = "button" class = "btn">Radiaza conturi</button>
@@ -31,10 +31,10 @@
     <div class="dropdown_2">
         <button type = "button" class = "btn" >Intrebari</button>
         <div class = "dropdown-content">
-            <button type = "button" class = "btn">Cauta intrebare</button>
-            <button type = "button" class = "btn">Sterge intrebare</button>
-            <button type = "button" class = "btn">Actualizeaza intrebare</button>
-            <button type = "button" class = "btn">Insereaza intrebare</button>
+            <button type = "button" class = "btn" onclick="return loadDoc(3);">Cauta intrebare</button>
+            <button type = "button" class = "btn" onclick="return loadDoc(4);">Sterge intrebare</button>
+            <button type = "button" class = "btn" onclick="return loadDoc(5);">Actualizeaza intrebare</button>
+            <button type = "button" class = "btn" onclick="return loadDoc(6);">Insereaza intrebare</button>
         </div>
     </div>
     <button type = "button" class = "btn" >Statistici</button>
