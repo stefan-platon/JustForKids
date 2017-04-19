@@ -1,2 +1,3 @@
 # Proiect-TW
-Proiectul la TW ( JFK )
+JFK
+Sa se propuna un joc Web care ofera copiilor mijloace amuzante de invatare si testare interactiva a cunostintelor generale dintr-un domeniu ales dintr-o lista editabila (exemple tipice: matematica, literatura, geografie, istorie, muzica). Rezultatele testelor realizate vor putea fi raportate parintilor, rudelor sau tutorilor legali via e-mail si fluxuri de stiri Atom. Se vor oferi mai multe niveluri de dificultate in functie de varsta copiilor -- e.g., prescolari, scolari mici, elevi de gimnaziu etc. Parintii/tutorii vor avea posibilitatea monitorizarii progresului inregistrat si a gestionarii testelor si cunostintelor folosite pentru instruire, eventual preluate de pe diverse situri de profil indicate de utilizatori. Bonus: partajarea celor mai bune rezultate obtinute de copii pe minim 2 retele sociale (e.g., Facebook si Twitter).
