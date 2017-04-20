@@ -48,7 +48,31 @@
                 xhttp.open("GET", "admin_insereaza_intrebare.html", true);
                 xhttp.send();
             }
-
+            if(x == 8)
+            {
+                xhttp.open("GET", "../PHP/admin_lista_domenii.php", true);
+                xhttp.send();
+            }
+            if(x == 9)
+            {
+                xhttp.open("GET", "admin_sterge_domeniu.html", true);
+                xhttp.send();
+            }
+            if(x == 10)
+            {
+                xhttp.open("GET", "admin_insereaza_domeniu.html", true);
+                xhttp.send();
+            }
+            if(x == 11)
+            {
+                xhttp.open("GET", "admin_cauta_tutore.html", true);
+                xhttp.send();
+            }
+            if(x == 12)
+            {
+                xhttp.open("GET", "admin_gaseste_tutori.html", true);
+                xhttp.send();
+            }
         }
     </script>
 </head>
@@ -94,8 +118,8 @@
     <div class="dropdown_4">
         <button type = "button" class = "btn" >Tutori</button>
         <div class = "dropdown-content">
-            <button type = "button" class = "btn" onclick="return loadDoc(8);">Cauta tutore</button>
-            <button type = "button" class = "btn" onclick="return loadDoc(9);">Gaseste tutori</button>
+            <button type = "button" class = "btn" onclick="return loadDoc(11);">Cauta tutore</button>
+            <button type = "button" class = "btn" onclick="return loadDoc(12);">Gaseste tutori</button>
         </div>
     </div>
     </div>
