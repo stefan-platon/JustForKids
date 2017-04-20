@@ -1,0 +1,72 @@
+body {
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    height: 100%;
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    background: center darkslategray;
+}
+
+.page-title {
+    color: gold;
+    font-size: 50px;
+    font-family: Arial;
+    padding:20px;
+    margin-left: auto;
+    margin-right: auto;
+    width: 80%;
+}
+
+.list-items {
+    height: auto;
+    width: 80%;
+    margin-right: auto;
+    margin-left: auto;
+    border: solid 1px darkgoldenrod;
+    background: rgba(0,0,0,0.55);
+}
+
+.filler{
+    height: 100%;
+}
+
+.item {
+    height: 130px;
+    width: 150px;
+    margin: 4%;
+    float: left;
+}
+
+.item-title{
+    height:auto;
+    width:auto;
+    text-align: center;
+    color: darkgrey;
+}
+
+.item-thumbnail {
+    height: 130px;
+    width: 150px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 10px;
+    transition: width .15s ease-in-out, height .15s ease-in-out;
+}
+
+.item-image{
+    height: auto;
+    width: auto;
+    box-shadow: 0  5px 10px 0 darkgoldenrod;
+}
+
+.item-thumbnail:hover {
+    height: 140px;
+    width: 160px;
+    box-shadow: 0  5px 10px 0 gold;
+}
+
