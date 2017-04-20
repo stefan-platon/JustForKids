@@ -5,6 +5,52 @@
     <meta charset="UTF-8">
     <title> JFK </title>
     <link type="text/css" rel="stylesheet" href="../CSS/admin_frame.css">
+    <script>
+        function loadDoc(x) {
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    document.getElementById("page").innerHTML = this.responseText;
+                }
+            };
+            if(x == 1)
+            {
+                xhttp.open("GET", "admin_cauta_util.html", true);
+                xhttp.send();
+            }
+            if(x == 2)
+            {
+                xhttp.open("GET", "admin_sterge_util.html", true);
+                xhttp.send();
+            }
+            if(x == 3)
+            {
+                xhttp.open("GET", "admin_gaseste_util.html", true);
+                xhttp.send();
+            }
+            if(x == 4)
+            {
+                xhttp.open("GET", "admin_cauta_intrebare.html", true);
+                xhttp.send();
+            }
+            if(x == 5)
+            {
+                xhttp.open("GET", "admin_sterge_intrebare.html", true);
+                xhttp.send();
+            }
+            if(x == 6)
+            {
+                xhttp.open("GET", "admin_actualizeaza_intrebare.html", true);
+                xhttp.send();
+            }
+            if(x == 7)
+            {
+                xhttp.open("GET", "admin_insereaza_intrebare.html", true);
+                xhttp.send();
+            }
+
+        }
+    </script>
 </head>
 
 <body>
@@ -21,7 +67,7 @@
         <div class = "dropdown-content">
             <button type = "button" class = "btn" onclick="return loadDoc(1);">Cauta utilizator</button>
             <button type = "button" class = "btn" onclick="return loadDoc(2);">Sterge utilizator</button>
-            <button type = "button" class = "btn" onclick="return loadDoc(7);">Gaseste utilizatori</button>
+            <button type = "button" class = "btn" onclick="return loadDoc(3);">Gaseste utilizatori</button>
             <form action="admin_reset_difficulty.php" method="post">
                 <button type="submit" class="btn">Reset dificultate</button>
             </form>
@@ -31,10 +77,10 @@
     <div class="dropdown_2">
         <button type = "button" class = "btn" >Intrebari</button>
         <div class = "dropdown-content">
-            <button type = "button" class = "btn" onclick="return loadDoc(3);">Cauta intrebare</button>
-            <button type = "button" class = "btn" onclick="return loadDoc(4);">Sterge intrebare</button>
-            <button type = "button" class = "btn" onclick="return loadDoc(5);">Actualizeaza intrebare</button>
-            <button type = "button" class = "btn" onclick="return loadDoc(6);">Insereaza intrebare</button>
+            <button type = "button" class = "btn" onclick="return loadDoc(4);">Cauta intrebare</button>
+            <button type = "button" class = "btn" onclick="return loadDoc(5);">Sterge intrebare</button>
+            <button type = "button" class = "btn" onclick="return loadDoc(6);">Actualizeaza intrebare</button>
+            <button type = "button" class = "btn" onclick="return loadDoc(7);">Insereaza intrebare</button>
         </div>
     </div>
     <button type = "button" class = "btn" >Statistici</button>
