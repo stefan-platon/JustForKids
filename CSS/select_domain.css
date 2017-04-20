@@ -22,7 +22,7 @@ body {
 }
 
 .list-items {
-    height: auto;
+    height: 80%;
     width: 80%;
     margin-right: auto;
     margin-left: auto;
@@ -31,11 +31,11 @@ body {
 }
 
 .filler{
-    height: 100%;
+    height: 80%;
 }
 
 .item {
-    height: 130px;
+    height: 125px;
     width: 150px;
     margin: 4%;
     float: left;
@@ -45,27 +45,29 @@ body {
     height:auto;
     width:auto;
     text-align: center;
-    color: darkgrey;
+    color: darkgoldenrod;
 }
 
 .item-thumbnail {
-    height: 130px;
+    height: 125px;
     width: 150px;
     display: block;
     margin-left: auto;
     margin-right: auto;
     margin-top: 10px;
     transition: width .15s ease-in-out, height .15s ease-in-out;
+    border-radius: 10px;
 }
 
 .item-image{
     height: auto;
     width: auto;
     box-shadow: 0  5px 10px 0 darkgoldenrod;
+    border-radius: 10px;
 }
 
 .item-thumbnail:hover {
-    height: 140px;
+    height: 135px;
     width: 160px;
     box-shadow: 0  5px 10px 0 gold;
 }
