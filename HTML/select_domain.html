@@ -44,24 +44,24 @@ array(
 </head>
 
 <body>
+
 <div class="container">
     <div class="page-title">Select Domains</div>
-    <div class="list-items">
-        <?php for ($i = 0; $i < count($domain_title); $i++) { ?>
-        <div class="item">
-            <div class="item-title">
-                <?php echo $domain_title[$i]["title"]; ?>
-            </div>
-
-            <div class="item-thumbnail">
-                <div class="item-image">
-                    <img src="<?php echo $domain_title[$i]['image']; ?>" class="item-thumbnail">
+    <form action="game_list.html">
+        <div class="list-items">
+            <?php for ($i = 0; $i < count($domain_title); $i++) { ?>
+            <div class="item">
+                <div class="item-title">
+                    <?php echo $domain_title[$i]["title"]; ?>
+                </div>
+                <div class="item-thumbnail">
+                    <input type="image" class="item-thumbnail" src="<?php echo $domain_title[$i]['image']; ?>">
                 </div>
             </div>
+            <?php } ?>
+            <div class="filler"></div>
         </div>
-        <?php } ?>
-        <div class="filler"></div>
-    </div>
+    </form>
 </div>
 </body>
 
