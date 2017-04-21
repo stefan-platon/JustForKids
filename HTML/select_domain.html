@@ -5,21 +5,33 @@ $domain_title = array(
     array(
 
         "image" => "Thumbnails\\History.jpg",
-        "title" => "History"
+"title" => "Istorie"
 
-    ),
-    array(
+),
+array(
 
-        "image" => "Thumbnails\\History.jpg",
-        "title" => "Clepsidra"
+"image" => "Thumbnails\\History.jpg",
+"title" => "Matematica"
 
-    ),
-    array(
+),
+array(
 
-        "image" => "Thumbnails\\History.jpg",
-        "title" => "Hourgla$$"
+"image" => "Thumbnails\\History.jpg",
+"title" => "Limba Romana"
 
-    )
+),
+array(
+
+"image" => "Thumbnails\\History.jpg",
+"title" => "Biologie"
+
+),
+array(
+
+"image" => "Thumbnails\\History.jpg",
+"title" => "Geografie"
+
+)
 
 );
 
@@ -28,28 +40,29 @@ $domain_title = array(
 
 <head>
     <meta name="select_domain" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="select_domain_css.css">
+    <link rel="stylesheet" href="select_domain.css">
 </head>
 
 <body>
+
 <div class="container">
     <div class="page-title">Select Domains</div>
-    <div class="list-items">
-        <?php for ($i = 0; $i < count($domain_title); $i++) { ?>
+    <form action="game_list.html">
+        <div class="list-items">
+            <?php for ($i = 0; $i < count($domain_title); $i++) { ?>
             <div class="item">
-                    <div class="item-title">
-                        <?php echo $domain_title[$i]["title"]; ?>
-                    </div>
+                <div class="item-title">
+                    <?php echo $domain_title[$i]["title"]; ?>
+                </div>
+                <div class="item-thumbnail">
+                    <input type="image" class="item-thumbnail" src="<?php echo $domain_title[$i]['image']; ?>">
 
-                    <div class="item-thumbnail">
-                        <div class="item-image">
-                            <img src="<?php echo $domain_title[$i]['image']; ?>" class="item-thumbnail">
-                        </div>
-                    </div>
+                </div>
             </div>
-        <?php } ?>
-        <div class="filler"></div>
-    </div>
+            <?php } ?>
+            <div class="filler"></div>
+        </div>
+    </form>
 </div>
 </body>
 

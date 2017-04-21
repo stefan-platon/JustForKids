@@ -1,0 +1,68 @@
+body {
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    height: 100%;
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    background: center darkslategray;
+}
+
+.page-title {
+    color: gold;
+    font-size: 300%;
+    font-family: Arial;
+    padding:1%;
+    margin-left: auto;
+    margin-right: auto;
+    width: 80%;
+}
+
+.list-items {
+    height: auto;
+    width: 80%;
+    margin-right: auto;
+    margin-left: auto;
+    border: solid 1px darkgoldenrod;
+    background: rgba(0,0,0,0.55);
+}
+
+.filler{
+    height: 80%;
+}
+
+.item {
+    height: 15%;
+    width: 20%;
+    margin: 4%;
+    float: left;
+}
+
+.item-title{
+    height:auto;
+    width:auto;
+    text-align: center;
+    color: darkgoldenrod;
+}
+
+.item-thumbnail {
+    height: 100%;
+    width: 100%;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 5%;
+    transition: width .15s ease-in-out, height .15s ease-in-out;
+    box-shadow: 0  5px 10px 0 darkgoldenrod;
+    border-radius: 5%;
+}
+
+.item-thumbnail:hover {
+    height: 105%;
+    width: 105%;
+    box-shadow: 0  5px 10px 0 gold;
+}
+
