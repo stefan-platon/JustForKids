@@ -13,16 +13,16 @@ body {
 
 .page-title {
     color: gold;
-    font-size: 50px;
+    font-size: 300%;
     font-family: Arial;
-    padding:20px;
+    padding:1%;
     margin-left: auto;
     margin-right: auto;
     width: 80%;
 }
 
 .list-items {
-    height: 80%;
+    height: auto;
     width: 80%;
     margin-right: auto;
     margin-left: auto;
@@ -35,8 +35,8 @@ body {
 }
 
 .item {
-    height: 125px;
-    width: 150px;
+    height: 15%;
+    width: 20%;
     margin: 4%;
     float: left;
 }
@@ -49,26 +49,26 @@ body {
 }
 
 .item-thumbnail {
-    height: 125px;
-    width: 150px;
+    height: 100%;
+    width: 100%;
     display: block;
     margin-left: auto;
     margin-right: auto;
-    margin-top: 10px;
+    margin-top: 5%;
     transition: width .15s ease-in-out, height .15s ease-in-out;
-    border-radius: 10px;
+    border-radius: 5%;
 }
 
 .item-image{
     height: auto;
     width: auto;
     box-shadow: 0  5px 10px 0 darkgoldenrod;
-    border-radius: 10px;
+    border-radius: 5%;
 }
 
 .item-thumbnail:hover {
-    height: 135px;
-    width: 160px;
+    height: 105%;
+    width: 105%;
     box-shadow: 0  5px 10px 0 gold;
 }
 
