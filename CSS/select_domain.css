@@ -56,12 +56,6 @@ body {
     margin-right: auto;
     margin-top: 5%;
     transition: width .15s ease-in-out, height .15s ease-in-out;
-    border-radius: 5%;
-}
-
-.item-image{
-    height: auto;
-    width: auto;
     box-shadow: 0  5px 10px 0 darkgoldenrod;
     border-radius: 5%;
 }
