@@ -73,16 +73,29 @@
                 xhttp.open("GET", "admin_gaseste_tutori.html", true);
                 xhttp.send();
             }
+            if(x == 13)
+            {
+                xhttp.open("GET", "admin_gaseste_realizare.html", true);
+                xhttp.send();
+            }
+            if(x == 14)
+            {
+                xhttp.open("GET", "admin_sterge_realizare.html", true);
+                xhttp.send();
+            }
+            if(x == 15)
+            {
+                xhttp.open("GET", "admin_insereaza_realizare.html", true);
+                xhttp.send();
+            }
         }
     </script>
 </head>
 
 <body>
 
-<div class = "titlu">
-    <p>
-        J.f.K
-    </p>
+<div class = "logo">
+    <img class="logo_picture" src="../IMG/OTHER/logo.png" width>
 </div>
 
 <div class = "container">
@@ -120,6 +133,14 @@
         <div class = "dropdown-content">
             <button type = "button" class = "btn" onclick="return loadDoc(11);">Cauta tutore</button>
             <button type = "button" class = "btn" onclick="return loadDoc(12);">Gaseste tutori</button>
+        </div>
+    </div>
+    <div class="dropdown_5">
+        <button type = "button" class = "btn" >Realizari</button>
+        <div class = "dropdown-content">
+            <button type = "button" class = "btn" onclick="return loadDoc(13);">Gaseste realizari</button>
+            <button type = "button" class = "btn" onclick="return loadDoc(14);">Sterge realizare</button>
+            <button type = "button" class = "btn" onclick="return loadDoc(15);">Insereaza realizare</button>
         </div>
     </div>
     </div>
