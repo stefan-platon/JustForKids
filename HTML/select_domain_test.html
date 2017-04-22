@@ -63,31 +63,33 @@ array(
     </div>
     <br>
     <div class="list-tip">
-        <div class="tip">
-            <div class="tip-title">
-                <?php echo "Text";?>
-            </div>
+        <form action="test_text.html" method="post">
+            <div class="tip">
+                <div class="tip-title">
+                    Text
+                </div>
 
-            <div class="tip-thumbnail">
-                <div class="tip-image">
-                    <img src="<?php echo $domain_title[0]['image']; ?>" class="tip-thumbnail">
+                <div class="tip-thumbnail">
+                    <input type="image" class="tip-thumbnail" src="<?php echo $domain_title[0]['image']; ?>">
                 </div>
             </div>
-        </div>
-        <div class="tip">
-            <div class="tip-title">
-                <?php echo "Variante de raspuns";?>
-            </div>
+        </form>
+        <form action="test_variante.html" method="post">
+            <div class="tip">
+                <div class="tip-title">
+                    Variante de raspuns
+                </div>
 
-            <div class="tip-thumbnail">
-                <div class="tip-image">
-                    <img src="<?php echo $domain_title[0]['image']; ?>" class="tip-thumbnail">
+                <div class="tip-thumbnail">
+                    <input type="image" class="tip-thumbnail" src="<?php echo $domain_title[0]['image']; ?>">
                 </div>
             </div>
-        </div>
+        </form>
         <div class="tip-filler"></div>
     </div>
+
 </div>
+
 </body>
 
 </html>
