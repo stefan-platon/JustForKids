@@ -1,0 +1,60 @@
+body {
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    height: 100%;
+    width: auto;
+    margin-left: auto;
+    margin-right: auto;
+    background: center darkslategray;
+}
+
+.page-title {
+    color: gold;
+    font-size: 300%;
+    font-family: Arial;
+    padding:1%;
+    margin-left: auto;
+    margin-right: auto;
+    width: 80%;
+}
+
+.list-games {
+    height: auto;
+    width: 80%;
+    margin-right: auto;
+    margin-left: auto;
+    border: solid 1px darkgoldenrod;
+    background: rgba(0,0,0,0.55);
+}
+
+.game {
+    height:15%;
+    width: 20%;
+    border:5px;
+}
+
+.game-title{
+    height:auto;
+    width:auto;
+    text-align: left;
+    color: gold;
+}
+
+.game-thumbnail {
+    height: 15%;
+    width: auto;
+    margin:5%;
+    border-radius: 5%;
+}
+
+.game-thumbnail:hover {
+    box-shadow: 0  5px 10px 0 gold;
+}
+
+.game-description{
+    color: palegoldenrod;
+}
+
