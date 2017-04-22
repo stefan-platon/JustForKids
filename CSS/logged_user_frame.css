@@ -1,0 +1,102 @@
+.container{
+    position: relative;
+    left: 250px;
+    width: 850px;
+    height: 975px;
+    text-align: center;
+    margin: 0;
+    padding: 0;
+}
+.header {
+    margin: 0;
+    padding: 0;
+    top: 0;
+    position: relative;
+    height: 30px;
+    background-color: white;
+    border-bottom: solid;
+}
+.dropdown {
+    margin: 0;
+    padding: 0;
+    right: 1%;
+    position: absolute;
+    display: inline-block;
+}
+.dropdown-content {
+    display: none;
+    position: absolute;
+    top: 100%;
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+}
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+.logo{
+    padding: 0;
+    margin-left: 35%;
+}
+.logo_picture{
+    width:100%;
+    max-width:45%;
+}
+.dropbtn_up {
+    border: double 2px;
+    cursor: pointer;
+    height: 25px;
+    width: 40px;
+    background-image: url("../IMG/FLAGS/flag_e.jpg");
+    background-size: cover;
+}
+.dropbtn_down {
+    border: double 2px;
+    cursor: pointer;
+    height: 25px;
+    width: 40px;
+    background-image: url("../IMG/FLAGS/flag_r.jpg");
+    background-size: cover;
+}
+.button_list {
+    font-family: Tahoma;
+    text-align: center;
+    font-size: 25px;
+    border: double;
+    height: 60px;
+    width: 110px;
+}
+.button_list:hover {
+    background-color: green;
+}
+.tables{
+    position: absolute;
+    left: 0;
+    margin: 0;
+    padding: 0;
+}
+.external_links {
+    text-align:center;
+}
+.change_page {
+    position: absolute;
+    top: 90px;
+    left: 0;
+    width: 850px;
+    height: 900px;
+}
+.footer {
+    position: relative;
+    text-align: center;
+    bottom: 0;
+    background-color: white;
+    border-top: solid;
+}
+.tables_ol {
+    list-style-type: none;
+}
+.c1 {
+    float: left;
+}
+body {
+    margin: 0;
+    padding: 0;
+}

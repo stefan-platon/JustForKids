@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title> JFK </title>
+	<link type="text/css" rel="stylesheet" href="../CSS/logged_user_frame.css">
+	<script>
+		function loadDoc(x) {
+			var xhttp = new XMLHttpRequest();
+			xhttp.onreadystatechange = function() {
+				if (this.readyState == 4 && this.status == 200) {
+				document.getElementById("page").innerHTML = this.responseText;
+			}
+		};
+		if(x == 1)
+		{
+			xhttp.open("GET", "logged_user_home.html", true);
+			xhttp.send();
+		}
+		if(x == 2)
+		{
+			xhttp.open("GET", "suport.html", true);
+			xhttp.send();
+		}
+		if(x == 3)
+		{
+			xhttp.open("GET", "user_profile.html", true);
+			xhttp.send();
+		}
+		if(x == 4)
+		{
+			xhttp.open("GET", "index3.html", true);
+			xhttp.send();
+		}
+		if(x == 5)
+		{
+			xhttp.open("GET", "achievements.html", true);
+			xhttp.send();
+		}
+	} 
+	</script>
+</head>
+
+<body onload = "return loadDoc(1);">
+
+	<div class = "header">
+		<div class="dropdown">
+			<button type = "button" class = "dropbtn_up" ></button>
+			<div class = "dropdown-content">
+				<button type = "button" class = "dropbtn_down" ></button>
+			</div>
+		</div>
+	</div>
+
+	<div class = "logo">
+		<img class="logo_picture" src="../IMG/OTHER/logo.png" width>
+	</div>
+
+	<div class = "container">
+		<div class = "tables">
+			<ol class = "tables_ol">
+				<li class = "c1"><button type = "button" class = "button_list" onclick="return loadDoc(1);">Acasa</button></li>
+				<li class = "c1"><button type = "button" class = "button_list" onclick="return loadDoc(2);">Suport</button></li>
+				<li class = "c1"><button type = "button" class = "button_list" onclick="return loadDoc(3);">Profil</button></li>
+				<li class = "c1"><button type = "button" class = "button_list" onclick="return loadDoc(4);">Statistici</button></li>
+				<li class = "c1"><button type = "button" class = "button_list" onclick="return loadDoc(5);">Realizari</button></li>
+				<li class = "c1"><button type = "button" class = "button_list" onclick="return loadDoc(6);">Jocuri</button></li>
+				<li class = "c1"><button type = "button" class = "button_list" onclick="return loadDoc(7);">Testare</button></li>
+			</ol>
+		</div>
+
+		<div id = "page" class = "change_page">
+
+		</div>
+	</div>
+
+    <div class = "external_links">
+        <a href = "http://www.facebook.com"><img src="../IMG/MEDIA ICONS/facebook.png" width="35" height="35"></a>
+        <a href = "https://www.twitter.com/"><img src="../IMG/MEDIA ICONS/twitter.png" width="35" height="35"></a>
+        <a href = "https://www.youtube.com/watch?v=dQw4w9WgXcQ"><img src="../IMG/MEDIA ICONS/youtube.png" width="35" height="35"></a>
+    </div>
+
+	<div class = "footer">
+		<p>All rights reserved.</p>
+	</div>
+</body>
+
+</html>
