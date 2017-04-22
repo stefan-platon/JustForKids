@@ -30,12 +30,6 @@ body {
     background: rgba(0,0,0,0.55);
 }
 
-.game {
-    height:15%;
-    width: 20%;
-    border:5px;
-}
-
 .game-title{
     height:auto;
     width:auto;
@@ -44,9 +38,8 @@ body {
 }
 
 .game-thumbnail {
-    height: 15%;
+    height: 20%;
     width: auto;
-    margin:5%;
     border-radius: 5%;
 }
 
