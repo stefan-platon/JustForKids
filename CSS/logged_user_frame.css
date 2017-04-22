@@ -1,8 +1,8 @@
 .container{
     position: relative;
-    left: 250px;
-    width: 850px;
-    height: 975px;
+    left: 18.4%;
+    width: 62%;
+    height: 135%;
     text-align: center;
     margin: 0;
     padding: 0;
@@ -12,14 +12,13 @@
     padding: 0;
     top: 0;
     position: relative;
-    height: 30px;
-    background-color: white;
-    border-bottom: solid;
+    height: 4%;
+    border-bottom: 3px dashed #e84d07;
 }
 .dropdown {
     margin: 0;
     padding: 0;
-    right: 1%;
+    right: 2%;
     position: absolute;
     display: inline-block;
 }
@@ -35,6 +34,7 @@
 .logo{
     padding: 0;
     margin-left: 35%;
+    margin-top: 1%;
 }
 .logo_picture{
     width:100%;
@@ -55,48 +55,51 @@
     width: 40px;
     background-image: url("../IMG/FLAGS/flag_r.jpg");
     background-size: cover;
+    z-index: 20;
 }
 .button_list {
-    font-family: Tahoma;
+    font-family: "Book Antiqua";
     text-align: center;
     font-size: 25px;
-    border: double;
+    border: double #E8B424;
     height: 60px;
-    width: 110px;
+    width: 120px;
+    border-radius: 10%;
+    background-color: #e84d07;
 }
 .button_list:hover {
-    background-color: green;
+    background-color: #ffaf24;
 }
 .tables{
     position: absolute;
     left: 0;
     margin: 0;
     padding: 0;
+    width:100%;
+    border-spacing: 0;
+    z-index: 10;
 }
 .external_links {
     text-align:center;
 }
 .change_page {
     position: absolute;
-    top: 90px;
+    top: 7%;
     left: 0;
     width: 850px;
-    height: 900px;
+    height: 85%;
 }
 .footer {
     position: relative;
     text-align: center;
     bottom: 0;
-    background-color: white;
-    border-top: solid;
-}
-.tables_ol {
-    list-style-type: none;
-}
-.c1 {
-    float: left;
+    border-top: 3px dashed #e84d07;
 }
 body {
     margin: 0;
     padding: 0;
+    height: 100vh;
+    width: 100vw;
+    background-color: #006db2;
 }
+
