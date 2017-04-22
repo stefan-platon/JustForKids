@@ -1,0 +1,104 @@
+.container{
+    position: relative;
+    left: 18%;
+    width: 62%;
+    height: 145%;
+    text-align: center;
+}
+.header {
+    margin: 0;
+    padding: 0;
+    top: 0;
+    position: relative;
+    height: 4%;
+    border-bottom: 3px solid #004768;
+}
+.dropdown {
+    margin: 0;
+    padding: 0;
+    right: 2%;
+    position: absolute;
+    display: inline-block;
+}
+.dropdown-content {
+    display: none;
+    position: absolute;
+    top: 100%;
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+}
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+.logo{
+    padding: 0;
+    margin-left: 35%;
+}
+.logo_picture{
+    width:100%;
+    max-width:45%;
+}
+.dropbtn_up {
+    border: double 2px;
+    cursor: pointer;
+    height: 25px;
+    width: 40px;
+    background-image: url("../IMG/FLAGS/flag_e.jpg");
+    background-size: cover;
+}
+.dropbtn_down {
+    border: double 2px;
+    cursor: pointer;
+    height: 25px;
+    width: 40px;
+    background-image: url("../IMG/FLAGS/flag_r.jpg");
+    background-size: cover;
+    z-index: 20;
+}
+.button_list {
+    font-family: "Book Antiqua";
+    color: #e84d07;
+    text-align: center;
+    font-size: 25px;
+    border: double #e84d07;
+    height: 55%;
+    width: 120px;
+    border-radius: 10%;
+    background-color: #004768;
+    padding: 15%;
+}
+.button_list:hover {
+    background-color: #ffaf24;
+}
+.tables{
+    position: absolute;
+    align-items: center;
+    margin: 0;
+    padding: 0;
+    left: 21.5%;
+    width:40%;
+    z-index: 10;
+}
+.external_links {
+    text-align:center;
+}
+.change_page {
+    position: absolute;
+    top: 8.5%;
+    left: 0;
+    width: 100%;
+    height: 82%;
+}
+.footer {
+    position: relative;
+    text-align: center;
+    bottom: 0;
+    border-top: 3px solid #004768;
+}
+body {
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    width: 100vw;
+    background-color: #770006;
+}
+
