@@ -4,31 +4,31 @@ $domain_title = array(
 
     array(
 
-        "image" => "Thumbnails\\History.jpg",
+        "image" => "\DOMENII\\Istorie.jpg",
 "title" => "Istorie"
 
 ),
 array(
 
-"image" => "Thumbnails\\History.jpg",
+"image" => "\DOMENII\\Matematica.jpg",
 "title" => "Matematica"
 
 ),
 array(
 
-"image" => "Thumbnails\\History.jpg",
+"image" => "\DOMENII\\Limba Romana.jpg",
 "title" => "Limba Romana"
 
 ),
 array(
 
-"image" => "Thumbnails\\History.jpg",
+"image" => "\DOMENII\\Biologie.jpg",
 "title" => "Biologie"
 
 ),
 array(
 
-"image" => "Thumbnails\\History.jpg",
+"image" => "\DOMENII\\Geografie.jpg",
 "title" => "Geografie"
 
 )
@@ -39,7 +39,7 @@ array(
 <html>
 
 <head>
-    <link rel="stylesheet" href="select_domain_test.css">
+    <link rel="stylesheet" href="/CSS/select_domain_test.css">
 </head>
 
 <body>
@@ -63,27 +63,23 @@ array(
     </div>
     <br>
     <div class="list-tip">
-        <form action="test_text.html" method="post">
-            <div class="tip">
+        <form action="test_text.html" method="post" class="tip">
                 <div class="tip-title">
                     Text
                 </div>
 
                 <div class="tip-thumbnail">
-                    <input type="image" class="tip-thumbnail" src="<?php echo $domain_title[0]['image']; ?>">
+                    <input type="image" class="tip-thumbnail" src="\OTHER\\HOURGLASS.jpg">
                 </div>
-            </div>
         </form>
-        <form action="test_variante.html" method="post">
-            <div class="tip">
+        <form action="test_variante.html" method="post" class="tip">
                 <div class="tip-title">
                     Variante de raspuns
                 </div>
 
                 <div class="tip-thumbnail">
-                    <input type="image" class="tip-thumbnail" src="<?php echo $domain_title[0]['image']; ?>">
+                    <input type="image" class="tip-thumbnail" src="\OTHER\\HOURGLASS.jpg">
                 </div>
-            </div>
         </form>
         <div class="tip-filler"></div>
     </div>
