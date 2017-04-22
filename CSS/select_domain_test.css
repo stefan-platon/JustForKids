@@ -69,7 +69,7 @@ body {
 .item-thumbnail:hover {
     height: 105%;
     width: 105%;
-    box-shadow: 0  5px 10px 0 gold;
+    box-shadow: 0  10px 30px 0 gold;
 }
 
 
@@ -88,10 +88,12 @@ body {
 }
 
 .tip {
-    height: 200px;
-    width: 300px;
-    margin: 1%;
-    margin-left: 15%;
+    height: 10%;
+    width: 30%;
+    margin-top: 3%;
+    margin-bottom: 5%;
+    margin-left: 10%;
+    margin-right: 10%;
     float: left;
 }
 
@@ -103,27 +105,21 @@ body {
 }
 
 .tip-thumbnail {
-    height: 200px;
-    width: 300px;
+    height: 100%;
+    width: 100%;
     display: block;
     margin-left: auto;
     margin-right: auto;
-    margin-top: 10px;
+    margin-top: 5%;
     transition: width .10s ease-in-out, height .10s ease-in-out;
-    border-radius: 10px;
-}
-
-.tip-image{
-    height: 200px;
-    width: 300px;
     box-shadow: 0  5px 10px 0 darkgoldenrod;
     border-radius: 10px;
 }
 
 .tip-thumbnail:hover {
-    height: 215px;
-    width:  330px;
-    box-shadow: 0  5px 10px 0 gold;
+    height: 105%;
+    width:  105%;
+    box-shadow: 0  5px 30px 0 gold;
 }
 
 
