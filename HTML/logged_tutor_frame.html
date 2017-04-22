@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title> JFK </title>
+    <link type="text/css" rel="stylesheet" href="../CSS/logged_tutor_frame.css">
+    <script>
+        function loadDoc(x) {
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    document.getElementById("page").innerHTML = this.responseText;
+                }
+            };
+            if(x == 1)
+            {
+                xhttp.open("GET", "logged_tutor_home.html", true);
+                xhttp.send();
+            }
+            if(x == 2)
+            {
+                xhttp.open("GET", "tutor_suport.html", true);
+                xhttp.send();
+            }
+            if(x == 3)
+            {
+                xhttp.open("GET", "tutor_profile.html", true);
+                xhttp.send();
+            }
+            if(x == 4)
+            {
+                xhttp.open("GET", "tutor_statistics.html", true);
+                xhttp.send();
+            }
+        }
+    </script>
+</head>
+
+<body onload = "return loadDoc(1);">
+
+<div class = "header">
+    <div class="dropdown">
+        <button type = "button" class = "dropbtn_up" ></button>
+        <div class = "dropdown-content">
+            <button type = "button" class = "dropbtn_down" ></button>
+        </div>
+    </div>
+</div>
+
+<div class = "logo">
+    <img class="logo_picture" src="../IMG/OTHER/logo.png" width>
+</div>
+
+<div class = "container">
+    <table class = "tables" id="tables">
+        <tr class="linie">
+            <th class = "c"><button type = "button" class = "button_list" onclick="return loadDoc(1);">Acasa</button></th>
+            <th class = "c"><button type = "button" class = "button_list" onclick="return loadDoc(2);">Suport</button></th>
+            <th class = "c"><button type = "button" class = "button_list" onclick="return loadDoc(3);">Profil</button></th>
+            <th class = "c"><button type = "button" class = "button_list" onclick="return loadDoc(4);">Statistici</button></th>
+        </tr>
+    </table>
+
+    <div id = "page" class = "change_page">
+
+    </div>
+</div>
+
+<div class = "external_links">
+    <a href = "http://www.facebook.com"><img src="../IMG/MEDIA ICONS/facebook.png" width="35" height="35"></a>
+    <a href = "https://www.twitter.com/"><img src="../IMG/MEDIA ICONS/twitter.png" width="35" height="35"></a>
+    <a href = "https://www.youtube.com/watch?v=dQw4w9WgXcQ"><img src="../IMG/MEDIA ICONS/youtube.png" width="35" height="35"></a>
+</div>
+
+<div class = "footer">
+    <p>All rights reserved.</p>
+</div>
+</body>
+
+</html>
