@@ -1,0 +1,119 @@
+.info {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 26%;
+    height: 54%;
+    border: 2px solid #e84d07;
+    padding-left: 1%;
+    text-align: center;
+    border-radius: 25px;
+    word-wrap: break-word;
+    background-color: #CDEDD0;
+    overflow: scroll;
+}
+.top {
+    position: absolute;
+    top: 56%;
+    left: 0;
+    width: 26%;
+    height: 54%;
+    border: 2px solid #e84d07;
+    padding-left: 1%;
+    text-align: justify;
+    border-radius: 25px;
+    word-wrap: break-word;
+    background-color: #CDEDD0;
+    overflow: scroll;
+}
+.news {
+    position: absolute;
+    top: 0px;
+    left: 29%;
+    width: 70.4%;
+    height: 54%;
+    overflow: scroll;
+    border: 2px solid #e84d07;
+    text-indent: 10px;
+    padding-left: 5px;
+    border-radius: 25px;
+    word-wrap: break-word;
+    background-color: #CDEDD0;
+}
+.updates {
+    position: absolute;
+    top: 56%;
+    left: 29%;
+    width: 70.4%;
+    height: 54%;
+    overflow: scroll;
+    border: 2px solid #e84d07;
+    text-indent: 10px;
+    padding-left: 5px;
+    border-radius: 25px;
+    word-wrap: break-word;
+    background-color: #CDEDD0;
+}
+.title {
+    font-family: Georgia;
+    font-style: italic;
+    font-size: 50px;
+    color: #e84d07;
+    text-align: center;
+}
+.item_header {
+    font-family: Tahoma;
+    font-size: 27px;
+    color: #e84d07;
+    text-align: left;
+}
+.news_td{
+    text-align: left;
+    padding: 8px;
+}
+.content {
+    font-family: "Book Antiqua";
+    font-size: 17px;
+    color: black;
+    text-align: left;
+}
+.jucatori_top_10 {
+    margin: 0;
+    padding: 0;
+    font-family: "Arial Rounded MT Bold";
+    font-size: 15px;
+}
+.register{
+    color: black;
+    background-color: #e84d07;
+    border: double #E8B424;
+    width: 80%;
+    height: 50%;
+    font-family: "Book Antiqua";
+    font-size: 1.7em;
+    bottom: 0;
+}
+.register:hover {
+    background-color: #ffaf24;
+}
+.container_login {
+    padding-left: 3%;
+    padding-right: 3%;
+    line-height: 2;
+}
+.login_btn {
+    color: black;
+    background-color: #e84d07;
+    border: double #E8B424;
+    width: 80%;
+    height: 50%;
+    font-family: "Book Antiqua";
+    font-size: 1.7em;
+}
+.login_btn:hover {
+    background-color: #ffaf24;
+}
+.fgt_password {
+    text-align: center;
+    padding-top: -20px;
+}
