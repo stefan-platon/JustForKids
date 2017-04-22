@@ -1,0 +1,62 @@
+<?php
+
+$games_list = array(
+
+    array(
+
+        "image" => "Thumbnails\\History.jpg",
+"title" => "Rek9",
+"details" =>"Tower defense game.",
+"source" => ""
+),
+array(
+
+"image" => "Thumbnails\\History.jpg",
+"title" => "LeL",
+"details"=>"MOBB.",
+"source" => ""
+),
+array(
+
+"image" => "Thumbnails\\History.jpg",
+"title" => "DotO",
+"details"=>"MOBC.",
+"source" => ""
+)
+
+);
+
+?>
+<html>
+
+<head>
+    <link rel="stylesheet" href="game_list.css">
+</head>
+
+<body>
+
+<div class="container">
+    <div class="page-title">Games</div>
+
+    <table class="list-games">
+        <?php for ($i = 0; $i < count($games_list); $i++) { ?>
+        <form action="<?php echo $games_list[$i]['source'] ?>" method="post">
+            <tr class="game">
+                <td class="game-title">
+                    <?php echo $games_list[$i]["title"]; ?>
+                </td>
+                <td class="game-thumbnail">
+                        <input type="image" class="game-thumbnail" src="<?php echo $games_list[$i]['image']; ?>">
+                </td>
+                <td class="game-description">
+                    <?php echo $games_list[$i]["details"] ?>
+                </td>
+            </tr>
+        </form>
+        <?php } ?>
+    </table>
+
+</div>
+</body>
+
+</html>
