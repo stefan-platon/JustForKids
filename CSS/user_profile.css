@@ -47,12 +47,12 @@
     font-family: arial, sans-serif;
     border-collapse: collapse;
     width: 115%;
+    font-size: 20px;
 }
 .profil_td{
     border: 1px solid #dddddd;
     text-align: left;
     padding: 8px;
-    font-weight: bold;
 }
 .profil_tr:nth-child(even) {
     background-color: #dddddd;
