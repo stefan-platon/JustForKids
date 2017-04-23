@@ -1,12 +1,10 @@
 body {
     margin: 0;
     padding: 0;
-    background: center darkslategray;
 }
 .container{
     height: 100%;
     width: 100%;
-    margin-top: 8%;
     margin-left: auto;
     margin-right: auto;
     background: center darkslategray;
@@ -20,6 +18,7 @@ body {
     width: 80%;
     margin-right: auto;
     margin-left: auto;
+    align-content: center;
 }
 
 .question{
@@ -28,20 +27,20 @@ body {
     margin-right: auto;
     margin-left: auto;
     margin-bottom: 5%;
-    border: solid 5px #5B5B5B;
+    border: solid 5px rgba(255,255,255,0.2);
     border-left-style: ridge;
     border-radius: 5%;
     padding: 1%;
-    background: #ADADAD;
+    background: rgba(255,255,255,0.6);
 }
 
 .q-text{
     color: cyan;
     font-family: Arial;
-    background: #1E1E1E;
+    background: rgba(0,0,0,0.4);
     border-radius: 20%;
     padding: 1%;
-    box-shadow: 1px  5px 100px 1px darkturquoise;
+    box-shadow: 0  5px 100px 0 darkturquoise;
     margin-bottom: 3%;
     text-align: center;
 }
@@ -49,11 +48,12 @@ body {
 .q-answer{
     color: cyan;
     font-family: Arial;
-    background: #1E1E1E;
+    background: rgba(0,0,0,0.4);
     border-radius: 15%;
     padding: 1%;
-    box-shadow: 1px  5px 100px 1px darkturquoise;
+    box-shadow: 0  5px 100px 0 darkturquoise;
     margin-bottom: 3%;
+    content-align: center;
 }
 
 .q-answer-box{
@@ -61,7 +61,7 @@ body {
     width: 35%;
     margin-left: 25%;
     margin-right: 10%;
-    background: #848484;
+    background: rgba(255,255,255,0.4);
     border-radius: 25%;
     border-color: cyan;
     border-style: solid;
@@ -73,7 +73,7 @@ body {
 
 .q-answer-box:focus{
     background: palegoldenrod;
-    box-shadow: 1px  5px 50px 1px gold;
+    box-shadow: 0  5px 50px 0 gold;
     color: black;
     border-color: palegoldenrod;
 }
@@ -83,16 +83,17 @@ body {
     border-radius: 25%;
     font-size: 75%;
     font-family: Arial;
-    background: #848484;
+    background: rgba(255,255,255,0.4);
     color: cyan;
     border: 1px solid;
     border-color: cyan;
 }
 
 .q-answer-button:hover {
-    box-shadow: 1px  5px 25px 1px gold;
+    box-shadow: 0  5px 25px 0 gold;
     border-radius: 25%;
     background: gold;
     color: black;
     border-color: black;
+    box-shadow: 0  5px 50px 0 gold;
 }
