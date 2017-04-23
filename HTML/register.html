@@ -48,7 +48,31 @@
             </tr>
             <tr>
                 <td>Birthday</td>
-                <td><input type="text" class="box" placeholder="" name="b_day" required></td>
+                <td>
+                    <select id="day" name="day">
+                        <script>
+                            for(var i = 1; i < 32; i++){
+                                document.write('<option value="'+i+'">'+i+'</option>');
+                            }
+                        </script>
+                    </select>
+                    <select id="month" name="month">
+                        <script>
+                            for(var i = 1; i <= 12; i++){
+                                document.write('<option value="'+i+'">'+i+'</option>');
+                            }
+                        </script>
+                    </select>
+                    <select id="year" name="year">
+                        <script>
+                            var myDate = new Date();
+                            var year = myDate.getFullYear();
+                            for(var i = 1980; i < year+1; i++){
+                                document.write('<option value="'+i+'">'+i+'</option>');
+                            }
+                        </script>
+                    </select>
+                </td>
             </tr>
             <tr>
                 <td>Tutor's first name</td>
