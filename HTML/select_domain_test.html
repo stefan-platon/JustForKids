@@ -1,4 +1,13 @@
-<?php
+<!doctype html>
+<html>
+
+<head>
+    <title>JFK</title>
+    <link rel="stylesheet" href="../CSS/select_domain_test.css">
+</head>
+
+<body>
+    <?php
 
 $domain_title = array(
 
@@ -36,13 +45,6 @@ array(
 );
 
 ?>
-<html>
-
-<head>
-    <link rel="stylesheet" href="../CSS/select_domain_test.css">
-</head>
-
-<body>
 <div class="container">
     <div class="page-title">Selectati domeniul si tipul testului</div>
     <div class="list-items">
@@ -54,7 +56,7 @@ array(
 
             <div class="item-thumbnail">
                 <div class="item-image">
-                    <img src="<?php echo $domain_title[$i]['image']; ?>" class="item-thumbnail">
+                    <img src="<?php echo $domain_title[$i]['image']; ?>" class="item-thumbnail" alt="alt">
                 </div>
             </div>
         </div>
@@ -69,7 +71,7 @@ array(
                 </div>
 
                 <div class="tip-thumbnail">
-                    <input type="image" class="tip-thumbnail" src="\OTHER\\HOURGLASS.jpg">
+                    <input type="image" class="tip-thumbnail" src="../IMG/OTHER/HOURGLASS.jpg" alt="alt">
                 </div>
         </form>
         <form action="test_variante.html" method="post" class="tip">
@@ -78,7 +80,7 @@ array(
                 </div>
 
                 <div class="tip-thumbnail">
-                    <input type="image" class="tip-thumbnail" src="\OTHER\\HOURGLASS.jpg">
+                    <input type="image" class="tip-thumbnail" src="../IMG/OTHER/HOURGLASS.jpg" alt="alt">
                 </div>
         </form>
         <div class="tip-filler"></div>
