@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title> JFK </title>
+    <link type="text/css" rel="stylesheet" href="../CSS/register.css">
+</head>
+
+<body>
+<form action="../PHP/register.php" method="post">
+<div class = "container_register">
+    <div class = "reg_header">
+        <h2>Welcome to J.f.K.!</h2>
+    </div>
+
+    <div class = "reg_body">
+        <table>
+            <tr>
+                <td>Name</td>
+                <td><input type="text" class="box" placeholder="" name="name" required></td>
+            </tr>
+            <tr>
+                <td>Surname</td>
+                <td><input type="text" class="box" placeholder="" name="surname" required></td>
+            </tr>
+            <tr>
+                <td>Username</td>
+                <td><input type="text" class="box" placeholder="" name="username" required></td>
+            </tr>
+            <tr>
+                <td>Password</td>
+                <td><input type="password" class="box" placeholder="" name="psw" required></td>
+            </tr>
+            <tr>
+                <td>Repeat password</td>
+                <td><input type="password" class="box" placeholder="" name="r_psw" required></td>
+            </tr>
+            <tr>
+                <td>Profile picture</td>
+                <td>
+                    <input type="file" name="fileToUpload" id="p_poza">
+                </td>
+            </tr>
+            <tr>
+                <td>E-mail</td>
+                <td><input type="text" class="box" placeholder="" name="email" required></td>
+            </tr>
+            <tr>
+                <td>Birthday</td>
+                <td><input type="text" class="box" placeholder="" name="b_day" required></td>
+            </tr>
+            <tr>
+                <td>Tutor's name</td>
+                <td><input type="text" class="box" placeholder="" name="t_name" required></td>
+            </tr>
+            <tr>
+                <td>Tutor's surname</td>
+                <td><input type="text" class="box" placeholder="" name="t_surname" required></td>
+            </tr>
+            <tr>
+                <td>Tutor's username</td>
+                <td><input type="text" class="box" placeholder="" name="t_username" required></td>
+            </tr>
+            <tr>
+                <td>Tutor's password</td>
+                <td><input type="password" class="box" placeholder="" name="t_psw" required></td>
+            </tr>
+            <tr>
+                <td>Tutor's profile picture</td>
+                <td>
+                    <input type="file" name="fileToUpload" id="t_poza">
+                </td>
+            </tr>
+            <tr>
+                <td>Repeat tutor's password</td>
+                <td><input type="password" class="box" placeholder="" name="t_r_psw" required></td>
+            </tr>
+            <tr>
+                <td>Tutor's e-mail</td>
+                <td><input type="text" class="box" placeholder="" name="t_email" required></td>
+            </tr>
+        </table>
+    </div>
+    <button class="btn" type="submit">Register</button>
+</div>
+</form>
+</body>
+
+</html>
