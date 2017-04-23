@@ -1,3 +1,4 @@
+/* container ce contine intreaga pagina */
 .container{
     position: relative;
     left: 18.4%;
@@ -15,6 +16,7 @@
     height: 4%;
     border-bottom: 3px dashed #e84d07;
 }
+/* pentru fnctionaloitatea de dropdown */
 .dropdown {
     margin: 0;
     padding: 0;
@@ -22,6 +24,7 @@
     position: absolute;
     display: inline-block;
 }
+/* la ce se face dropdown */
 .dropdown-content {
     display: none;
     position: absolute;
@@ -31,15 +34,18 @@
 .dropdown:hover .dropdown-content {
     display: block;
 }
+/* div-ul logoului */
 .logo{
     padding: 0;
     margin-left: 35%;
     margin-top: 1%;
 }
+/* imaginea logoului */
 .logo_picture{
     width:100%;
     max-width:45%;
 }
+/* primul buton cu limba */
 .dropbtn_up {
     border: double 2px;
     cursor: pointer;
@@ -48,6 +54,7 @@
     background-image: url("../IMG/FLAGS/flag_e.jpg");
     background-size: cover;
 }
+/* al doilea buton cu limba */
 .dropbtn_down {
     border: double 2px;
     cursor: pointer;
@@ -57,6 +64,7 @@
     background-size: cover;
     z-index: 20;
 }
+/* butoanele din meniul principal */
 .button_list {
     font-family: "Book Antiqua";
     text-align: center;
@@ -70,6 +78,7 @@
 .button_list:hover {
     background-color: #ffaf24;
 }
+/* structura ce contine butoanele din meniul principal */
 .tables{
     position: absolute;
     left: 0;
@@ -79,9 +88,11 @@
     border-spacing: 0;
     z-index: 10;
 }
+/* link-uri externe */
 .external_links {
     text-align:center;
 }
+/* div-ul ce se schimba */
 .change_page {
     position: absolute;
     top: 7%;
@@ -89,6 +100,7 @@
     width: 100%;
     height: 85%;
 }
+/* footer */
 .footer {
     position: relative;
     text-align: center;
