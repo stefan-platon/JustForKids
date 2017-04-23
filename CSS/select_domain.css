@@ -53,12 +53,11 @@ body {
     width: 100%;
     display: block;
     margin-top: 5%;
-    transition: width .15s ease-in-out, height .15s ease-in-out;
-    box-shadow: 0  5px 10px 0 darkgoldenrod;
+    box-shadow: 1px  5px 10px 1px darkgoldenrod;
     border-radius: 5%;
 }
 
 .item-thumbnail:hover {
-    box-shadow: 0  10px 15px 0 gold;
+    box-shadow: 1px  10px 15px 1px gold;
 }
 
