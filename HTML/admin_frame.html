@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <title> JFK </title>
     <link type="text/css" rel="stylesheet" href="../CSS/admin_frame.css">
+    <!-- script responsabil de inserarea in div-ul page a paginei corespunzatoare butonului apasat -->
     <script>
         function loadDoc(x) {
             var xhttp = new XMLHttpRequest();
@@ -93,12 +94,13 @@
 </head>
 
 <body>
-
+<!-- logo-ul sitului -->
 <div class = "logo">
     <img class="logo_picture" src="../IMG/OTHER/logo.png" alt="alt">
 </div>
-
+<!-- div ce contine intreaga pagina -->
 <div class = "container">
+    <!-- setul de butoane pentru utilizatori -->
     <div class="dropdown_1">
         <button type = "button" class = "btn" >Utilizatori</button>
         <div class = "dropdown-content">
@@ -111,6 +113,7 @@
             <button type = "button" class = "btn">Radiaza conturi</button>
         </div>
     </div>
+    <!-- setul de butoane pentru intrebari -->
     <div class="dropdown_2">
         <button type = "button" class = "btn" >Intrebari</button>
         <div class = "dropdown-content">
@@ -120,6 +123,7 @@
             <button type = "button" class = "btn" onclick="return loadDoc(7);">Insereaza intrebare</button>
         </div>
     </div>
+    <!-- setul de butoane pentru domenii -->
     <div class="dropdown_3">
         <button type = "button" class = "btn" >Domenii</button>
         <div class = "dropdown-content">
@@ -128,6 +132,7 @@
             <button type = "button" class = "btn" onclick="return loadDoc(10);">Insereaza domeniu</button>
         </div>
     </div>
+    <!-- setul de butoane pentru tutori -->
     <div class="dropdown_4">
         <button type = "button" class = "btn" >Tutori</button>
         <div class = "dropdown-content">
@@ -135,6 +140,7 @@
             <button type = "button" class = "btn" onclick="return loadDoc(12);">Gaseste tutori</button>
         </div>
     </div>
+    <!-- setul de butoane pentru realizari -->
     <div class="dropdown_5">
         <button type = "button" class = "btn" >Realizari</button>
         <div class = "dropdown-content">
@@ -143,18 +149,18 @@
             <button type = "button" class = "btn" onclick="return loadDoc(15);">Insereaza realizare</button>
         </div>
     </div>
-
+    <!-- divul unde se va face inserarea celorlalte pagini -->
     <div id = "page" class = "page">
 
     </div>
 </div>
-
+    <!-- link-uri externe catre paginile sitului -->
 <div class = "external_links">
     <a href = "http://facebook.com/"><img src="../IMG/MEDIA_ICONS/facebook.png" width="35" height="35" alt="alt"></a>
     <a href = "https://twitter.com/?lang=en"><img src="../IMG/MEDIA_ICONS/twitter.png" width="35" height="35" alt="alt"></a>
     <a href = "https://www.youtube.com/"><img src="../IMG/MEDIA_ICONS/youtube.png" width="35" height="35" alt="alt"></a>
 </div>
-
+    <!-- footer cu drepturile de autor -->
 <div class = "footer">
     <p>All rights reserved.</p>
 </div>
