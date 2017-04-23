@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <link type="text/css" rel="stylesheet" href="../CSS/admin_sterge_domeniu.css">
+</head>
+
+<body>
+<form action="/admin_sterge_domeniu.html" method="post">
+    <div class="container_sterge_d">
+        <label><b>Id-ul domeniului</b></label>
+        <br/>
+        <input type="text" placeholder="Enter Id" name="d_id" required>
+        <br/>
+        <button type="submit">Sterge</button>
+    </div>
+</form>
+<?php
+if ($_SERVER['REQUEST_METHOD'] == 'POST')
+{
+    include ("../PHP/admin_sterge_domeniu.php");
+}
+?>
+</body>
+
+</html>
