@@ -1,0 +1,73 @@
+#profile_picture {
+    width: 150px;
+    border: 3px dashed #000000;
+    padding: 5px;
+    left: 60%;
+    float: left;
+}
+#profile_user {
+    width: 300px;
+    margin-left: 60px;
+    margin-right: 60px;
+    padding-right: 5px;
+    float: right;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 2em;
+}
+.profile {
+    position: absolute;
+    top: 0;
+    left: 0;
+    border: 2px solid #e84d07;
+    border-radius: 25px;
+    text-align: center;
+    width: 100%;
+    height: 105%;
+    background-color:  	#CDEDD0;
+    overflow: scroll;
+}
+#profile_data {
+    width: 80%;
+    margin: 25px;
+    padding: 5px;
+    float: left;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 1em;
+    text-align: left;
+}
+.tabel_header{
+    width: 82%;
+    padding: 30px;
+}
+.profil_th{
+    text-align: center;
+    padding-left: 30px;
+}
+.tabel_body {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 115%;
+}
+.profil_td{
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+    font-weight: bold;
+}
+.profil_tr:nth-child(even) {
+    background-color: #dddddd;
+}
+.change_button{
+    position: relative;
+    font-family: "Book Antiqua";
+    text-align: center;
+    font-size: 25px;
+    border: double #E8B424;
+    height: 35%;
+    width: 20%;
+    border-radius: 10%;
+    background-color: #e84d07;
+}
+.change_button:hover {
+    background-color: #ffaf24;
+}
