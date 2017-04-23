@@ -1,7 +1,6 @@
-.container_insert_d{
+.container_cauta_tutore {
     padding-top: 20px;
-    text-align:center;
-    line-height: 30px;
+    text-align: center;
     overflow: scroll;
     background-color: #a7a7a7;
 }
