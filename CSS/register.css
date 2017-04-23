@@ -22,7 +22,6 @@ td, th {
     padding-left: 2%;
     text-align: justify;
     border-radius: 25px;
-    word-wrap: break-word;
     overflow: scroll;
     background-color: #a1f2a7;
 }
