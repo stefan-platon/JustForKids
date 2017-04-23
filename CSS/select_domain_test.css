@@ -27,7 +27,7 @@ body {
     margin-right: auto;
     margin-left: auto;
     border: solid 1px darkgoldenrod;
-    background: #171717;
+    background: rgba(0,0,0,0.55);
 }
 
 .item-filler{
@@ -80,7 +80,7 @@ body {
     margin-right: auto;
     margin-left: auto;
     border: solid 1px darkgoldenrod;
-    background: #171717;
+    background: rgba(0,0,0,0.55);
 }
 
 .tip-filler{
