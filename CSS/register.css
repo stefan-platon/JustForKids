@@ -24,7 +24,7 @@ td, th {
     border-radius: 25px;
     word-wrap: break-word;
     overflow: scroll;
-    background-color: #b0edae;
+    background-color: #a1f2a7;
 }
 .reg_header{
     font-family: Georgia;
@@ -69,7 +69,8 @@ html{
     width: 80%;
     height: 30px;
 }
-h3{
+h2{
     font-family: Georgia;
     font-style: italic;
+    color: #e84d07;
 }
