@@ -1,3 +1,12 @@
+<!doctype html>
+<html>
+<head>
+    <title>JFK</title>
+    <meta name="select_domain" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../CSS/select_domain.css">
+</head>
+
+<body>
 <?php
 
 $domain_title = array(
@@ -15,7 +24,6 @@ array(
 
 ),
 array(
-
 "image" => "\DOMENII\\Limba Romana.jpg",
 "title" => "Limba Romana"
 
@@ -36,15 +44,6 @@ array(
 );
 
 ?>
-<html>
-
-<head>
-    <meta name="select_domain" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../CSS/select_domain.css">
-</head>
-
-<body>
-
 <div class="container">
     <div class="page-title">Selectati domeniul</div>
     <form action="game_list.html" method="post">
@@ -55,7 +54,7 @@ array(
                     <?php echo $domain_title[$i]["title"]; ?>
                 </div>
                 <div class="item-thumbnail">
-                    <input type="image" class="item-thumbnail" src="<?php echo $domain_title[$i]['image']; ?>">
+                    <input type="image" class="item-thumbnail" src="<?php echo $domain_title[$i]['image']; ?>" alt="alt">
                 </div>
             </div>
             <?php } ?>
