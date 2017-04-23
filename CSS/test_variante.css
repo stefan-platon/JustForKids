@@ -24,18 +24,18 @@ body {
     width: 80%;
     margin-right: auto;
     margin-left: auto;
-    border: solid 5px rgba(255,255,255,0.2);
+    border: solid 5px #5B5B5B;
     border-left-style: ridge;
     border-radius: 5%;
     padding: 1%;
-    background: rgba(255,255,255,0.6);
+    background: #ADADAD;
 
 }
 
 .q-text{
     color: cyan;
     font-family: Arial;
-    background: rgba(0,0,0,0.4);
+    background: #1E1E1E;
     border-radius: 20%;
     padding: 1%;
     box-shadow: 0  5px 100px 0 darkturquoise;
@@ -46,7 +46,7 @@ body {
 .answers{
     color: cyan;
     font-family: Arial;
-    background: rgba(0,0,0,0.4);
+    background: #1E1E1E;
     border-radius: 15%;
     padding: 1%;
     box-shadow: 0  5px 100px 0 darkturquoise;
