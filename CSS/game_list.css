@@ -27,7 +27,7 @@ body {
     margin-right: auto;
     margin-left: auto;
     border: solid 1px darkgoldenrod;
-    background: #171717;
+    background: rgba(0,0,0,0.55);
 }
 
 .game-title{
@@ -44,7 +44,7 @@ body {
 }
 
 .game-thumbnail:hover {
-    box-shadow: 1px  5px 10px 1px gold;
+    box-shadow: 0  5px 10px 0 gold;
 }
 
 .game-description{
