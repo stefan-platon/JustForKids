@@ -1,8 +1,10 @@
+/* imaginea de profil a utilizatorului */
 .icon{
      position:relative;
      text-align: left;
      float:left;
  }
+/* locul descrierii */
 .text_box{
     position:relative;
     width: 1500%;
@@ -11,6 +13,7 @@
     border-radius: 25px;
     margin-right: 5%;
 }
+/* numele realizarii */
 .title{
     position:relative;
     font-family: "Book Antiqua";
@@ -22,6 +25,7 @@
     margin: 10px;
     color: black;
 }
+/* intreaga pagina */
 .achievements{
     width: 90%;
     height: 95%;
@@ -32,19 +36,23 @@
     border-radius: 25px;
     background-color:  	#CDEDD0;
 }
+/* tabelul pentru realizari */
 .ach_table{
     width: 100%;
     padding-left: 3%;
     float: right;
 }
+/* linie a tabelului */
 .ach_r{
     width: 100%;
     height: 100%;
 }
+/* coloana 1 */
 .c1{
     width: 100%;
     height: 100%;
 }
+/* coloana 2 */
 .c2{
     width: 100%;
     height: 100%;
