@@ -30,7 +30,7 @@ array(
 
 ?>
 <html>
-
+<!--partea de PHP e pentru popularea mai rapida a htmlului-->
 <head>
     <link rel="stylesheet" href="../CSS/game_list.css">
 </head>
@@ -39,17 +39,20 @@ array(
 
 <div class="container">
     <div class="page-title">Jocuri</div>
-
+    <!--tabelul cu jocurile-->
     <table class="list-games" cellspacing="20">
         <?php for ($i = 0; $i < count($games_list); $i++) { ?>
         <form action="<?php echo $games_list[$i]['source'] ?>" method="post">
             <tr>
+                <!--titlul unui joc-->
                 <td class="game-title">
                     <?php echo $games_list[$i]["title"]; ?>
                 </td>
+                <!--imagine descriptiva pentru joc-->
                 <td class="game-thumbnail">
                         <input type="image" class="game-thumbnail" src="<?php echo $games_list[$i]['image']; ?>">
                 </td>
+                <!--scurta descriere a jocului-->
                 <td class="game-description">
                     <?php echo $games_list[$i]["details"] ?>
                 </td>
