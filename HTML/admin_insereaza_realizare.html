@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <link rel="stylesheet" href="../CSS/admin_insereaza_realizare.css">
+</head>
+
+<body>
+<form action="/admin_insereaza_realizare.html" method="post">
+    <div class="container_insert_r">
+        <label><b>Nume</b></label><br/>
+        <input type="text" placeholder="Nume..." name="nume" required>
+        <br/>
+        <label><b>Descriere</b></label><br/>
+        <textarea rows="5" cols="50" name="descriere" required></textarea>
+        <br/>
+        <label><b>Imagine</b></label><br/>
+        <input type="text" placeholder="Imagine..." name="img" required>
+        <br/>
+        <button type="submit">Trimite</button>
+    </div>
+</form>
+<?php
+if ($_SERVER['REQUEST_METHOD'] == 'POST')
+{
+    include ("../PHP/admin_insereaza_realizare.php");
+}
+?>
+</body>
+
+</html>
