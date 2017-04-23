@@ -8,8 +8,9 @@
 
 <body>
 <div class="container_admin_cauta">
+    <!-- containerul ce cuprinde intreaga pagina, urmand a fi introdusa in frame -->
     <form action="admin_cauta_util.html" method="post">
-
+        
         <label for="uid"><b>User Id</b></label>
         <br/>
         <input id="uid" type="number" placeholder="Enter Id" name="uid">
@@ -23,6 +24,7 @@
 
     </form>
 </div>
+    <!-- apelarea fisierului php responsabil de comunicarea cu baza de date -->
 <?php
 if ($_SERVER['REQUEST_METHOD'] == 'POST')
 {
