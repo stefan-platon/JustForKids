@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <style>
+        .container_gaseste_util {
+            padding-top: 20px;
+            text-align: center;
+            line-height: 30px;
+            overflow: scroll;
+            background-color: rgba(37, 36, 61, 0.68);
+        }
+    </style>
+</head>
+
+<body>
+<div class="container_gaseste_util">
+    <form action="../PHP/admin_gaseste_tutori.php" method="post">
+        <label for="player_name"><b>Name</b></label><br/>
+        <input id="player_name" type="text" placeholder="name" name="player_name">
+        <br/>
+        <label for="player_username"><b>Username</b></label><br/>
+        <input id="player_username" type="text" placeholder="username" name="player_username">
+        <br/>
+
+        <label for="player_email"><b>Email</b></label><br/>
+        <input id="player_email" type="text" placeholder="email" name="player_email">
+        <br/>
+        <label for="tutor_name"><b>Player Name</b></label><br/>
+        <input id="tutor_name" type="text" placeholder="name" name="tutor_name">
+        <br/>
+        <label for="tutor_username"><b>Player Username</b></label><br/>
+        <input id="tutor_username" type="text" placeholder="username" name="tutor_username">
+        <br/>
+        <label for="tutor_email"><b>Player Email</b></label><br/>
+        <input id="tutor_email" type="text" placeholder="email" name="tutor_email">
+        <br/>
+        <button type="submit">Search</button>
+    </form>
+
+</div>
