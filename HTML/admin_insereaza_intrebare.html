@@ -5,15 +5,12 @@
     <?php
         include ("../PHP/conectare_db.php");
     ?>
-    <link type="text/css" rel="stylesheet" href="../CSS/admin_actualizeaza_intrebare.css">
+    <link type="text/css" rel="stylesheet" href="../CSS/admin_insereaza_intrebare.css">
 </head>
 
 <body>
-<form action="admin_actualizeaza_intrebare.html" method="post">
-    <div class="container_update_q">
-        <label><b>ID-ul intrebarii</b></label><br/>
-        <input type="text" placeholder="ID..." name="q_id" required>
-        <br/>
+<form action="/admin_insereaza_intrebare.html" method="post">
+    <div class="container_insert_q">
         <label><b>Domeniu</b></label><br/>
         <select name="domeniu" id="domeniu">
             <?php
@@ -22,9 +19,9 @@
                 while (($row = oci_fetch_array($stid, OCI_BOTH)) != false)
                 {
                     echo "<option value='". $row[0] ."'>" .$row[1] ."</option>";
-            }
-            oci_free_statement($stid);
-            oci_close($connection);
+                }
+                oci_free_statement($stid);
+                oci_close($connection);
             ?>
         </select>
         <br/>
@@ -63,7 +60,7 @@
 <?php
 if ($_SERVER['REQUEST_METHOD'] == 'POST')
 {
-    include ("../PHP/admin_actualizeaza_intrebare.php");
+    include ("../PHP/insereaza_intrebare.php");
 }
 ?>
 </body>
