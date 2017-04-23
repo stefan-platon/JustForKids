@@ -1,0 +1,99 @@
+body {
+    margin: 0;
+    padding: 0;
+}
+.container{
+    height: 100%;
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    background: center darkslategray;
+    padding-top: 10%;
+    padding-bottom: 10%;
+    font-size: 200%;
+}
+
+.quiz{
+    height: auto;
+    width: 80%;
+    margin-right: auto;
+    margin-left: auto;
+    align-content: center;
+}
+
+.question{
+    height: auto;
+    width: 80%;
+    margin-right: auto;
+    margin-left: auto;
+    margin-bottom: 5%;
+    border: solid 5px rgba(255,255,255,0.2);
+    border-left-style: ridge;
+    border-radius: 5%;
+    padding: 1%;
+    background: rgba(255,255,255,0.6);
+}
+
+.q-text{
+    color: cyan;
+    font-family: Arial;
+    background: rgba(0,0,0,0.4);
+    border-radius: 20%;
+    padding: 1%;
+    box-shadow: 0  5px 100px 0 darkturquoise;
+    margin-bottom: 3%;
+    text-align: center;
+}
+
+.q-answer{
+    color: cyan;
+    font-family: Arial;
+    background: rgba(0,0,0,0.4);
+    border-radius: 15%;
+    padding: 1%;
+    box-shadow: 0  5px 100px 0 darkturquoise;
+    margin-bottom: 3%;
+    content-align: center;
+}
+
+.q-answer-box{
+    height: 5%;
+    width: 35%;
+    margin-left: 25%;
+    margin-right: 10%;
+    background: rgba(255,255,255,0.4);
+    border-radius: 25%;
+    border-color: cyan;
+    border-style: solid;
+    text-align: center;
+    font-family: Arial;
+    font-size: 75%;
+    color: cyan;
+}
+
+.q-answer-box:focus{
+    background: palegoldenrod;
+    box-shadow: 0  5px 50px 0 gold;
+    color: black;
+    border-color: palegoldenrod;
+}
+
+.q-answer-button{
+    padding: 1%;
+    border-radius: 25%;
+    font-size: 75%;
+    font-family: Arial;
+    background: rgba(255,255,255,0.4);
+    color: cyan;
+    border: 1px solid;
+    border-color: cyan;
+}
+
+.q-answer-button:hover {
+    box-shadow: 0  5px 25px 0 gold;
+    border-radius: 25%;
+    background: gold;
+    color: black;
+    border-color: black;
+    box-shadow: 0  5px 50px 0 gold;
+}
