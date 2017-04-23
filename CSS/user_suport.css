@@ -1,0 +1,45 @@
+.container_suport{
+    padding-top: 2%;
+    text-align:center;
+    line-height: 150%;
+    border: 2px solid #e84d07;
+    padding-left: 2%;
+    border-radius: 25px;
+    width: 98%;
+    height: 96%;
+    overflow: scroll;
+    background-color: #CDEDD0;
+}
+.btn{
+    position: relative;
+    width: 30%;
+    height: 17%;
+    margin-top: 2%;
+    margin-bottom: 2%;
+    font-family: "Book Antiqua";
+    font-size: 30px;
+    color: black;
+    background-color: #e84d07;
+    border: double #E8B424;
+}
+.btn:hover {
+    background-color: #ffaf24;
+}
+.sad_face{
+    padding-left: 35%;
+    width: 200px;
+}
+.h2_text{
+    padding-left: 10%;
+    padding-right: 10%;
+    font-family: "Book Antiqua";
+}
+.suport_table{
+    margin-left: 8%;
+    font-family: "Book Antiqua";
+    font-size: 20px;
+    width: 80%;
+}
+textarea{
+    resize: none;
+}
