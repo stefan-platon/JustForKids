@@ -27,7 +27,7 @@ body {
     margin-right: auto;
     margin-left: auto;
     border: solid 1px darkgoldenrod;
-    background: rgba(0,0,0,0.55);
+    background: #5F3248;
 }
 
 .filler{
@@ -56,13 +56,13 @@ body {
     margin-right: auto;
     margin-top: 5%;
     transition: width .15s ease-in-out, height .15s ease-in-out;
-    box-shadow: 0  5px 10px 0 darkgoldenrod;
+    box-shadow: 0px  5px 10px 0px darkgoldenrod;
     border-radius: 5%;
 }
 
 .item-thumbnail:hover {
     height: 105%;
     width: 105%;
-    box-shadow: 0  5px 10px 0 gold;
+    box-shadow: 0px  5px 10px 0px gold;
 }
 
