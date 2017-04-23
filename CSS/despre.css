@@ -1,0 +1,12 @@
+.container_despre{
+    padding-top: 2%;
+    text-align:center;
+    line-height: 150%;
+    border: 2px solid #e84d07;
+    padding-left: 2%;
+    border-radius: 25px;
+    width: 98%;
+    height: 100%;
+    overflow: scroll;
+    background-color: #CDEDD0;
+}
