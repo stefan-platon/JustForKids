@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <link rel="stylesheet" href="../CSS/tutor_suport.css">
+</head>
+<body>
+<form action="../PHP/suport.php" method="post">
+    <div class="container_suport">
+        <div class="sad_face">
+            <img src="../IMG/OTHER/sad_face.png" style="max-width:100%; max-height:100%;">
+        </div>
+        <h2 class="h2_text">We are sorry you are experiencing a problem. </h2>
+        <h2 class="h2_text">We will try to help you as soon as possible!</h2>
+        <h2 class="h2_text">Please select a category below :</h2>
+        <table class="suport_table">
+            <th>
+            <td><input type="radio" name="p_category" value="Functionality" checked>Functionality</td>
+            <td><input type="radio" name="p_category" value="Appearance">Appearance</td>
+            <td><input type="radio" name="p_category" value="Account"> Account</td>
+            </th>
+        </table>
+        <h2 class="h2_text">Please describe, as detailed as you can, the problem you are suffering and how you got to it.</h2>
+        <textarea rows="17" cols="75" name="problem"></textarea>
+        <br/>
+        <button type="submit" class="btn">Send</button>
+    </div>
+</form>
+</body>
+
+</html>
