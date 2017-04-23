@@ -67,7 +67,8 @@
     padding: 15%;
 }
 .button_list:hover {
-    background-color: #ffaf24;
+    background-color: #e84d07;
+    color: #004768;
 }
 .tables{
     position: absolute;

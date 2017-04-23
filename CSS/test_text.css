@@ -1,10 +1,12 @@
 body {
     margin: 0;
     padding: 0;
+    background: center darkslategray;
 }
 .container{
     height: 100%;
     width: 100%;
+    margin-top: 8 %;
     margin-left: auto;
     margin-right: auto;
     background: center darkslategray;
@@ -27,17 +29,17 @@ body {
     margin-right: auto;
     margin-left: auto;
     margin-bottom: 5%;
-    border: solid 5px rgba(255,255,255,0.2);
+    border: solid 5px #5B5B5B;
     border-left-style: ridge;
     border-radius: 5%;
     padding: 1%;
-    background: rgba(255,255,255,0.6);
+    background: #ADADAD;
 }
 
 .q-text{
     color: cyan;
     font-family: Arial;
-    background: rgba(0,0,0,0.4);
+    background: #1E1E1E;
     border-radius: 20%;
     padding: 1%;
     box-shadow: 0  5px 100px 0 darkturquoise;
@@ -48,7 +50,7 @@ body {
 .q-answer{
     color: cyan;
     font-family: Arial;
-    background: rgba(0,0,0,0.4);
+    background: #1E1E1E;
     border-radius: 15%;
     padding: 1%;
     box-shadow: 0  5px 100px 0 darkturquoise;
@@ -61,7 +63,7 @@ body {
     width: 35%;
     margin-left: 25%;
     margin-right: 10%;
-    background: rgba(255,255,255,0.4);
+    background: #848484;
     border-radius: 25%;
     border-color: cyan;
     border-style: solid;
@@ -83,7 +85,7 @@ body {
     border-radius: 25%;
     font-size: 75%;
     font-family: Arial;
-    background: rgba(255,255,255,0.4);
+    background: #848484;
     color: cyan;
     border: 1px solid;
     border-color: cyan;
