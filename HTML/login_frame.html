@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <title> JFK </title>
     <link type="text/css" rel="stylesheet" href="../CSS/login_frame.css">
+    <!-- script responsabil de inserarea in div-ul page a paginei corespunzatoare butonului apasat -->
     <script>
         function loadDoc(x) {
             var xhttp = new XMLHttpRequest();
@@ -33,7 +34,7 @@
 </head>
 
 <body onload = "return loadDoc(1);">
-
+<!-- alegerea limbii -->
 <div class = "header">
     <div class="dropdown">
         <button type = "button" class = "dropbtn_up" ></button>
@@ -42,12 +43,13 @@
         </div>
     </div>
 </div>
-
+<!-- logo-ul sitului -->
 <div class = "logo">
     <img class="logo_picture" src="../IMG/OTHER/logo.png" alt="alt">
 </div>
-
+<!-- div ce contine intreaga pagina -->
 <div class = "container">
+    <!-- setul de butoane (meniu principal) -->
     <table class = "tables" id="tables">
         <tr class="linie">
             <th class = "c"><button type = "button" class = "button_list" onclick="return loadDoc(1);">Acasa</button></th>
@@ -55,18 +57,18 @@
             <th class = "c"><button type = "button" class = "button_list" onclick="return loadDoc(3);">Despre</button></th>
         </tr>
     </table>
-
+<!-- divul unde se va face inserarea celorlalte pagini -->
     <div id = "page" class = "change_page">
 
     </div>
 </div>
-
+<!-- link-uri externe catre paginile sitului -->
 <div class = "external_links">
     <a href = "http://www.facebook.com/"><img src="../IMG/MEDIA_ICONS/facebook.png" width="35" height="35" alt="alt"></a>
     <a href = "https://www.twitter.com/"><img src="../IMG/MEDIA_ICONS/twitter.png" width="35" height="35" alt="alt"></a>
     <a href = "https://www.youtube.com/"><img src="../IMG/MEDIA_ICONS/youtube.png" width="35" height="35" alt="alt"></a>
 </div>
-
+<!-- footer cu drepturile de autor -->
 <div class = "footer">
     <p>All rights reserved.</p>
 </div>
