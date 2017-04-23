@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <link type="text/css" rel="stylesheet" href="../CSS/admin_insereaza_domeniu.css">
+</head>
+
+<body>
+<form action="/admin_insereaza_domeniu.html" method="post">
+    <div class="container_insert_d">
+        <label><b>Nume</b></label><br/>
+        <input type="text" placeholder="Nume..." name="nume" required>
+        <br/>
+        <label><b>Tip</b></label><br/>
+        <input type="text" placeholder="Tip..." name="tip" required>
+        <br/>
+        <label><b>Imagine</b></label><br/>
+        <input type="text" placeholder="Imagine..." name="img" required>
+        <br/>
+        <button type="submit">Trimite</button>
+    </div>
+</form>
+<?php
+if ($_SERVER['REQUEST_METHOD'] == 'POST')
+{
+    include ("../PHP/admin_insereaza_domeniu.php");
+}
+?>
+</body>
+
+</html>
