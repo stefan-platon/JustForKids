@@ -1,0 +1,52 @@
+.icon{
+    position:relative;
+    text-align: left;
+    float:left;
+}
+.text_box{
+    position:relative;
+    width: 1500%;
+    float:right;
+    border: 2px solid #e84d07;
+    border-radius: 25px;
+    margin-right: 5%;
+}
+.title{
+    position:relative;
+    font-family: "Book Antiqua";
+    font-size: 30px;
+    text-align: left;
+    left: 0;
+    float:left;
+    top:5%;
+    margin: 10px;
+    color: black;
+}
+.achievements{
+    width: 90%;
+    height: 95%;
+    overflow-y: scroll;
+    border: 2px solid #e84d07;
+    text-indent: 10px;
+    padding: 5% 5% 5% 5%;
+    border-radius: 25px;
+    word-wrap: break-word;
+    background-color:  	#CDEDD0;
+}
+.ach_table{
+    width: 100%;
+    padding-left: 3%;
+    float: right;
+}
+.ach_r{
+    width: 100%;
+    heigth: 100%;
+}
+.c1{
+    width: 100%;
+    heigth: 100%;
+}
+.c2{
+    width: 100%;
+    heigth: 100%;
+}
