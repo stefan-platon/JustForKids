@@ -1,3 +1,4 @@
+/* container ce contine intreaga pagina */
 .container{
     position: relative;
     left: 21%;
@@ -5,14 +6,17 @@
     height: 725px;
     margin-left: 40px;
 }
+/* div-ul logoului */
 .logo{
     padding: 0;
     margin-left: 35%;
 }
+/* imaginea logoului */
 .logo_picture{
     width:100%;
     max-width:45%;
 }
+/* div-ul cu link-uri externe */
 .external_links {
     text-align:center;
 }
@@ -22,6 +26,7 @@
     bottom: 0;
     border-top: solid;
 }
+/* categoriile de butoane folosite de admin */
 .dropdown_1 {
     margin: 0;
     padding: 0;
@@ -62,12 +67,14 @@
     display: inline-block;
     z-index: 2;
 }
+/* afisarea butoanelor dintr-o categorie */
 .dropdown-content {
     display: none;
     position: absolute;
     top: 100%;
     box-shadow: 1px 8px 16px 1px #242424;
 }
+/* stil pt afisarea butoanelor folosite de admin */
 .dropdown_1:hover .dropdown-content {
     display: block;
 }
@@ -83,6 +90,7 @@
 .dropdown_5:hover .dropdown-content {
     display: block;
 }
+/* stilul butonului */
 .btn{
     background-color: #25243D;
     font-family: Tahoma;
@@ -93,6 +101,7 @@
     height: 80px;
     width: 130px;
 }
+/* div-ul unde se insereaza pagina straina */
 .page{
     top:12%;
     left: 5%;
