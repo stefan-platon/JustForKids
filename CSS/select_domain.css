@@ -27,7 +27,7 @@ body {
     margin-right: auto;
     margin-left: auto;
     border: solid 1px darkgoldenrod;
-    background: #171717;
+    background: rgba(0,0,0,0.55);
 }
 
 .filler{
@@ -37,13 +37,13 @@ body {
 .item {
     height: 15%;
     width: 20%;
-    margin: 2%;
+    margin: 4%;
     float: left;
 }
 
 .item-title{
-    height:100%;
-    width:100%;
+    height:auto;
+    width:auto;
     text-align: center;
     color: darkgoldenrod;
 }
@@ -52,12 +52,17 @@ body {
     height: 100%;
     width: 100%;
     display: block;
+    margin-left: auto;
+    margin-right: auto;
     margin-top: 5%;
-    box-shadow: 1px  5px 10px 1px darkgoldenrod;
+    transition: width .15s ease-in-out, height .15s ease-in-out;
+    box-shadow: 0  5px 10px 0 darkgoldenrod;
     border-radius: 5%;
 }
 
 .item-thumbnail:hover {
-    box-shadow: 1px  10px 15px 1px gold;
+    height: 105%;
+    width: 105%;
+    box-shadow: 0  5px 10px 0 gold;
 }
 
