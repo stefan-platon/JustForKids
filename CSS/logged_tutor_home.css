@@ -1,0 +1,115 @@
+.info {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 26%;
+    height: 50%;
+    border: 2px solid #004768;
+    padding-left: 1%;
+    text-align: center;
+    border-radius: 25px;
+    word-wrap: break-word;
+    background-color: #e6d8ac;
+    overflow: scroll;
+}
+.top {
+    position: absolute;
+    top: 53%;
+    left: 0;
+    width: 26%;
+    height: 53%;
+    border: 2px solid #004768;
+    padding-left: 1%;
+    text-align: justify;
+    border-radius: 25px;
+    word-wrap: break-word;
+    background-color: #e6d8ac;
+    overflow: scroll;
+}
+.news {
+    position: absolute;
+    top: 0px;
+    left: 29%;
+    width: 70.4%;
+    height: 50%;
+    overflow: scroll;
+    border: 2px solid #004768;
+    text-indent: 10px;
+    padding-left: 5px;
+    border-radius: 25px;
+    word-wrap: break-word;
+    background-color: #e6d8ac;
+}
+.updates {
+    position: absolute;
+    top: 53%;
+    left: 29%;
+    width: 70.4%;
+    height: 53%;
+    overflow: scroll;
+    border: 2px solid #004768;
+    text-indent: 10px;
+    padding-left: 5px;
+    border-radius: 25px;
+    word-wrap: break-word;
+    background-color: #e6d8ac;
+}
+.title {
+    font-family: Georgia;
+    font-style: italic;
+    font-size: 50px;
+    color: #e84d07;
+    text-align: center;
+}
+.item_header {
+    font-family: Tahoma;
+    font-size: 27px;
+    color: #e84d07;
+    text-align: left;
+}
+.news_td{
+    text-align: left;
+    padding: 8px;
+}
+.content {
+    font-family: "Arial Unicode MS";
+    font-size: 17px;
+    color: black;
+    text-align: left;
+}
+.info_icon {
+    padding-top: 15%;
+    padding-bottom: 15%;
+}
+.info_body{
+    font-family: "Arial Unicode MS";
+}
+.user_name {
+    margin: 0;
+    padding: 0;
+    font-family: Georgia;
+    font-style: italic;
+    font-size: 30px;
+    text-align: center;
+    color: #e84d07;
+}
+.jucatori_top_10 {
+    margin: 0;
+    padding: 0;
+    font-family: "Arial Unicode MS";
+    font-size: 14px;
+}
+.logout{
+    position: relative;
+    width: 70%;
+    height: 17%;
+    margin-top: 8%;
+    font-family: "Arial Unicode MS";
+    font-size: 1.7em;
+    color: #e84d07;
+    background-color: #004768;
+    border: double #E8B424;
+}
+.logout:hover {
+    background-color: #ffaf24;
+}
