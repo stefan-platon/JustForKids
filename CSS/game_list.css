@@ -1,6 +1,7 @@
 body {
     margin: 0;
     padding: 0;
+    background: center darkslategray;
 }
 
 .container {
@@ -31,8 +32,8 @@ body {
 }
 
 .game-title{
-    height: 55%;
-    width: 45%;
+    height: 30%;
+    width: 30%;
     text-align: left;
     color: gold;
 }
@@ -41,10 +42,6 @@ body {
     height: 35%;
     width: 40%;
     border-radius: 5%;
-}
-
-.game-thumbnail:hover {
-    box-shadow: 1px  5px 10px 1px gold;
 }
 
 .game-description{
