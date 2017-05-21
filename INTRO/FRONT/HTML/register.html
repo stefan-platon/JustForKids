@@ -8,7 +8,7 @@
 </head>
 
 <body>
-<form action="../PHP/register.php" method="post">
+<form action="../PHP/register.php" method="post" enctype="multipart/form-data">
 <div class = "container_register">
     <div class = "reg_header">
         <h2>Welcome to J.f.K.!</h2>
@@ -39,7 +39,7 @@
             <tr>
                 <td>Profile picture</td>
                 <td>
-                    <input type="file" name="fileToUpload" id="p_poza">
+                    <input type="file" name="fileToUpload" id="p_poza" required>
                 </td>
             </tr>
             <tr>
@@ -91,18 +91,28 @@
                 <td><input type="password" class="box" placeholder="" name="t_psw" required></td>
             </tr>
             <tr>
-                <td>Tutor's profile picture</td>
-                <td>
-                    <input type="file" name="fileToUpload" id="t_poza">
-                </td>
-            </tr>
-            <tr>
                 <td>Repeat tutor's password</td>
                 <td><input type="password" class="box" placeholder="" name="t_r_psw" required></td>
             </tr>
             <tr>
+                <td>Tutor's profile picture</td>
+                <td>
+                    <input type="file" name="fileToUpload2" id="t_poza" required>
+                </td>
+            </tr>
+            <tr>
                 <td>Tutor's e-mail</td>
                 <td><input type="text" class="box" placeholder="" name="t_email" required></td>
+            </tr>
+            <tr>
+                <td>Your relation with the tutor</td>
+                <td>
+                    <select name="relation">
+                        <option value="parent">Parent</option>
+                        <option value="grandParent">Grand parent</option>
+                        <option value="legalTutor">Legal tutor</option>
+                    </select>
+                </td>
             </tr>
         </table>
     </div>
