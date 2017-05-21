@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <?php
+        include ("..\PHP\conectare_db.php");
+    ?>
+    <style>
+        .container_arata_q{
+            padding-top: 20px;
+            text-align:center;
+            line-height: 30px;
+            overflow-y: scroll;
+        }
+    </style>
+    <title>JFK</title>
+</head>
+
+<body>
+<form action="admin_cauta_intrebare.html" id = "cauta_q_form" method="post">
+    <div class="container_arata_q">
+        <label><b>Id-ul intrebarii</b></label>
+        <br/>
+        <input type="text" placeholder="Enter Id" name="cauta_q_id">
+        <br/>
+        <label><b>Domeniu</b></label><br/>
+        <select name="domeniu" id="domeniu">
+            <?php
+                $stid = oci_parse($connection, 'SELECT domain_id, domain_name FROM domains');
+                oci_execute($stid);
+                echo "<option value=''>Oricare</option>";
+                while (($row = oci_fetch_array($stid, OCI_BOTH)) != false)
+                {
+                    echo "<option value='". $row[0] ."'>" .$row[1] ."</option>";
+                }
+                oci_free_statement($stid);
+                oci_close($connection);
+            ?>
+        </select>
+        <br/>
+        <label><b>Text sequence</b></label><br/>
+        <input type="text" placeholder="Enter sequence" name="q_text_seq">
+        <br/>
+        <label><b>Dificultate</b></label><br/>
+        <select name="dificultate">
+            <option value="">Oricare</option>
+            <option value="0">V. Easy</option>
+            <option value="1">Easy</option>
+            <option value="2">Medium</option>
+            <option value="3">Hard</option>
+        </select>
+        <br/>
+        <label><b>Tip intrebare</b></label><br/>
+        <select name="tip_intrebare">
+            <option value="">Oricare</option>
+            <option value="0">Grila</option>
+            <option value="1">Text</option>
+        </select>
+        <br/>
+        <button type="submit">Cauta</button>
+    </div>
+</form>
+<?php
+if ($_SERVER['REQUEST_METHOD'] == 'POST')
+{
+    include ("..\PHP\admin_cauta_intrebare.php");
+}
+?>
+</body>
+
+</html>
