@@ -2,15 +2,24 @@
 <html lang="en">
 
 <head>
-    <title>JFK</title>
     <?php
-        include ("../PHP/conectare_db.php");
+        include ("..\PHP\conectare_db.php");
     ?>
-    <link type="text/css" rel="stylesheet" href="../CSS/admin_insereaza_intrebare.css">
+    <style>
+        .container_insert_q{
+            padding-top: 20px;
+            text-align:center;
+            line-height: 30px;
+            overflow-y: scroll;
+        }
+        textarea {
+            resize: none;
+        }
+    </style>
 </head>
 
 <body>
-<form action="/admin_insereaza_intrebare.html" method="post">
+<form action="admin_insereaza_intrebare.html" method="post">
     <div class="container_insert_q">
         <label><b>Domeniu</b></label><br/>
         <select name="domeniu" id="domeniu">
@@ -27,7 +36,7 @@
         </select>
         <br/>
         <label><b>Text</b></label><br/>
-        <input type="text" placeholder="Text..." name="text" required>
+        <textarea rows="5" cols="50" name="text" required></textarea>
         <br/>
         <label><b>Dificultate</b></label><br/>
         <select name="dificultate">
@@ -61,7 +70,7 @@
 <?php
 if ($_SERVER['REQUEST_METHOD'] == 'POST')
 {
-    include ("../PHP/insereaza_intrebare.php");
+    include ("..\PHP\admin_insereaza_intrebare.php");
 }
 ?>
 </body>
