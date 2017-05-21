@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <?php
+        include ("..\PHP\conectare_db.php");
+    ?>
+    <title>JFK</title>
+    <link type="text/css" rel="stylesheet" href="../CSS/admin_insereaza_joc.css">
+</head>
+
+<body>
+<form action="admin_insereaza_joc.html" method="post" enctype="multipart/form-data">
+    <div class="container_insert_j">
+        <label><b>Nume</b></label><br/>
+        <input type="text" placeholder="Nume..." name="nume" required>
+        <br/>
+        <label><b>Dificultate</b></label><br/>
+        <select name="dificultate">
+            <option value="0">V. Easy</option>
+            <option value="1">Easy</option>
+            <option value="2">Medium</option>
+            <option value="3">Hard</option>
+        </select>
+        <br/>
+        <label><b>Descriere</b></label><br/>
+        <textarea rows="3" cols="50" name="descr" required></textarea>
+        <br/>
+        <label><b>Instructiuni</b></label><br/>
+        <textarea rows="3" cols="50" name="instr" required></textarea>
+        <br/>
+        <label><b>Domeniu</b></label><br/>
+        <select name="domeniu" id="domeniu">
+            <?php
+                $stid = oci_parse($connection, 'SELECT domain_id, domain_name FROM domains');
+                oci_execute($stid);
+                while (($row = oci_fetch_array($stid, OCI_BOTH)) != false)
+                {
+                    echo "<option value='". $row[0] ."'>" .$row[1] ."</option>";
+            }
+            oci_free_statement($stid);
+            oci_close($connection);
+            ?>
+        </select>
+        <br/>
+        <label><b>Imagine</b></label><br/>
+        <input type="file" name="fileToUpload" id="img" required>
+        <br/>
+        <label><b>Cale catre joc</b></label><br/>
+        <input type="text" placeholder="Cale..." name="game_path" required>
+        <br/>
+        <button type="submit">Trimite</button>
+    </div>
+</form>
+<?php
+if ($_SERVER['REQUEST_METHOD'] == 'POST')
+{
+    include ("../PHP/admin_insereaza_joc.php");
+}
+?>
+</body>
+
+</html>
