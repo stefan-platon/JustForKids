@@ -7,16 +7,19 @@
 </head>
 
 <body>
-<form action="/admin_insereaza_domeniu.html" method="post">
+<form action="admin_insereaza_domeniu.html" method="post" enctype="multipart/form-data">
     <div class="container_insert_d">
         <label><b>Nume</b></label><br/>
         <input type="text" placeholder="Nume..." name="nume" required>
         <br/>
         <label><b>Tip</b></label><br/>
-        <input type="text" placeholder="Tip..." name="tip" required>
+        <select name="tip" id="tip">
+            <option value='Uman'>Uman</option>";
+            <option value='Real'>Real</option>";
+        </select>
         <br/>
         <label><b>Imagine</b></label><br/>
-        <input type="text" placeholder="Imagine..." name="img" required>
+        <input type="file" name="fileToUpload" id="img" required>
         <br/>
         <button type="submit">Trimite</button>
     </div>
