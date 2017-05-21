@@ -36,7 +36,7 @@
     z-index: 2;
 }
 .dropdown_2 {
-    left:180px;
+    left:147px;
     margin: 0;
     padding: 0;
     position: absolute;
@@ -44,7 +44,7 @@
     z-index: 2;
 }
 .dropdown_3 {
-    left:320px;
+    left:257px;
     margin: 0;
     padding: 0;
     position: absolute;
@@ -52,7 +52,7 @@
     z-index: 2;
 }
 .dropdown_4 {
-      left:460px;
+      left:367px;
       margin: 0;
       padding: 0;
       position: absolute;
@@ -60,7 +60,15 @@
       z-index: 2;
   }
 .dropdown_5 {
-    left:600px;
+    left:477px;
+    margin: 0;
+    padding: 0;
+    position: absolute;
+    display: inline-block;
+    z-index: 2;
+}
+.dropdown_6 {
+    left:587px;
     margin: 0;
     padding: 0;
     position: absolute;
@@ -90,6 +98,9 @@
 .dropdown_5:hover .dropdown-content {
     display: block;
 }
+.dropdown_6:hover .dropdown-content {
+    display: block;
+}
 /* stilul butonului */
 .btn{
     background-color: #25243D;
@@ -99,14 +110,14 @@
     color: #dde1db;
     border: double;
     height: 80px;
-    width: 130px;
+    width: 110px;
 }
 /* div-ul unde se insereaza pagina straina */
 .page{
     top:12%;
     left: 5%;
     position: absolute;
-    width: 80%;
+    width: 76%;
     height: auto;
     border: solid 2px;
 }
