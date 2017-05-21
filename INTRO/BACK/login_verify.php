@@ -38,7 +38,7 @@ if(($row = oci_fetch_array($stid, OCI_BOTH)) != false)
     }
     else if ($rezultat2 == 'a')
     {
-        header('Location: ../../../ADMIN/FRONT/HTML/logged_tutor_frame.html');
+        header('Location: ../../../ADMIN/FRONT/HTML/admin_frame.html');
     }
     else
     {
