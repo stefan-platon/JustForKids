@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <link type="text/css" rel="stylesheet" href="../CSS/admin_sterge_joc.css">
+    <title>JFK</title>
+</head>
+
+<body>
+<form action="admin_sterge_joc.html" method="post">
+    <div class="container_sterge_j">
+        <label><b>Id-ul jocului</b></label>
+        <br/>
+        <input type="text" placeholder="Enter Id" name="j_id" required>
+        <br/>
+        <button type="submit">Sterge</button>
+    </div>
+</form>
+<?php
+if ($_SERVER['REQUEST_METHOD'] == 'POST')
+{
+    include ("../PHP/admin_sterge_joc.php");
+}
+?>
+</body>
+
+</html>
