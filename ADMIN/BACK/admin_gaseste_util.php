@@ -2,9 +2,10 @@
 include("conectare_db.php");
 
 $query = "SELECT p.player_id, p.first_name, p.second_name, p.username, p.email from PLAYER p join TUTOR t on p.tutor_id=t.tutor_id
-                                  where
-                                  (p.first_name like :p_name or p.second_name like :p_name) and p.username like :p_username and p.email like :p_email and
-                                  (t.first_name like :t_name or t.second_name like :t_name) and t.username like :t_username and t.email like :t_email";
+          where
+          (p.first_name like :p_name or p.second_name like :p_name) and p.username like :p_username and p.email like :p_email and
+          (t.first_name like :t_name or t.second_name like :t_name) and t.username like :t_username and t.email like :t_email and 
+          p.logged like :logged";
 
 $stid = oci_parse($connection, $query);
 
@@ -14,6 +15,7 @@ $p_email = '%' . $_POST["player_email"] . '%';
 $t_name_sec = '%' . $_POST["tutor_name"] . '%';
 $t_username = '%' . $_POST["tutor_username"] . '%';
 $t_email = '%' . $_POST["tutor_email"] . '%';
+$t_logged = '%' . $_POST["logged"] . '%';
 
 oci_bind_by_name($stid, ":p_name", $p_name_sec);
 oci_bind_by_name($stid, ":p_username", $p_username);
@@ -21,6 +23,7 @@ oci_bind_by_name($stid, ":p_email", $p_email);
 oci_bind_by_name($stid, ":t_name", $t_name_sec);
 oci_bind_by_name($stid, ":t_username", $t_username);
 oci_bind_by_name($stid, ":t_email", $t_email);
+oci_bind_by_name($stid, ":logged", $t_logged);
 
 oci_execute($stid);
 
