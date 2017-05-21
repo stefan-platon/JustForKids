@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <link type="text/css" rel="stylesheet" href="../CSS/admin_lista_domenii.css">
+    <title>JFK</title>
+</head>
+
+<body>
+<form action="admin_lista_domenii.html" method="post">
+    <div class="container_lista_d">
+        <button type="submit">Afiseaza domenii</button>
+    </div>
+</form>
+<?php
+if ($_SERVER['REQUEST_METHOD'] == 'POST')
+{
+    include ("..\PHP\admin_lista_domenii.php");
+}
+?>
+</body>
+
+</html>
