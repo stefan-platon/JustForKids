@@ -2,23 +2,26 @@
 <html lang="en">
 
 <head>
-    <title>JFK</title>
-    <!-- facem conectarea la baza de date pentru select-->
     <?php
-        include ("../PHP/conectare_db.php");
+        include("..\PHP\conectare_db.php");
     ?>
-    <link type="text/css" rel="stylesheet" href="../CSS/admin_actualizeaza_intrebare.css">
+    <style>
+        .container_update_q{
+            padding-top: 20px;
+            text-align:center;
+            line-height: 30px;
+            overflow-y: scroll;
+        }
+    </style>
 </head>
 
 <body>
 <form action="admin_actualizeaza_intrebare.html" method="post">
-    <!-- intreaga pagina -->
     <div class="container_update_q">
         <label><b>ID-ul intrebarii</b></label><br/>
         <input type="text" placeholder="ID..." name="q_id" required>
         <br/>
         <label><b>Domeniu</b></label><br/>
-        <!-- aici se afiseaza domeniile existente in baza de date-->
         <select name="domeniu" id="domeniu">
             <?php
                 $stid = oci_parse($connection, 'SELECT domain_id, domain_name FROM domains');
@@ -36,7 +39,6 @@
         <input type="text" placeholder="Text..." name="text" required>
         <br/>
         <label><b>Dificultate</b></label><br/>
-        <!-- dificultatea aleasa de admin (cu valori predefinite) -->
         <select name="dificultate">
             <option value="0">V. Easy</option>
             <option value="1">Easy</option>
@@ -65,11 +67,10 @@
         <button type="submit">Trimite</button>
     </div>
 </form>
-<!-- se face legatura cu fisierul php ce se ocupa de comunicarea cu baza de date -->
 <?php
 if ($_SERVER['REQUEST_METHOD'] == 'POST')
 {
-    include ("../PHP/admin_actualizeaza_intrebare.php");
+    include ("..\PHP\admin_actualizeaza_intrebare.php");
 }
 ?>
 </body>
