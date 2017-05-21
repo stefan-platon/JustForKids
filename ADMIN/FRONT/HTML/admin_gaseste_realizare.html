@@ -3,20 +3,36 @@
 
 <head>
     <link rel="stylesheet" href="../CSS/admin_gaseste_realizare.css">
+    <title>JFK</title>
 </head>
 
 <body>
-    <!--container principal-->
-<div class="container_gaseste_r">
-    <form action="../PHP/admin_gaseste_realizare.php" method="post">
+<form action="admin_gaseste_realizare.html" id = "cauta_a_form" method="post">
+    <div class="container_gaseste_r">
+        <!--id-ul realizarii-->
+        <label><b>Id-ul intrebarii</b></label>
+        <br/>
+        <input type="text" placeholder="Enter Id" name="cauta_a_id">
+        <br/>
         <!--numele realizarii-->
-        <label><b>Name</b></label><br/>
+        <label><b>Name</b></label>
+        <br/>
         <input type="text" placeholder="name" name="name_r">
         <br/>
         <!--descrierea realizarii-->
-        <label><b>Descriere</b></label><br/>
+        <label><b>Descriere</b></label>
+        <br/>
         <input type="text" placeholder="username" name="descr_r">
         <br/>
         <button type="submit">Search</button>
-    </form>
-</div>
+    </div>
+</form>
+<?php
+if ($_SERVER['REQUEST_METHOD'] == 'POST')
+{
+    include ("../PHP/admin_gaseste_realizare.php");
+}
+?>
+</body>
+
+</html>
