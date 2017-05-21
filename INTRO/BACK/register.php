@@ -207,4 +207,5 @@ if(!oci_execute($stid))
 }
 oci_free_statement($stid);
 oci_close($connection);
+header('Location: ../FRONT/HTML/login_frame.html');
 ?>
