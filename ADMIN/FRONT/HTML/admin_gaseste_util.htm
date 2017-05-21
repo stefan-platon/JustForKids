@@ -11,7 +11,7 @@
     <!-- div ce reprezinta intreaga pagina -->
 <div class="container_gaseste_util">
     <!-- form ce preia informatiile de la tastatura si le trimite catre fisierul php ce comunica cu baza de date -->
-    <form action="/admin_gaseste_util.php" method="post">
+    <form action="admin_gaseste_util.html" method="post">
         <label for="player_name"><b>Name</b></label><br/>
         <input id="player_name" type="text" placeholder="name" name="player_name">
         <br/>
@@ -38,7 +38,7 @@
 <?php
 if ($_SERVER['REQUEST_METHOD'] == 'POST')
 {
-    include ("../PHP/admin_gaseste_util.php");
+    include ("../../BACK/admin_gaseste_util.php");
 }
 ?>
 </body>
