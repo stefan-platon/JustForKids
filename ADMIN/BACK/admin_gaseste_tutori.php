@@ -1,10 +1,10 @@
 <?php
 include("conectare_db.php");
 
-$query = "SELECT t.tutor_id,t.first_name,t.second_name,t.username,t.email,p.username,p.email from PLAYER p join TUTOR t on p.tutor_id=t.tutor_id
+$query = "SELECT t.tutor_id,t.first_name,t.last_name,t.username,t.email,p.username,p.email from PLAYER p join TUTOR t on p.tutor_id=t.tutor_id
                   where
-                  (p.first_name like :p_name or p.second_name like :p_name) and p.username like :p_username and p.email like :p_email and
-                  (t.first_name like :t_name or t.second_name like :t_name) and t.username like :t_username and t.email like :t_email";
+                  (p.first_name like :p_name or p.last_name like :p_name) and p.username like :p_username and p.email like :p_email and
+                  (t.first_name like :t_name or t.last_name like :t_name) and t.username like :t_username and t.email like :t_email";
 
 $stid = oci_parse($connection, $query);
 
