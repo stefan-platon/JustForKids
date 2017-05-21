@@ -3,7 +3,7 @@
 
 <head>
     <?php
-        include ("..\PHP\conectare_db.php");
+        include ("../../BACK/conectare_db.php");
     ?>
     <style>
         .container_insert_q{
@@ -40,7 +40,6 @@
         <br/>
         <label><b>Dificultate</b></label><br/>
         <select name="dificultate">
-            <option value="0">V. Easy</option>
             <option value="1">Easy</option>
             <option value="2">Medium</option>
             <option value="3">Hard</option>
@@ -70,7 +69,7 @@
 <?php
 if ($_SERVER['REQUEST_METHOD'] == 'POST')
 {
-    include ("..\PHP\admin_insereaza_intrebare.php");
+    include ("../../BACK/admin_insereaza_intrebare.php");
 }
 ?>
 </body>
