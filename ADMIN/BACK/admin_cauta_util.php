@@ -5,7 +5,7 @@
 
         $flag=true;
         if ($_POST["uname"]!=null && $_POST['uid']==0) {
-            $stid = oci_parse($connection, "SELECT player_id,first_name,second_name,username,email FROM player where username like '%".$_POST["uname"]."%'");
+            $stid = oci_parse($connection, "SELECT player_id,first_name,last_name,username,email FROM player where username like '%".$_POST["uname"]."%'");
             if(!oci_execute($stid))
             {
                 $error_flag = 0;
@@ -15,7 +15,7 @@
             }
         }else
             if ($_POST['uid']!=0 && $_POST["uname"]==null) {
-                $stid = oci_parse($connection, "SELECT player_id,first_name,second_name,username,email FROM player where player_id =".$_POST["uid"]);
+                $stid = oci_parse($connection, "SELECT player_id,first_name,last_name,username,email FROM player where player_id =".$_POST["uid"]);
                 if(!oci_execute($stid))
                 {
                     $error_flag = 0;
@@ -25,7 +25,7 @@
                 }
             }else
                 if ($_POST['uid']!=0 && $_POST["uname"]!=null) {
-                    $stid = oci_parse($connection, "SELECT player_id,first_name,second_name,username,email FROM player where player_id=".$_POST["uid"]." and username like '%".$_POST["uname"]."%'");
+                    $stid = oci_parse($connection, "SELECT player_id,first_name,last_name,username,email FROM player where player_id=".$_POST["uid"]." and username like '%".$_POST["uname"]."%'");
                     if(!oci_execute($stid))
                     {
                         $error_flag = 0;
