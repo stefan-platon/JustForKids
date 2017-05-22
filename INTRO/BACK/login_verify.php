@@ -30,15 +30,15 @@ if(($row = oci_fetch_array($stid, OCI_BOTH)) != false)
     oci_close($connection);
     if($rezultat2 == 'p')
     {
-        header('Location: ../../../PLAYER/FRONT/HTML/logged_user_frame.html');
+        header('Location: ../../PLAYER/FRONT/HTML/logged_user_frame.html');
     }
     else if ($rezultat2 == 't')
     {
-        header('Location: ../../../TUTOR/FRONT/HTML/logged_tutor_frame.html');
+        header('Location: ../../TUTOR/FRONT/HTML/logged_tutor_frame.html');
     }
     else if ($rezultat2 == 'a')
     {
-        header('Location: ../../../ADMIN/FRONT/HTML/admin_frame.html');
+        header('Location: ../../ADMIN/FRONT/HTML/admin_frame.html');
     }
     else
     {
