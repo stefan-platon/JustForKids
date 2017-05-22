@@ -131,7 +131,7 @@ else
 }
 
 /* verific poza de profil a utilizatorului */
-$target_dir = "../IMG/PROFILE/";
+$target_dir = "../../IMG/PROFILE/";
 $info = pathinfo($_FILES['fileToUpload']['name']);
 $ext = $info['extension']; // get the extension of the file
 $newname = $_POST["username"].".".$ext;
@@ -163,7 +163,7 @@ if ($uploadOk == 0) {
 }
 
 /* verific poza de profil a tutorelui */
-$target_dir = "../IMG/PROFILE/";
+$target_dir = "../../IMG/PROFILE/";
 $info = pathinfo($_FILES['fileToUpload2']['name']);
 $ext = $info['extension']; // get the extension of the file
 $newname = $_POST["t_username"].".".$ext;
