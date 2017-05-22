@@ -51,7 +51,7 @@
     cursor: pointer;
     height: 25px;
     width: 40px;
-    background-image: url("../IMG/FLAGS/flag_e.jpg");
+    background-image: url("../../../IMG/FLAGS/flag_e.jpg");
     background-size: cover;
 }
 /* al doilea buton cu limba */
@@ -60,7 +60,7 @@
     cursor: pointer;
     height: 25px;
     width: 40px;
-    background-image: url("../IMG/FLAGS/flag_r.jpg");
+    background-image: url("../../../IMG/FLAGS/flag_r.jpg");
     background-size: cover;
     z-index: 20;
 }
