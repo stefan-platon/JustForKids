@@ -1,3 +1,7 @@
+<?php
+session_start();
+?>
+
 <!doctype html>
 <html lang="en">
 <head>
@@ -10,49 +14,14 @@
 <div class = "achievements">
     <!-- tabel pentru o buna aranjare a itemelor -->
     <table class="ach_table">
-        <!-- pe liniile impare sunt doar numele realizarilor -->
-        <tr class="ach_r">
-            <td class="c1">
-                <div class="title">1. Bun venit!</div>
-            </td>
-            <td class="c2">
-                <h2></h2>
-            </td>
-        </tr>
-        <!-- pe liniile pare sunt iconul si descrierea realizarii -->
-        <tr class="ach_r">
-            <td class="c1">
-                <div class = "icon">
-                    <img src="../IMG/OTHER/achievement.png" height="75" alt="Ach1">
-                </div>
-            </td>
-            <td class="c2">
-                <div class = "text_box">
-                    <p>Ti-ai facut cont pe aplicatia Just For Kids.</p>
-                </div>
-            </td>
-        </tr>
-        <!-- a doua realizare, facuta in acelasi stil -->
-        <tr class="ach_r">
-            <td class="c1">
-                <div class="title">2. Primul 10!</div>
-            </td>
-            <td class="c2">
-                <h2></h2>
-            </td>
-        </tr>
-        <tr class="ach_r">
-            <td class="c1">
-                <div class = "icon">
-                    <img src="../IMG/OTHER/achievement.png" height="75">
-                </div>
-            </td>
-            <td class="c2">
-                <div class = "text_box">
-                    <p>Ai obtinut la un test punctaj maxim (10).</p>
-                </div>
-            </td>
-        </tr>
+
+        <?php
+
+        include ("../../BACK/conectare_db.php");
+        include ("../../BACK/achievements.php");
+
+        ?>
+
     </table>
 </div>
 </body>
