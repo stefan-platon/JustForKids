@@ -1,7 +1,6 @@
 body {
     margin: 0;
     padding: 0;
-    background: center darkslategrey;
 }
 
 .container {
@@ -22,13 +21,22 @@ body {
     width: 80%;
 }
 
+.warning{
+    color: gold;
+    font-size: 150%;
+    font-family: Arial;
+    margin-left: auto;
+    margin-right: auto;
+    width: 80%;
+}
+
 .list-items {
     height: auto;
     width: 80%;
     margin-right: auto;
     margin-left: auto;
     border: solid 1px darkgoldenrod;
-    background: #5F3248;
+    background: rgba(0,0,0,0.55);
 }
 
 .item-filler{
@@ -40,6 +48,11 @@ body {
     width: 20%;
     margin: 4%;
     float: left;
+}
+
+.label-input{
+    visibility: hidden;
+    position: absolute;
 }
 
 .item-title{
@@ -56,22 +69,22 @@ body {
     margin-left: auto;
     margin-right: auto;
     margin-top: 5%;
-    border-radius: 5%;
-}
-
-.item-image{
-    height: auto;
-    width: auto;
-    box-shadow: 0px  5px 10px 0px darkgoldenrod;
+    box-shadow: 0  5px 10px 0 darkgoldenrod;
+    transition: width .15s ease-in-out, height .15s ease-in-out;
     border-radius: 5%;
 }
 
 .item-thumbnail:hover {
-    height: 100%;
-    width: 100%;
-    box-shadow: 0px  10px 30px 0px gold;
+    height: 105%;
+    width: 105%;
+    box-shadow: 0  10px 30px 0 gold;
 }
 
+.label-input:checked+.item-thumbnail{
+    height: 105%;
+    width: 105%;
+    box-shadow: 0  10px 30px 0 cyan;
+}
 
 
 .list-tip {
@@ -80,7 +93,7 @@ body {
     margin-right: auto;
     margin-left: auto;
     border: solid 1px darkgoldenrod;
-    background: #5F3259;
+    background: rgba(0,0,0,0.55);
 }
 
 .tip-filler{
@@ -105,11 +118,46 @@ body {
 }
 
 .tip-thumbnail {
-    height: 50%;
-    width: 50%;
+    height: 100%;
+    width: 100%;
     display: block;
     margin-left: auto;
     margin-right: auto;
     margin-top: 5%;
+    transition: width .10s ease-in-out, height .10s ease-in-out;
+    box-shadow: 0  5px 10px 0 darkgoldenrod;
     border-radius: 10px;
+}
+
+.tip-thumbnail:hover {
+    height: 105%;
+    width:  105%;
+    box-shadow: 0  5px 30px 0 gold;
+}
+
+.submit{
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.submit-button{
+    tab-size: 10;
+    margin-top: 1%;
+    margin-left: 70%;
+    padding: 1%;
+    border-radius: 25%;
+    font-size: 100%;
+    font-family: Arial;
+    background: rgba(0,0,0,0.4);
+    color: darkgoldenrod;
+    border: 1px solid;
+    border-color: darkgoldenrod;
+}
+
+.submit-button:hover{
+    border-radius: 25%;
+    background: gold;
+    color: black;
+    border-color: black;
+    box-shadow: 0  5px 50px 0 gold;
 }

@@ -1,7 +1,6 @@
 body {
     margin: 0;
     padding: 0;
-    background: center darkslategray;
 }
 
 .container {
@@ -28,7 +27,7 @@ body {
     margin-right: auto;
     margin-left: auto;
     border: solid 1px darkgoldenrod;
-    background: #5F3248;
+    background: rgba(0,0,0,0.55);
 }
 
 .filler{
@@ -43,7 +42,7 @@ body {
 }
 
 .item-title{
-    height:20px;
+    height:auto;
     width:auto;
     text-align: center;
     color: darkgoldenrod;
@@ -56,13 +55,14 @@ body {
     margin-left: auto;
     margin-right: auto;
     margin-top: 5%;
-    box-shadow: 0px  5px 10px 0px darkgoldenrod;
+    transition: width .15s ease-in-out, height .15s ease-in-out;
+    box-shadow: 0  5px 10px 0 darkgoldenrod;
     border-radius: 5%;
 }
 
 .item-thumbnail:hover {
-    height: 100%;
-    width: 100%;
-    box-shadow: 0px  5px 10px 0px gold;
+    height: 105%;
+    width: 105%;
+    box-shadow: 0  5px 10px 0 gold;
 }
 
