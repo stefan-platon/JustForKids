@@ -1,7 +1,9 @@
 <?php
+
 session_start();
 if($_SESSION['online']!=true)
     header("Location:../");
+
 include("../PLAYER/BACK/conectare_db.php");
 $query = 'select domain_id, domain_name, icon_link from domains';
 $stid = oci_parse($connection, $query);

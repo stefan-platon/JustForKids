@@ -1,7 +1,9 @@
 <?php
+
 session_start();
 if($_SESSION['online']!=true)
     header("Location:../");
+
 include("../PLAYER/BACK/conectare_db.php");
 $query = 'select name, difficulty, description, icon_link from games where domain_id=:domain_id';
 $stid = oci_parse($connection, $query);
