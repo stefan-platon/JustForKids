@@ -1,5 +1,9 @@
 <?php
 
+session_start();
+if($_SESSION['online']!=true)
+    header("Location:../");
+
 include("../PLAYER/BACK/conectare_db.php");
 $query = 'select name, instructions, game_link from games where name=:name';
 $stid = oci_parse($connection, $query);
