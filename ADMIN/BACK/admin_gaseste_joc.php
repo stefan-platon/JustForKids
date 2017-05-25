@@ -15,17 +15,30 @@ if($_POST["cauta_j_id"]!=null)
         echo "Error: " . $e['message'];
     }
 }
+else if($_POST["cauta_j_nume"]!=null)
+{
+    $sql = "SELECT g.game_id, g.name, g.difficulty, g.description, g.instructions, g.domain_id from games g join domains d on d.domain_id = g.domain_id
+            where LOWER(g.name) = :v_name";
+    $stid = oci_parse($connection, $sql);
+    $var1 = '%'.$_POST["cauta_j_nume"].'%';
+    oci_bind_by_name($stid, ":v_name", $var1);
+    if(!oci_execute($stid))
+    {
+        $error_flag = 0;
+        $e = oci_error($stid);
+        echo "Something went wrong :( <br/>";
+        echo "Error: " . $e['message'];
+    }
+}
 else
 {
     $sql = "SELECT g.game_id, g.name, g.difficulty, g.description, g.instructions, g.domain_id from games g join domains d on d.domain_id = g.domain_id
-            where g.name like :v_name and g.domain_id like :v_dom and g.description like :v_descr and g.instructions like :v_instr and g.difficulty like :v_dif ";
+            where g.domain_id like :v_dom and g.description like :v_descr and g.instructions like :v_instr and g.difficulty like :v_dif ";
     $stid = oci_parse($connection, $sql);
-    $var1 = '%'.$_POST["cauta_j_nume"].'%';
     $var2 = '%'.$_POST["domeniu"].'%';
     $var3 = '%'.$_POST["j_descr_seq"].'%';
     $var4 = '%'.$_POST["j_instr_seq"].'%';
     $var5 = '%'.$_POST["dificultate"].'%';
-    oci_bind_by_name($stid, ":v_name", $var1);
     oci_bind_by_name($stid, ":v_dom", $var2);
     oci_bind_by_name($stid, ":v_descr", $var3);
     oci_bind_by_name($stid, ":v_instr", $var4);
