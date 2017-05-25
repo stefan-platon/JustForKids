@@ -14,14 +14,27 @@ if($_POST["cauta_a_id"]!=null)
         echo "Error: " . $e['message'];
     }
 }
+else if($_POST["name_r"]!=null)
+{
+    $sql = "SELECT a.achievement_id, a.name, a.description from achievements a 
+            where LOWER(a.name) = LOWER(:v_name)";
+    $stid = oci_parse($connection, $sql);
+    $var1 = $_POST["name_r"];
+    oci_bind_by_name($stid, ":v_name", $var1);
+    if(!oci_execute($stid))
+    {
+        $error_flag = 0;
+        $e = oci_error($stid);
+        echo "Something went wrong :( <br/>";
+        echo "Error: " . $e['message'];
+    }   
+}
 else
 {
     $sql = "SELECT a.achievement_id, a.name, a.description from achievements a 
-            where a.name like :v_name and a.description like :v_descr";
+            where a.description like :v_descr";
     $stid = oci_parse($connection, $sql);
-    $var1 = '%'.$_POST["name_r"].'%';
     $var2 = '%'.$_POST["descr_r"].'%';
-    oci_bind_by_name($stid, ":v_name", $var1);
     oci_bind_by_name($stid, ":v_descr", $var2);
     if(!oci_execute($stid))
     {
