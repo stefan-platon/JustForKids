@@ -36,7 +36,7 @@ $row = oci_fetch_array($stid, OCI_BOTH);
 echo '<tr class="profil_tr">' . '<td class="profil_td">Domeniul cu scorul cel mai mic:</td>' . '<td class="profil_td">' . $row[0] . '</td></tr>';
 oci_free_statement($stid);
 
-$stid = oci_parse($connection, 'SELECT sum(t.score)/count(t.score)*10 FROM tests t join player p on t.player_id = p.player_id where p.username = :username');
+$stid = oci_parse($connection, 'SELECT round(sum(t.score)/count(t.score)*10, 2) FROM tests t join player p on t.player_id = p.player_id where p.username = :username');
 oci_bind_by_name($stid, ':username', $username);
 oci_execute($stid);
 $row = oci_fetch_array($stid, OCI_BOTH);
