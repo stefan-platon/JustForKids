@@ -18,9 +18,9 @@ if($_POST["cauta_j_id"]!=null)
 else if($_POST["cauta_j_nume"]!=null)
 {
     $sql = "SELECT g.game_id, g.name, g.difficulty, g.description, g.instructions, g.domain_id from games g join domains d on d.domain_id = g.domain_id
-            where LOWER(g.name) = :v_name";
+            where LOWER(g.name) = LOWER(:v_name)";
     $stid = oci_parse($connection, $sql);
-    $var1 = '%'.$_POST["cauta_j_nume"].'%';
+    $var1 = $_POST["cauta_j_nume"];
     oci_bind_by_name($stid, ":v_name", $var1);
     if(!oci_execute($stid))
     {
