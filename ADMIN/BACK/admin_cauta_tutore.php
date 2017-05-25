@@ -5,7 +5,7 @@ if (isset($_POST["uid"]) || isset($_POST["uname"])) {
 
     $flag=true;
     if ($_POST["uname"]!=null && $_POST['uid']==0) {
-        $stid = oci_parse($connection, "SELECT t.tutor_id,t.first_name,t.last_name,t.username,t.email,p.username,p.email FROM tutor t join player p on t.tutor_id = p.tutor_id where t.username like '%".$_POST["uname"]."%'");
+        $stid = oci_parse($connection, "SELECT t.tutor_id,t.first_name,t.last_name,t.username,t.email,p.username,p.email FROM tutor t join player p on t.tutor_id = p.tutor_id where LOWER(t.username) = ".$_POST["uname"]);
         if(!oci_execute($stid))
         {
             $error_flag = 0;
