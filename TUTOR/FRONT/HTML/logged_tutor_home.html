@@ -72,16 +72,16 @@
     <hr/>
     <div class = "jucatori_top_10">
         <ol>
-            <li><p>paul.anton : 420</p></li>
-            <li><p>cosmin.georgescu : 399</p></li>
-            <li><p>ionut.vasile : 384</p></li>
-            <li><p>daniela.ionesei : 320</p></li>
-            <li><p>catalin.stamate : 310</p></li>
-            <li><p>stefana.radu : 306</p></li>
-            <li><p>codrin.enescu : 300</p></li>
-            <li><p>bogdan.stan : 284</p></li>
-            <li><p>simona.mutescu : 268</p></li>
-            <li><p>alina.dimitrie : 267</p></li>
+        	<?php
+            $stid = oci_parse($connection, 'select username, total_score from (select username, total_score from player_stats join player on player.player_id = player_stats.player_id order by total_score desc) where rownum <= 10');
+            oci_execute($stid);
+            while (($row = oci_fetch_array($stid, OCI_BOTH)) != false)
+            {
+            	echo "<li><p>". $row[0] . " : " . $row[1] . "</p></li>";
+            }
+            oci_free_statement($stid);
+            oci_close($connection);
+            ?>
         </ol>
     </div>
 </div>
