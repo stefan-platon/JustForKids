@@ -363,10 +363,15 @@ DECLARE
 BEGIN
   --update tests set test_type = ROUND(DBMS_RANDOM.VALUE(1,2));
   for i in 1 .. 10000 loop
-    select first_name into v_player_name from player where player_id = i;
-    select min(tutor_id) into v_min_tutor_id from tutor where first_name = v_player_name;
-    select max(tutor_id) into v_max_tutor_id from tutor where first_name = v_player_name;
+    select min(tutor_id) into v_min_tutor_id from tutor;
+    select max(tutor_id) into v_max_tutor_id from tutor;
     update player set tutor_id = round(dbms_random.value(v_min_tutor_id,v_max_tutor_id)) where player_id = i;
+  end loop;
+  for i in 1 .. 10000 loop
+    EXECUTE IMMEDIATE 'select count(tutor_id) from player where tutor_id = :i' into v_c using i;
+    if(v_c < 1) then
+      EXECUTE IMMEDIATE 'delete from tutor where tutor_id = :i' using i;
+    end if;
   end loop;
 END;
 /
