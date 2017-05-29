@@ -16,13 +16,17 @@
                 <th class="profil_th">
                     <div id = "profile_picture">
                         <!-- User profile picture-->
-                        <img src="../IMG/OTHER/user_icon.jpg" style="max-width:100%; max-height:100%;">
+                        <img src="../../../IMG/OTHER/user_icon.jpg" style="max-width:100%; max-height:100%;">
                     </div>
                 </th>
                 <th class="profil_th">
                     <div id = "profile_user">
-                        <!-- Username-->
-                        catalin.dragomirescu
+                        <?php
+                        session_start();
+                        $_SESSION["t_username"] = 'Abaza.Marioara.t';
+                        $_SESSION["tutor_id"] = 19;
+                        echo $_SESSION["t_username"];
+                        ?>
                     </div>
                 </th>
             </tr>
@@ -30,30 +34,11 @@
     </div>
     <div id = "profile_data">
         <table class="tabel_body">
-            <tr class="profil_tr">
-                <td class="profil_td">Nume</td>
-                <td class="profil_td">Dragomirescu</td>
-            </tr>
-            <tr class="profil_tr">
-                <td class="profil_td">Prenume</td>
-                <td class="profil_td">Catalin</td>
-            </tr>
-            <tr class="profil_tr">
-                <td class="profil_td">E-mail</td>
-                <td class="profil_td">catalin11gb@gmail.com</td>
-            </tr>
-            <tr class="profil_tr">
-                <td class="profil_td">Ziua de nastere</td>
-                <td class="profil_td">13.11.1996</td>
-            </tr>
-            <tr class="profil_tr">
-                <td class="profil_td">Dificultate</td>
-                <td class="profil_td">3</td>
-            </tr>
-            <tr class="profil_tr">
-                <td class="profil_td">Ultima logare</td>
-                <td class="profil_td">19.04.2017</td>
-            </tr>
+            <?php
+                include ("../../BACK/conectare_db.php");
+
+                include ("../../BACK/tutor_profile.php");
+                ?>
         </table>
     </div>
     <div class="change_pr">

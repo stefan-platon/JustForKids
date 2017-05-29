@@ -7,7 +7,7 @@
     border-radius: 25px;
     width: 98%;
     height: 96%;
-    overflow: scroll;
+    overflow: auto;
     background-color: #CDEDD0;
 }
 .btn{

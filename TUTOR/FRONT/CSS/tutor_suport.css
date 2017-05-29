@@ -7,7 +7,7 @@
     border-radius: 25px;
     width: 98%;
     height: 96%;
-    overflow: scroll;
+    overflow: auto;
     background-color: #e6d8ac;
 }
 .btn{
@@ -18,12 +18,13 @@
     margin-bottom: 2%;
     font-family: "Book Antiqua";
     font-size: 30px;
-    color: #e84d07;
+    color: #d8d3d7;
     background-color: #004768;
     border: double #E8B424;
 }
 .btn:hover {
     background-color: #ffaf24;
+    color: #00222f;
 }
 .sad_face{
     padding-left: 35%;

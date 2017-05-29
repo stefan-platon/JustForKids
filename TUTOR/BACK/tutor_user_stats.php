@@ -2,11 +2,13 @@
 /**
  * Created by PhpStorm.
  * User: Catalin
- * Date: 24-May-17
- * Time: 01:29
+ * Date: 28-May-17
+ * Time: 22:19
  */
+
+
 $player_id = $_SESSION["player_id"];
-$username = $_SESSION["username"];
+
 $stid = oci_parse($connection, 'SELECT sum(total_score) FROM player_stats where player_id = :player_id');
 oci_bind_by_name($stid, ':player_id', $player_id);
 oci_execute($stid);

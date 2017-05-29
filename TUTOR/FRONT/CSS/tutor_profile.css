@@ -24,7 +24,7 @@
     width: 100%;
     height: 105%;
     background-color: #e6d8ac;
-    overflow: scroll;
+    overflow: auto;
 }
 #profile_data {
     width: 80%;
@@ -65,10 +65,11 @@
     height: 35%;
     width: 20%;
     border-radius: 10%;
-    color: #e84d07;
+    color: #d8d3d7;
     background-color: #004768;
     border: double #E8B424;
 }
 .change_button:hover {
     background-color: #ffaf24;
+    color: #00222f;
 }

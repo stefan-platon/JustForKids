@@ -9,7 +9,7 @@
     text-align: center;
     border-radius: 25px;
     background-color: #e6d8ac;
-    overflow: scroll;
+    overflow: auto;
 }
 .top {
     position: absolute;
@@ -22,7 +22,7 @@
     text-align: justify;
     border-radius: 25px;
     background-color: #e6d8ac;
-    overflow: scroll;
+    overflow: auto;
 }
 .news {
     position: absolute;
@@ -30,7 +30,7 @@
     left: 29%;
     width: 70.4%;
     height: 50%;
-    overflow: scroll;
+    overflow: auto;
     border: 2px solid #004768;
     text-indent: 10px;
     padding-left: 5px;
@@ -43,7 +43,7 @@
     left: 29%;
     width: 70.4%;
     height: 53%;
-    overflow: scroll;
+    overflow: auto;
     border: 2px solid #004768;
     text-indent: 10px;
     padding-left: 5px;
@@ -102,11 +102,11 @@
     margin-top: 8%;
     font-family: "Arial Unicode MS";
     font-size: 1.7em;
-    color: #e84d07;
+    color: #d8d3d7;
     background-color: #004768;
     border: double #E8B424;
 }
 .logout:hover {
     background-color: #e84d07;
-    color: #004768;
+    color: #00222f;
 }

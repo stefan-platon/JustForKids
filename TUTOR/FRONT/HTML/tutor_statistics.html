@@ -8,25 +8,9 @@
 
 <body>
 <?php
-
-$players = array("Iroquois Pliskin", "Nathan Drake", "Lara Croft", "Dimache Alex", "Dragomirescu G.",
-                 "Stefan Platon", "Bill Nye", "The Science Guy");
-
+include ("../../BACK/conectare_db.php");
+include ("../../BACK/tutor_statistics.php");
 ?>
-<div class="container_tutor_statistics">
-    <form method="post" action="tutor_user_stats.html">
-        <div class="list-players">
-            <?php for ($i = 0; $i < count($players); $i++) { ?>
-            <div class="player">
-                <?php echo '<input type="submit" id= "'.$i.'" value="'.$players[$i].'" class="player_button" style="">'; ?>
-            </div>
-            <?php } ?>
-            <div class="filler">
-
-            </div>
-        </div>
-    </form>
-</div>
 </body>
 
 </html>
