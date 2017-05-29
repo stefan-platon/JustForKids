@@ -24,7 +24,7 @@
     width: 100%;
     height: 105%;
     background-color:  	#CDEDD0;
-    overflow: scroll;
+    overflow: auto;
 }
 #profile_data {
     width: 80%;
