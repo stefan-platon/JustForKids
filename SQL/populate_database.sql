@@ -14,12 +14,6 @@ ALTER TABLE player_stats drop CONSTRAINT player_stats_domains_FK ;
 
 ALTER TABLE player_stats drop CONSTRAINT player_stats_player_FK;
 
-ALTER TABLE player_answers drop CONSTRAINT player_answers_questions_FK;
-
-ALTER TABLE player_answers drop CONSTRAINT player_answers_tests_FK;
-
-ALTER TABLE player_answers drop CONSTRAINT player_answers_player_FK;
-
 ALTER TABLE player_activity drop CONSTRAINT player_activity_player_FK;
 
 ALTER TABLE player_dates drop CONSTRAINT player_dates_player_FK;
@@ -31,7 +25,6 @@ ALTER TABLE tests drop CONSTRAINT tests_domains_FK;
 drop table player;
 drop table player_dates;
 drop table player_activity;
-drop table player_answers;
 drop table achievements;
 drop table achievements_link;
 drop table player_stats;
@@ -89,7 +82,7 @@ CREATE TABLE admins
     rights       INTEGER
   ) ;
 ALTER TABLE admins ADD CONSTRAINT admins_PK PRIMARY KEY ( admins_id ) ;
-ALTER TABLE admins ADD CONSTRAINT admins_unique1 UNIQUE ( username ) ;
+--ALTER TABLE admins ADD CONSTRAINT admins_unique1 UNIQUE ( username ) ;
 ALTER TABLE admins ADD CONSTRAINT admins_unique2 UNIQUE ( email ) ;
 
 CREATE TABLE domains
@@ -132,18 +125,8 @@ CREATE TABLE player
     tutor_id                INTEGER
   ) ;
 ALTER TABLE player ADD CONSTRAINT player_PK PRIMARY KEY ( player_id ) ;
-ALTER TABLE player ADD CONSTRAINT player_unique1 UNIQUE ( username ) ;
+--ALTER TABLE player ADD CONSTRAINT player_unique1 UNIQUE ( username ) ;
 ALTER TABLE player ADD CONSTRAINT player_unique2 UNIQUE ( email ) ;
-
-CREATE TABLE player_answers
-  (
-    player_id             INTEGER NOT NULL ,
-    question_id           INTEGER NOT NULL ,
-    domain_id             INTEGER ,
-    test_id               INTEGER
-  ) ;
-ALTER TABLE player_answers ADD CONSTRAINT player_answers_PK PRIMARY KEY ( player_id, question_id, test_id ) ;
-
 
 CREATE TABLE player_dates
   (
@@ -190,7 +173,7 @@ CREATE TABLE questions_answers
     answer1               VARCHAR2 (200) ,
     answer2               VARCHAR2 (200) ,
     answer3               VARCHAR2 (200) ,
-    correct_answer        VARCHAR2(200)
+    correct_answer        VARCHAR2 (200)
   ) ;
 ALTER TABLE questions_answers ADD CONSTRAINT questions_answers_PK PRIMARY KEY ( question_id ) ;
 
@@ -205,36 +188,30 @@ CREATE TABLE tutor
     rights              INTEGER
   ) ;
 ALTER TABLE tutor ADD CONSTRAINT tutor_PK PRIMARY KEY ( tutor_id ) ;
-ALTER TABLE tutor ADD CONSTRAINT tutor_unique1 UNIQUE ( username ) ;
+--ALTER TABLE tutor ADD CONSTRAINT tutor_unique1 UNIQUE ( username ) ;
 ALTER TABLE tutor ADD CONSTRAINT tutor_unique2 UNIQUE ( email ) ;
 
-ALTER TABLE questions_answers ADD CONSTRAINT questions_answers_FK FOREIGN KEY ( question_id ) REFERENCES tw_questions ( question_id ) ON DELETE CASCADE;
+ALTER TABLE questions_answers ADD CONSTRAINT questions_answers_FK FOREIGN KEY ( question_id ) REFERENCES tw_questions ( question_id );
 
-ALTER TABLE tw_questions ADD CONSTRAINT questions_domains_FK FOREIGN KEY ( domain_id ) REFERENCES domains ( domain_id ) ON DELETE CASCADE;
+ALTER TABLE tw_questions ADD CONSTRAINT questions_domains_FK FOREIGN KEY ( domain_id ) REFERENCES domains ( domain_id );
 
-ALTER TABLE games ADD CONSTRAINT games_domains_FK FOREIGN KEY ( domain_id ) REFERENCES domains ( domain_id ) ON DELETE CASCADE;
+ALTER TABLE games ADD CONSTRAINT games_domains_FK FOREIGN KEY ( domain_id ) REFERENCES domains ( domain_id );
 
-ALTER TABLE player_stats ADD CONSTRAINT player_stats_domains_FK FOREIGN KEY ( domain_id ) REFERENCES domains ( domain_id ) ON DELETE CASCADE;
+ALTER TABLE player_stats ADD CONSTRAINT player_stats_domains_FK FOREIGN KEY ( domain_id ) REFERENCES domains ( domain_id );
 
-ALTER TABLE player_stats ADD CONSTRAINT player_stats_player_FK FOREIGN KEY ( player_id ) REFERENCES player ( player_id ) ON DELETE CASCADE;
-
-ALTER TABLE player_answers ADD CONSTRAINT player_answers_questions_FK FOREIGN KEY ( question_id ) REFERENCES tw_questions ( question_id ) ON DELETE CASCADE;
-
-ALTER TABLE player_answers ADD CONSTRAINT player_answers_tests_FK FOREIGN KEY ( test_id ) REFERENCES tests ( test_id ) ON DELETE CASCADE;
+ALTER TABLE player_stats ADD CONSTRAINT player_stats_player_FK FOREIGN KEY ( player_id ) REFERENCES player ( player_id );
 
 ALTER TABLE tests ADD CONSTRAINT tests_domains_FK FOREIGN KEY (domain_id) REFERENCES domains (domain_id) ON DELETE CASCADE;
 
-ALTER TABLE player_answers ADD CONSTRAINT player_answers_player_FK FOREIGN KEY ( player_id ) REFERENCES player ( player_id ) ON DELETE CASCADE;
+ALTER TABLE achievements_link ADD CONSTRAINT achievements_player_FK FOREIGN KEY ( player_id ) REFERENCES player ( player_id );
 
-ALTER TABLE achievements_link ADD CONSTRAINT achievements_player_FK FOREIGN KEY ( player_id ) REFERENCES player ( player_id ) ON DELETE CASCADE;
+ALTER TABLE achievements_link ADD CONSTRAINT achievements_ach_FK FOREIGN KEY ( achievement_id ) REFERENCES achievements ( achievement_id );
 
-ALTER TABLE achievements_link ADD CONSTRAINT achievements_ach_FK FOREIGN KEY ( achievement_id ) REFERENCES achievements ( achievement_id ) ON DELETE CASCADE;
+ALTER TABLE player_activity ADD CONSTRAINT player_activity_player_FK FOREIGN KEY ( player_id ) REFERENCES player ( player_id );
 
-ALTER TABLE player_activity ADD CONSTRAINT player_activity_player_FK FOREIGN KEY ( player_id ) REFERENCES player ( player_id ) ON DELETE CASCADE;
+ALTER TABLE player_dates ADD CONSTRAINT player_dates_player_FK FOREIGN KEY ( player_id ) REFERENCES player ( player_id );
 
-ALTER TABLE player_dates ADD CONSTRAINT player_dates_player_FK FOREIGN KEY ( player_id ) REFERENCES player ( player_id ) ON DELETE CASCADE;
-
-ALTER TABLE player ADD CONSTRAINT player_tutor_FK FOREIGN KEY ( tutor_id ) REFERENCES tutor ( tutor_id ) ON DELETE CASCADE;
+ALTER TABLE player ADD CONSTRAINT player_tutor_FK FOREIGN KEY ( tutor_id ) REFERENCES tutor ( tutor_id );
 /
 --------------------------------------------------------------------------------------------------------------------------------insert 1
 
@@ -337,14 +314,12 @@ BEGIN
                   TO_DATE('01/01/1995','dd/mm/yyyy'), 
                   4, 6, 
                   0);
-      INSERT INTO tests(player_id, test_id, score, domain_id) 
-                  VALUES(v_id, v_id, ROUND(DBMS_RANDOM.VALUE(1,10)), ROUND(DBMS_RANDOM.VALUE(1,4)));
+      INSERT INTO tests(player_id, test_id, score) 
+                  VALUES(v_id, v_id, 10);
       INSERT INTO player_stats(player_id, domain_id,highest_score,total_score,number_of_plays,last_played) 
                   VALUES(v_id, 1, 10,10,1,TO_DATE('01/01/1995','dd/mm/yyyy'));
       INSERT INTO player_activity(player_id, logged_in, logged_out) 
                   VALUES(v_id, TO_DATE('01/01/1995','dd/mm/yyyy'),TO_DATE('01/01/1995','dd/mm/yyyy'));
-      INSERT INTO player_answers(player_id,question_id,domain_id,test_id) 
-                  VALUES(v_id,1,1,1);
       v_id:=v_id+1;
       t_id:=t_id+1;
     end loop;
@@ -360,6 +335,7 @@ DECLARE
   v_player_name varchar2(30);
   v_min_tutor_id integer;
   v_max_tutor_id integer;
+  v_c integer;
 BEGIN
   --update tests set test_type = ROUND(DBMS_RANDOM.VALUE(1,2));
   for i in 1 .. 10000 loop
@@ -386,5 +362,4 @@ update player_dates set difficulty = 3 where birthday between TO_DATE('01/01/00'
 
 update player_dates set recommended_difficulty = difficulty;
 /
-
 COMMIT;
