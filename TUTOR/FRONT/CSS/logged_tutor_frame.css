@@ -64,7 +64,7 @@
 /* butoanele din meniul principal */
 .button_list {
     font-family: "Book Antiqua";
-    color: #e84d07;
+    color: #d8d3d7;
     text-align: center;
     font-size: 25px;
     border: double #e84d07;
@@ -76,7 +76,7 @@
 }
 .button_list:hover {
     background-color: #e84d07;
-    color: #004768;
+    color: #00222f;
 }
 /* structura ce contine butoanele din meniul principal */
 .tables{

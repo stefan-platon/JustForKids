@@ -1,0 +1,51 @@
+#profile_user {
+    width: 108%;
+    margin-left: 60px;
+    margin-right: 60px;
+    margin-bottom: 60px;
+    padding-right: 5px;
+    text-align: center;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 2em;
+}
+
+#profile_data {
+    width: 80%;
+    margin: 25px;
+    padding: 5px;
+    float: left;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 1em;
+    text-align: left;
+}
+.tabel_body {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 70%;
+    font-size: 15px;
+    margin-left: 25%;
+}
+.profil_td{
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+    height: 28px;
+    font-weight: bold;
+}
+.profil_td_2{
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+    height: 28px;
+}
+.profil_tr:nth-child(even) {
+    background-color: #dddddd;
+}
+.reg_header{
+    margin-left: 40%;
+    font-size: 20px;
+    font-family: "Tahoma", sans-serif;
+}
+body{
+    background-color: #b6d4d0;
+}

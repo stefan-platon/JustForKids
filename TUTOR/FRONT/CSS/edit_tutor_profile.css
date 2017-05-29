@@ -23,7 +23,7 @@
             text-align: justify;
             border-radius: 25px;
             word-wrap: break-word;
-            overflow: scroll;
+            overflow: auto;
             background-color: #b0edae;
         }
         .reg_header{
