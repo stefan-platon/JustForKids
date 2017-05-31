@@ -61,12 +61,27 @@ oci_close($connection);
 
 $i = 0;
 $timeleft = $_SESSION['max_time'];
+$_SESSION['test'][0]=$questions;
+$_SESSION['test'][1]=$answers;
+function reloadAnswers(){
+    global $i;
+    global $questions;
+    global $answers;
+    if($i==10){
+        echo "<script type='text/javascript'>submitForm()</script>";
+        return;
+    }
+    else
+        echo "<script type='text/javascript'>reloadQuestion(".$i.', '.$questions[$i][1].', '.$answers[$i][0].', '.$answers[$i][1].', '.$answers[$i][2].', '.$answers[$i][3].")</script>";
+    $i++;
+}
 ?>
 
 <html>
 
 <head>
     <link rel="stylesheet" href="../FRONT/CSS/test_variante.css">
+    <script type="text/javascript" src="print_elements.js"></script>
 </head>
 
 <body>
@@ -75,23 +90,8 @@ $timeleft = $_SESSION['max_time'];
     <div class="test-time"></div>
     <?php echo "<script type='text/javascript'>printTime(" . $timeleft . ")</script>"; ?>
     <form action="redirect_to_final_page.php" class="quiz">
-        <div class="question">
-            <div class="q-text"></div>
-            <div class="answers">
-                <?php $correct = 0;
-                for ($c = 0; $c < 4; $c++) {
-                    if ($correct == 1)
-                        echo "<input type=\"button\" class=\"q-answer\" name=\"q" . $i . "\" value=\"0\" onclick=\"reloadQuestion('')\"><br>";
-                    elseif (rand(0, 1) == 1) {
-                        $correct = 1;
-                        echo "<input type=\"button\" class=\"q-answer\" name=\"q" . $i . "\" value=\"1\" onclick=\"reloadQuestion('')\"><br>";
-                    } else
-                        echo "<input type=\"button\" class=\"q - answer\" name=\"q" . $i . "\" value = \"0\" onclick=\"reloadQuestion('')\"><br >";
-                }
-                $i++;
-                ?>
-            </div>
-        </div>
+        <div class="question"></div>
+    <?php reloadAnswers()?>
     </form>
 </div>
 
