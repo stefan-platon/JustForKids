@@ -57,7 +57,6 @@
             oci_bind_by_name($stid2, ":name", $_POST["username"]);
             if(!oci_execute($stid2))
             {
-                session_start();
                 $_SESSION["mesaj_err"] = "A aparut o eroare neasteptata...";
                 header('Location: ../FRONT/HTML/pagina_eroare_login.html');
                 oci_free_statement($stid2);
