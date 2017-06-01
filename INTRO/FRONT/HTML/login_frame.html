@@ -32,7 +32,18 @@
         }
     </script>
 </head>
-
+    
+<?php
+session_start();
+if (isset($_SESSION['online']) && $_SESSION['online'] == true)
+{
+    //redirectare la pagina (frame) corecta in loc de eroare
+    $_SESSION["mesaj_err"] = "Va rugam sa va delogati pentru a va putea loga din nou!";
+    header('Location: pagina_eroare_login.html');
+    exit;
+}
+?>
+    
 <body onload = "return loadDoc(1);">
 <!-- alegerea limbii -->
 <div class = "header">
