@@ -1,3 +1,3 @@
 <?php
-header("Location: PLAYER/FRONT/HTML/logged_user_frame.html");
+header("Location: INTRO/FRONT/HTML/login_frame.html");
 ?>
