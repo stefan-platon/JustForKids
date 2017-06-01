@@ -2,7 +2,8 @@ body {
     margin: 0;
     padding: 0;
 }
-.container{
+
+.container {
     height: 100%;
     width: 100%;
     margin-left: auto;
@@ -11,7 +12,7 @@ body {
     font-size: 200%;
 }
 
-.quiz{
+.quiz {
     height: auto;
     width: 80%;
     margin-left: auto;
@@ -19,53 +20,71 @@ body {
     padding: 10%;
 }
 
-.question{
+.question {
     height: auto;
     width: 80%;
     margin-right: auto;
     margin-left: auto;
-    border: solid 5px rgba(255,255,255,0.2);
+    border: solid 5px rgba(255, 255, 255, 0.2);
     border-left-style: ridge;
     border-radius: 5%;
     padding: 1%;
-    background: rgba(255,255,255,0.6);
+    background: rgba(255, 255, 255, 0.6);
 
 }
 
-.q-text{
+.q-text {
     color: cyan;
     font-family: Arial;
-    background: rgba(0,0,0,0.4);
+    background: rgba(0, 0, 0, 0.5);
     border-radius: 20%;
     padding: 1%;
-    box-shadow: 0  5px 100px 0 darkturquoise;
+    box-shadow: 0 5px 100px 0 darkturquoise;
     margin-bottom: 3%;
     text-align: center;
 }
 
-.answers{
+.answers {
     color: cyan;
     font-family: Arial;
-    background: rgba(0,0,0,0.4);
+    background: rgba(0, 0, 0, 0.5);
     border-radius: 15%;
     padding: 1%;
-    box-shadow: 0  5px 100px 0 darkturquoise;
+    box-shadow: 0 5px 100px 0 darkturquoise;
     margin-bottom: 3%;
     text-align: center;
 }
 
-.q-answer{
+.q-answer {
     width: 100%;
     margin-bottom: 0.5%;
     border-radius: 100%;
     background: transparent;
     border: hidden;
     font-size: large;
+    color: cyan;
 }
 
 .q-answer:hover {
-    box-shadow: 0  5px 25px 0 gold;
+    box-shadow: 0 5px 25px 0 gold;
     border-radius: 100%;
     background: gold;
     color: black;
+}
+
+.test-time {
+    height: auto;
+    width: 25%;
+    background: rgba(0, 0, 0, 0.4);
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 25%;
+    box-shadow: 0 0px 50px 0 cyan;
+}
+.text-time{
+    margin-left: auto;
+    margin-right: auto;
+    font-size: larger;
+    color: gold;
+    text-align: center;
 }
