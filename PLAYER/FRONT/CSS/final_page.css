@@ -1,0 +1,74 @@
+body {
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    height: auto;
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    background: center darkslategrey;
+}
+
+.format{
+    height: 5%;
+}
+
+.score {
+    height: auto;
+    width: 50%;
+    margin-right: auto;
+    margin-left: auto;
+    border: solid 1px darkgoldenrod;
+    background: rgba(0,0,0,0.55);
+    color: palegoldenrod;
+    font-size: 300%;
+    text-align: center;
+}
+
+.test-stats {
+    height: auto;
+    width: 50%;
+    margin-right: auto;
+    margin-left: auto;
+    border: solid 1px darkgoldenrod;
+    background: rgba(0,0,0,0.55);
+    color: palegoldenrod;
+    font-size: 150%;
+    padding: 1%;
+    box-sizing: border-box;
+}
+
+.final-command{
+    height: auto;
+    width: 50%;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.column{
+    padding: 1%;
+    width: 33%;
+}
+
+.button{
+    width: 100%;
+    border-radius: 25%;
+    font-size: 100%;
+    font-family: Arial;
+    background: rgba(0,0,0,0.4);
+    color: gold;
+    border: 1px solid;
+    border-color: darkgoldenrod;
+    padding: 5%;
+    cursor:pointer;
+}
+
+.button:hover{
+    border-radius: 25%;
+    background: gold;
+    color: black;
+    border-color: black;
+    box-shadow: 0  5px 50px 0 gold;
+}
