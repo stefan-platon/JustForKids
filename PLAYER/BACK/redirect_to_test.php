@@ -22,6 +22,19 @@ if (!oci_execute($stid)) {
 if (($row = oci_fetch_array($stid, OCI_BOTH)) != false) {
     $user = $row;
 }
+
+$query = 'select count(*) from tests';
+$stid = oci_parse($connection, $query);
+if (!oci_execute($stid)) {
+    $e = oci_error($stid);
+    echo "Something went wrong :( <br/>";
+    echo "Error: " . $e['message'];
+}
+if (($row = oci_fetch_array($stid, OCI_BOTH)) != false) {
+    $nrTests = $row;
+}
+$_SESSION['testId']=$nrTests[0]+1;
+
 oci_free_statement($stid);
 
 oci_close($connection);

@@ -62,7 +62,7 @@ oci_close($connection);
 $i = 0;
 $timeleft = $_SESSION['max_time'];
 
-/*$timeleft = 10;*/
+/*$timeleft = 3;*/
 
 $_SESSION['test'][0] = $questions;
 $_SESSION['test'][1] = $answers;
@@ -88,8 +88,7 @@ $_SESSION['test'][1] = $answers;
         echo "<script type='text/javascript'>saveInfo(".json_encode($questions).','. json_encode($answers).")</script>";
         ?>
     </div>
-    <form id="submit-test" action="redirect_to_final_page.php" class="submit-form" method="post">
-    </form>
+    <form id="submit-test" action="redirect_to_final_page.php" class="submit-form" method="post"></form>
 </div>
 
 
