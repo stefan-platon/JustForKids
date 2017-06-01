@@ -9,6 +9,17 @@
 	?>
 </head>
 
+<?php
+		/* daca s-a apasat butonul de logout */
+        if ($_SERVER['REQUEST_METHOD'] == 'POST')
+        {
+        	session_unset();
+        	session_destroy();
+            header('Location: ../../../INTRO/FRONT/HTML/login_frame.html');
+            exit;
+        }
+?>
+
 <body>
     <div class = "news">
 		<div class = "title">News</div>
@@ -65,7 +76,7 @@
 			<p> Loc in top : 3</p>
 			<p> Scor total : 384</p>
 		</div>
-		<form method="post" action="login_frame.html">
+		<form method="post" action="logged_user_home.html">
 			<button type="submit" class="logout">Logout</button>
 		</form>
 	</div>
