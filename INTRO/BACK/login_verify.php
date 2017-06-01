@@ -1,13 +1,4 @@
 <?php
-session_start();
-if (isset($_SESSION['online']) && $_SESSION['online'] == true)
-{
-    $_SESSION["mesaj_err"] = "Va rugam sa va delogati pentru a va putea loga din nou!";
-    header('Location: ../FRONT/HTML/pagina_eroare_login.html');
-    exit;
-}
-else
-{
     include ("conectare_db.php");
     $sql = "SELECT random_string from passwords where username = :v_usrn";
     $stid = oci_parse($connection, $sql);
@@ -105,6 +96,5 @@ else
         $_SESSION["mesaj_err"] = "Parola sau nume de utilizator incorecte!";
         header('Location: ../FRONT/HTML/pagina_eroare_login.html');
     }
-}
 
 ?>
