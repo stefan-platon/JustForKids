@@ -52,7 +52,7 @@ for ($qc = 0; $qc < count($questions); $qc++) {
         echo "Something went wrong :( <br/>";
         echo "Error: " . $e['message'];
     }
-    if (($row = oci_fetch_array($stid, OCI_BOTH)) != false) {
+    if (($row = oci_fetch_array($stid, OCI_NUM)) != false) {
         $answers[$qc] = $row;
     }
 }
@@ -61,37 +61,34 @@ oci_close($connection);
 
 $i = 0;
 $timeleft = $_SESSION['max_time'];
-$_SESSION['test'][0]=$questions;
-$_SESSION['test'][1]=$answers;
-function reloadAnswers(){
-    global $i;
-    global $questions;
-    global $answers;
-    if($i==10){
-        echo "<script type='text/javascript'>submitForm()</script>";
-        return;
-    }
-    else
-        echo "<script type='text/javascript'>reloadQuestion(".$i.', '.$questions[$i][1].', '.$answers[$i][0].', '.$answers[$i][1].', '.$answers[$i][2].', '.$answers[$i][3].")</script>";
-    $i++;
-}
+
+/*$timeleft = 10;*/
+
+$_SESSION['test'][0] = $questions;
+$_SESSION['test'][1] = $answers;
+
 ?>
 
 <html>
 
 <head>
     <link rel="stylesheet" href="../FRONT/CSS/test_variante.css">
-    <script type="text/javascript" src="print_elements.js"></script>
 </head>
 
 <body>
-
+<script src="print_elements_variante.js"></script>
 <div class="container">
-    <div class="test-time"></div>
+    <div class="test-time">
+        <div id="text-time" class="text-time"></div>
+    </div>
     <?php echo "<script type='text/javascript'>printTime(" . $timeleft . ")</script>"; ?>
-    <form action="redirect_to_final_page.php" class="quiz">
-        <div class="question"></div>
-    <?php reloadAnswers()?>
+    <div class="quiz">
+        <div id="question" class="question"></div>
+        <?php
+        echo "<script type='text/javascript'>saveInfo(".json_encode($questions).','. json_encode($answers).")</script>";
+        ?>
+    </div>
+    <form id="submit-test" action="redirect_to_final_page.php" class="submit-form" method="post">
     </form>
 </div>
 
