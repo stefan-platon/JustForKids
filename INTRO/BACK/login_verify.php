@@ -1,4 +1,5 @@
 <?php
+    session_start();
     include ("conectare_db.php");
     $sql = "SELECT random_string from passwords where username = :v_usrn";
     $stid = oci_parse($connection, $sql);
