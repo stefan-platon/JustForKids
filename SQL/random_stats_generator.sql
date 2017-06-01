@@ -86,3 +86,5 @@ begin
     
   end loop;
 end;
+/
+COMMIT;
