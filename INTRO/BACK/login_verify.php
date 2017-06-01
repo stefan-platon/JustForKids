@@ -1,57 +1,110 @@
 <?php
-include ("conectare_db.php");
-$sql = "SELECT random_string from passwords where username = :v_usrn";
-$stid = oci_parse($connection, $sql);
-oci_bind_by_name($stid, ":v_usrn", $_POST["username"]);
-if(!oci_execute($stid))
+session_start();
+if (isset($_SESSION['online']) && $_SESSION['online'] == true)
 {
-    $error_flag = 0;
-    $e = oci_error($stid);
-    echo "Something went wrong :( <br/>";
-    echo "Error: " . $e['message'];
-}
-if(($row = oci_fetch_array($stid, OCI_BOTH)) != false)
-{
-    $nr_random = $row[0];
-    $parola_completa = $_POST["password"] . $nr_random;
-    $parola_hash = hash('ripemd160', $parola_completa);
-    $sql2 = 'begin :rezultat := user_pachet.login(:v_username,:v_password); end;';
-    $stid2 = oci_parse($connection, $sql2);
-    oci_bind_by_name($stid2, ":v_username", $_POST["username"]);
-    oci_bind_by_name($stid2, ":v_password", $parola_hash);
-    oci_bind_by_name($stid2, ':rezultat', $rezultat2, 100);
-    if(!oci_execute($stid2))
-    {
-        $e2 = oci_error($stid2);
-        echo "Something went wrong :( <br/>";
-        echo "Error: " . $e2['message'];
-    }
-    oci_free_statement($stid2);
-    oci_close($connection);
-    if($rezultat2 == 'p')
-    {
-        header('Location: ../../PLAYER/FRONT/HTML/logged_user_frame.html');
-    }
-    else if ($rezultat2 == 't')
-    {
-        header('Location: ../../TUTOR/FRONT/HTML/logged_tutor_frame.html');
-    }
-    else if ($rezultat2 == 'a')
-    {
-        header('Location: ../../ADMIN/FRONT/HTML/admin_frame.html');
-    }
-    else
-    {
-        echo "<script type='text/javascript'>";
-        echo "alert('failed!')";
-        echo "</script>";
-    }
+    $_SESSION["mesaj_err"] = "Va rugam sa va delogati pentru a va putea loga din nou!";
+    header('Location: ../FRONT/HTML/pagina_eroare_login.html');
+    exit;
 }
 else
 {
-    echo "<script type='text/javascript'>";
-    echo "alert('failed!')";
-    echo "</script>";
+    include ("conectare_db.php");
+    $sql = "SELECT random_string from passwords where username = :v_usrn";
+    $stid = oci_parse($connection, $sql);
+    /*verific daca numele de utilizator contine caractere invalide */
+    if(preg_match('/\W/', $_POST["username"]))
+    {
+        $_SESSION["mesaj_err"] = "Numele de utilizator contine caractere invalide!";
+        header('Location: ../FRONT/HTML/pagina_eroare_login.html');
+        exit;
+    }
+    /*verific daca parola contine caractere invalide */
+    if(preg_match('/\W/', $_POST["password"]))
+    {
+        $_SESSION["mesaj_err"] = "Parola contine caractere invalide!";
+        header('Location: ../FRONT/HTML/pagina_eroare_login.html');
+        exit;
+    }
+    oci_bind_by_name($stid, ":v_usrn", $_POST["username"]);
+    if(!oci_execute($stid))
+    {
+        $_SESSION["mesaj_err"] = "A aparut o eroare neasteptata...";
+        header('Location: ../FRONT/HTML/pagina_eroare_login.html');
+        exit;
+    }
+    if(($row = oci_fetch_array($stid, OCI_BOTH)) != false)
+    {
+        $nr_random = $row[0];
+        $parola_completa = $_POST["password"] . $nr_random;
+        $parola_hash = hash('ripemd160', $parola_completa);
+        $sql2 = 'begin :rezultat := user_pachet.login(:v_username,:v_password); end;';
+        $stid2 = oci_parse($connection, $sql2);
+        oci_bind_by_name($stid2, ":v_username", $_POST["username"]);
+        oci_bind_by_name($stid2, ":v_password", $parola_hash);
+        oci_bind_by_name($stid2, ':rezultat', $rezultat2, 100);
+        if(!oci_execute($stid2))
+        {
+            $_SESSION["mesaj_err"] = "A aparut o eroare neasteptata...";
+            header('Location: ../FRONT/HTML/pagina_eroare_login.html');
+            oci_free_statement($stid2);
+            oci_close($connection);
+            exit;
+        }
+        oci_free_statement($stid2);
+        //daca este player
+        if($rezultat2 == 'p')
+        {
+            //creez sesiunea cu numele de utilizator, tipul de utilizator si data logarii
+            $_SESSION['online'] = true;
+            $_SESSION['username'] = $_POST["username"];
+            $_SESSION['rights'] = 'player';
+            $_SESSION['logged_time'] = date("d-m-Y");
+            //fac update in baza de date cu logarea
+            $sql2 = 'update player set logged = 1 where username = :name';
+            $stid2 = oci_parse($connection, $sql2);
+            oci_bind_by_name($stid2, ":name", $_POST["username"]);
+            if(!oci_execute($stid2))
+            {
+                session_start();
+                $_SESSION["mesaj_err"] = "A aparut o eroare neasteptata...";
+                header('Location: ../FRONT/HTML/pagina_eroare_login.html');
+                oci_free_statement($stid2);
+                oci_close($connection);
+                exit;
+            }
+            oci_free_statement($stid2);
+            oci_close($connection);
+            header('Location: ../../PLAYER/FRONT/HTML/logged_user_frame.html');
+        }
+        // daca este tutore
+        else if ($rezultat2 == 't')
+        {
+            $_SESSION['online'] = true;
+            $_SESSION['username'] = $_POST["username"];
+            $_SESSION['rights'] = 'tutor';
+            header('Location: ../../TUTOR/FRONT/HTML/logged_tutor_frame.html');
+        }
+        // daca este admin
+        else if ($rezultat2 == 'a')
+        {
+            $_SESSION['online'] = true;
+            $_SESSION['username'] = $_POST["username"];
+            $_SESSION['rights'] = 'admin';
+            header('Location: ../../ADMIN/FRONT/HTML/admin_frame.html');
+        }
+        //daca exista numele de utilizator insa parola e gresita
+        else
+        {
+            $_SESSION["mesaj_err"] = "Parola sau nume de utilizator incorecte!";
+            header('Location: ../FRONT/HTML/pagina_eroare_login.html');
+        }
+    }
+// daca numele de utilizator e gresit
+    else
+    {
+        $_SESSION["mesaj_err"] = "Parola sau nume de utilizator incorecte!";
+        header('Location: ../FRONT/HTML/pagina_eroare_login.html');
+    }
 }
 
 ?>
