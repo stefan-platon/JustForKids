@@ -1,8 +1,9 @@
+//initializez vectorul pentru raspunsurile date de utilizator, numarul intrebarii curente, toate intrebarile si raspunsurile disponibile din test
 var givenAnswers=[];
 var cont=0;
 var allQuestions=[];
 var allAnswers=[];
-var randomAnswers = [0, 0, 0, 0];
+//functie de afisare a timpului alocat pentru test
 function printTime(testTime) {
     var tElement = document.getElementById('text-time');
     if (testTime === -1) {
@@ -18,6 +19,7 @@ function printTime(testTime) {
     testTime--;
     var timeout = setTimeout("printTime(" + testTime + ")", 1000);
 }
+//functie cu rolul de a reincarca elementele intrebarii: textul si variantele de raspuns
 function reloadQuestion() {
     var qElem = document.getElementById("question");
 
@@ -29,6 +31,7 @@ function reloadQuestion() {
             "<input id='answer-button' type='button' class='q-answer-button' value='Raspunde' onclick='memAnswer(document.getElementById(answerBoxId).value)'>" +
         "</div>";
 }
+//functie pentru submit fortat in cazul in care au fost parcurse toate 10 intrebarile sau se termina timpul alocat
 function submitForm() {
     var fElement = document.getElementById("submit-test");
     fElement.innerHTML="<input id='givenAnswers' type='hidden' name='answers' value=''>";
@@ -38,6 +41,7 @@ function submitForm() {
     document.getElementById("givenAnswers").value=JSON.stringify(givenAnswers);
     fElement.submit();
 }
+//functie de memorare locala a raspunsurilor date
 function memAnswer(givenValue) {
     givenAnswers[cont]=givenValue;
     cont++;
@@ -46,6 +50,7 @@ function memAnswer(givenValue) {
     else
         reloadQuestion();
 }
+//functie de salvare locala a intrebarilor si raspunsurilor primite de la server
 function saveInfo(questions, answers){
     allQuestions=questions;
     allAnswers=answers;
