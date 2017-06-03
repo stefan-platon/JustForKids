@@ -16,12 +16,29 @@
 
     <div class = "reg_body">
         <div id = "profile_data">
-            <table class="tabel_body">
-                <?php
-                include ("../../BACK/conectare_db.php");
-                include ("../../BACK/tutor_user_stats.php");
-                ?>
-            </table>
+            <?php
+            include ("../../BACK/tutor_user_stats.php");
+            ?>
+            <br><br>
+
+
+        </div>
+        <div class="dropdown">
+            <h3>Schimba dificultatea jucatorului: </h3>
+            <form method="post" action="tutor_change_dif.html">
+                <label>
+                    <select name="difficulty" >
+                        <option value="1">1 (Usor)</option>
+                        <option value="2">2 (Mediu)</option>
+                        <option value="3">3 (Greu)</option>
+                    </select>
+                </label>
+                <br><br>
+                <input type="submit">
+            </form>
+        </div>
+        <div id="page">
+
         </div>
     </div>
 </div>
