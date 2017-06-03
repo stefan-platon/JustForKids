@@ -1,3 +1,7 @@
+<?php
+session_start();
+?>
+
 <!doctype html>
 <html lang="en">
 
@@ -8,7 +12,7 @@
 </head>
 
 <body>
-<form action="../PHP/tutor_confirm_profile_change.php" method="post">
+<form action="../../BACK/tutor_confirm_profile_change.php" method="post">
     <div class = "container_user_edit">
         <div class = "reg_header">
             <h2>Change profile</h2>
@@ -16,35 +20,22 @@
 
         <div class = "reg_body">
             <table>
+                <input type = "hidden" name = "tutor_id" value = "<?php echo $_SESSION['tutor_id'] ?>" />
                 <tr>
-                    <td>Name</td>
-                    <td><input type="text" class="box" placeholder="" name="name" required></td>
+                    <td>Nume</td>
+                    <td><input type="text" class="box" placeholder="" name="name" value = "<?php echo $_SESSION['pname'] ?>" required></td>
                 </tr>
                 <tr>
-                    <td>Surname</td>
-                    <td><input type="text" class="box" placeholder="" name="surname" required></td>
+                    <td>Prenume</td>
+                    <td><input type="text" class="box" placeholder="" name="surname" value = "<?php echo $_SESSION['surname'] ?>" required></td>
                 </tr>
                 <tr>
                     <td>Username</td>
-                    <td><input type="text" class="box" placeholder="" name="username" required></td>
-                </tr>
-                <tr>
-                    <td>Password</td>
-                    <td><input type="password" class="box" placeholder="" name="psw" required></td>
-                </tr>
-                <tr>
-                    <td>Repeat password</td>
-                    <td><input type="password" class="box" placeholder="" name="r_psw" required></td>
-                </tr>
-                <tr>
-                    <td>Profile picture</td>
-                    <td>
-                        <input type="file" name="fileToUpload" id="p_poza">
-                    </td>
+                    <td><input type="text" class="box" placeholder="" name="username" value = "<?php echo $_SESSION['user'] ?>" required></td>
                 </tr>
                 <tr>
                     <td>E-mail</td>
-                    <td><input type="text" class="box" placeholder="" name="email" required></td>
+                    <td><input type="text" class="box" placeholder="" name="email" value = "<?php echo $_SESSION['email'] ?>" required></td>
                 </tr>
             </table>
         </div>
