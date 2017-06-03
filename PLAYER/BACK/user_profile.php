@@ -5,6 +5,9 @@
  * Date: 24-May-17
  * Time: 01:28
  */
+
+include ("../../BACK/conectare_db.php");
+
 $stid = oci_parse($connection, 'SELECT last_name, first_name, email, birthday, difficulty FROM player_profile_view WHERE username = :username');
 $username = $_SESSION["username"];
 oci_bind_by_name($stid, ':username', $username);
@@ -15,6 +18,12 @@ echo '<tr class="profil_tr">' . '<td class="profil_td">Prenume</td>' . '<td clas
 echo '<tr class="profil_tr">' . '<td class="profil_td">E-mail</td>' . '<td class="profil_td">' . $row[2] . '</td></tr>';
 echo '<tr class="profil_tr">' . '<td class="profil_td">Ziua de nastere</td>' . '<td class="profil_td">' . $row[3] . '</td></tr>';
 echo '<tr class="profil_tr">' . '<td class="profil_td">Dificultate</td>' . '<td class="profil_td">' . $row[4] . '</td></tr>';
+
+$_SESSION["user"] = $username;
+$_SESSION["pname"] = $row[1];
+$_SESSION["surname"] = $row[0];
+$_SESSION["email"] = $row[2];
+
 oci_free_statement($stid);
 
 oci_close($connection);

@@ -1,3 +1,9 @@
+<?php
+session_start();
+$_SESSION['username'] = 'Abaza.Catalin';
+$_SESSION['player_id'] = 10;
+?>
+
 <!doctype html>
 <html lang="en">
 
@@ -72,10 +78,8 @@
 		<div class = "info_icon">
 			<img src="../../../IMG/OTHER/user_icon.jpg" width="80" height="80" alt="alt">
 		</div>
-			<p class = "user_name">ionut.vasile</p>
+			<p class = "user_name"><?php echo $_SESSION["username"]; ?></p>
 		<div class = "info_body">
-			<p> Loc in top : 3</p>
-			<p> Scor total : 384</p>
 		</div>
 		<form method="post" action="logged_user_home.html">
 			<button type="submit" class="logout">Logout</button>

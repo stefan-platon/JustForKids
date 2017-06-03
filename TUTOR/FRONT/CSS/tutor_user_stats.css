@@ -46,6 +46,13 @@
     font-size: 20px;
     font-family: "Tahoma", sans-serif;
 }
+
+.dropdown {
+    width: 55%;
+    margin:0 auto;
+}
+
+
 body{
     background-color: #b6d4d0;
 }

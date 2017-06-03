@@ -5,9 +5,24 @@
  * Date: 28-May-17
  * Time: 22:19
  */
+include ("conectare_db.php");
 
+session_start();
+if (isset($_POST["name"]))
+    $_SESSION["player_name"] = $_POST["name"];
+$player_name = $_SESSION["player_name"];
+echo '<div id = "profile_user">' . $player_name . '</div>';
+$player_name2 = str_replace(" ",".","$player_name");
+echo '<table class="tabel_body">';
 
-$player_id = $_SESSION["player_id"];
+$stid = oci_parse($connection, 'SELECT PLAYER_ID FROM player where USERNAME = :player_name2');
+oci_bind_by_name($stid, ':player_name2', $player_name2);
+oci_execute($stid);
+$row = oci_fetch_array($stid, OCI_BOTH);
+$player_id = $row[0];
+oci_free_statement($stid);
+
+$_SESSION["player_id"] = $player_id;
 
 $stid = oci_parse($connection, 'SELECT sum(total_score) FROM player_stats where player_id = :player_id');
 oci_bind_by_name($stid, ':player_id', $player_id);
@@ -65,4 +80,14 @@ $row = oci_fetch_array($stid, OCI_BOTH);
 echo '<tr class="profil_tr">' . '<td class="profil_td">Numarul de teste cu nota sub 5:</td>' . '<td class="profil_td">' . $row[0] . '</td></tr>';
 oci_free_statement($stid);
 
+$stid = oci_parse($connection, 'SELECT difficulty FROM player_profile_view WHERE username = :username');
+oci_bind_by_name($stid, ':username', $player_name2);
+oci_execute($stid);
+$row = oci_fetch_array($stid, OCI_BOTH);
+echo '<tr class="profil_tr">' . '<td class="profil_td">Dificultate:</td>' . '<td class="profil_td">' . $row[0] . '</td></tr>';
+oci_free_statement($stid);
+
 oci_close($connection);
+
+echo '</table>';
+

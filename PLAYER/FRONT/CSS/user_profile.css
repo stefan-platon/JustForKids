@@ -1,10 +1,17 @@
 #profile_picture {
     width: 150px;
-    border: 3px dashed #000000;
     padding: 5px;
     left: 60%;
     float: left;
 }
+
+#change_picture {
+    width: 150px;
+    padding: 5px;
+    left: 60%;
+    float: left;
+}
+
 #profile_user {
     width: 300px;
     margin-left: 60px;
@@ -14,6 +21,17 @@
     font-family: 'Open Sans', sans-serif;
     font-size: 2em;
 }
+
+#suggestions {
+    width: 80%;
+    margin: 5px 25px 25px;
+    padding: 5px;
+    float: left;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 1em;
+    text-align: left;
+}
+
 .profile {
     position: absolute;
     top: 0;
@@ -63,11 +81,13 @@
     text-align: center;
     font-size: 25px;
     border: double #E8B424;
+    margin: 5px;
     height: 35%;
-    width: 20%;
+    width: 25%;
     border-radius: 10%;
     background-color: #e84d07;
 }
 .change_button:hover {
     background-color: #ffaf24;
 }
+
