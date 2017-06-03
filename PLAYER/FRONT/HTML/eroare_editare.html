@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <link rel="stylesheet" href="../CSS/eroare_editare.css">
+</head>
+<body>
+<div class="container_suport">
+    <div class="sad_face">
+        <img src="../../../IMG/OTHER/sad_face.png" style="max-width:100%; max-height:100%;">
+    </div>
+    <h2 class="h2_text">Se pare ca am intampinat o problema... </h2>
+    <?php
+            session_start();
+            echo '<h2 class="h2_text">' . $_SESSION["mesaj_err"] . '</h2>';
+    session_unset();
+    session_destroy();
+    ?>
+    <br/>
+    <form action="" method="post">
+        <input type="submit" value="Inapoi">
+    </form>
+</div>
+<?php
+        if ($_SERVER['REQUEST_METHOD'] == 'POST')
+        {
+            header('Location: logged_user_frame.html');
+        }
+    ?>
+</body>
+
+</html>
