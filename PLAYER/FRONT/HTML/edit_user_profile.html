@@ -1,3 +1,7 @@
+<?php
+session_start();
+?>
+
 <!doctype html>
 <html lang="en">
 
@@ -8,46 +12,33 @@
 </head>
 
 <body>
-<form action="../PHP/user_confirm_profile_change.php" method="post">
+<form action="../../BACK/user_confirm_profile_change.php" method="post">
     <div class = "container_user_edit">
         <div class = "reg_header">
             <h2>Change profile</h2>
         </div>
 
         <div class = "reg_body">
+            <input type = "hidden" name = "player_id" value = "<?php echo $_SESSION['p_id'] ?>" />
             <table>
                 <tr>
-                    <td>Name</td>
-                    <td><input type="text" class="box" placeholder="" name="name" required></td>
+                    <td>Nume</td>
+                    <td><input type="text" class="box" placeholder="" name="name" value = "<?php echo $_SESSION['pname'] ?>"></td>
                 </tr>
                 <tr>
-                    <td>Surname</td>
-                    <td><input type="text" class="box" placeholder="" name="surname" required></td>
+                    <td>Prenume</td>
+                    <td><input type="text" class="box" placeholder="" name="surname" value = "<?php echo $_SESSION['surname'] ?>"></td>
                 </tr>
                 <tr>
                     <td>Username</td>
-                    <td><input type="text" class="box" placeholder="" name="username" required></td>
-                </tr>
-                <tr>
-                    <td>Password</td>
-                    <td><input type="password" class="box" placeholder="" name="psw" required></td>
-                </tr>
-                <tr>
-                    <td>Repeat password</td>
-                    <td><input type="password" class="box" placeholder="" name="r_psw" required></td>
-                </tr>
-                <tr>
-                    <td>Profile picture</td>
-                    <td>
-                        <input type="file" name="fileToUpload" id="p_poza">
-                    </td>
+                    <td><input type="text" class="box" placeholder="" name="username" value = "<?php echo $_SESSION['user'] ?>"></td>
                 </tr>
                 <tr>
                     <td>E-mail</td>
-                    <td><input type="text" class="box" placeholder="" name="email" required></td>
+                    <td><input type="text" class="box" placeholder="" name="email"  value = "<?php echo $_SESSION['email'] ?>"></td>
                 </tr>
                 <tr>
-                    <td>Birthday</td>
+                    <td>Ziua de nastere</td>
                     <td>
                         <select id="day" name="day">
                             <script>
@@ -67,7 +58,7 @@
                             <script>
                                 var myDate = new Date();
                                 var year = myDate.getFullYear();
-                                for(var i = 1980; i < year+1; i++){
+                                for(var i = 2000; i < year+1; i++){
                                     document.write('<option value="'+i+'">'+i+'</option>');
                                 }
                             </script>
