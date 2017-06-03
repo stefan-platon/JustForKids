@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 <!doctype html>
 <html lang="en">
 
@@ -15,16 +18,14 @@
             <tr class="profil_tr">
                 <th class="profil_th">
                     <div id = "profile_picture">
-                        <!-- User profile picture-->
-                        <img src="../../../IMG/OTHER/user_icon.jpg" style="max-width:100%; max-height:100%;">
+                        <?php
+                        include ("../../BACK/profile_picture.php");
+                        ?>
                     </div>
                 </th>
                 <th class="profil_th">
                     <div id = "profile_user">
                         <?php
-                        session_start();
-                        $_SESSION["t_username"] = 'Abaza.Marioara.t';
-                        $_SESSION["tutor_id"] = 19;
                         echo $_SESSION["t_username"];
                         ?>
                     </div>
@@ -43,7 +44,10 @@
     </div>
     <div class="change_pr">
         <form action="edit_tutor_profile.html">
-            <button type = "submit" class = "change_button">Change profile</button>
+            <button type = "submit" class = "change_button">Modifica profilul</button>
+        </form>
+        <form action="edit_password.html">
+            <button type = "submit" class = "change_button">Modifica parola</button>
         </form>
     </div>
 </div>
