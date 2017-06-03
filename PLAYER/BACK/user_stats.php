@@ -7,6 +7,15 @@
  */
 $player_id = $_SESSION["player_id"];
 $username = $_SESSION["username"];
+
+
+$stid = oci_parse($connection, 'SELECT difficulty FROM player_profile_view WHERE username = :username');
+oci_bind_by_name($stid, ':username', $username);
+oci_execute($stid);
+$row = oci_fetch_array($stid, OCI_BOTH);
+echo '<tr class="profil_tr">' . '<td class="profil_td">Dificultate:</td>' . '<td class="profil_td">' . $row[0] . '</td></tr>';
+oci_free_statement($stid);
+
 $stid = oci_parse($connection, 'SELECT sum(total_score) FROM player_stats where player_id = :player_id');
 oci_bind_by_name($stid, ':player_id', $player_id);
 oci_execute($stid);
