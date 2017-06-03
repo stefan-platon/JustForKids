@@ -8,7 +8,7 @@ body {
     width: 100%;
     margin-left: auto;
     margin-right: auto;
-    background: center darkslategrey;
+    background: center purple;
 }
 
 .format{
@@ -20,11 +20,12 @@ body {
     width: 50%;
     margin-right: auto;
     margin-left: auto;
-    border: solid 1px darkgoldenrod;
+    border: solid 1.5px darkgoldenrod;
     background: rgba(0,0,0,0.55);
     color: palegoldenrod;
     font-size: 300%;
     text-align: center;
+    border-style: groove;
 }
 
 .test-stats {
@@ -32,12 +33,13 @@ body {
     width: 50%;
     margin-right: auto;
     margin-left: auto;
-    border: solid 1px darkgoldenrod;
+    border: solid 1.5px darkgoldenrod;
     background: rgba(0,0,0,0.55);
     color: palegoldenrod;
     font-size: 150%;
     padding: 1%;
     box-sizing: border-box;
+    border-style: groove;
 }
 
 .final-command{
@@ -59,8 +61,9 @@ body {
     font-family: Arial;
     background: rgba(0,0,0,0.4);
     color: gold;
-    border: 1px solid;
+    border: 1.5px solid;
     border-color: darkgoldenrod;
+    border-style: groove;
     padding: 5%;
     cursor:pointer;
 }
