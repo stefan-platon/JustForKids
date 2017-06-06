@@ -1,10 +1,8 @@
 <?php
-
 session_start();
-if($_SESSION['online']!=true)
-    header("Location:../");
-
-include("../PLAYER/BACK/conectare_db.php");
+/*if($_SESSION['online']!=true)
+    header("Location:../../INTRO/FRONT/HTML/login_content.html");*/
+include("conectare_db.php");
 $query = 'select domain_id, domain_name, icon_link from domains';
 $stid = oci_parse($connection, $query);
 if(!oci_execute($stid))
@@ -27,7 +25,7 @@ oci_close($connection);
 
 <head>
     <meta name="select_domain" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../PLAYER/FRONT/CSS/select_domain.css">
+    <link rel="stylesheet" href="../FRONT/CSS/select_domain.css">
 </head>
 
 <body>

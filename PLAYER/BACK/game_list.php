@@ -1,10 +1,8 @@
 <?php
-
 session_start();
-if($_SESSION['online']!=true)
-    header("Location:../");
-
-include("../PLAYER/BACK/conectare_db.php");
+/*if($_SESSION['online']!=true)
+    header("Location:../../INTRO/FRONT/HTML/login_content.html");*/
+include("conectare_db.php");
 $query = 'select name, difficulty, description, icon_link from games where domain_id=:domain_id';
 $stid = oci_parse($connection, $query);
 $domain_id = $_POST["domain"];
@@ -46,7 +44,7 @@ oci_close($connection);
 <html>
 
 <head>
-    <link rel="stylesheet" href="../PLAYER/FRONT/CSS/game_list.css">
+    <link rel="stylesheet" href="../FRONT/CSS/game_list.css">
 </head>
 
 <body>

@@ -1,10 +1,8 @@
 <?php
-
 session_start();
-if($_SESSION['online']!=true)
-    header("Location:../");
-
-include("../PLAYER/BACK/conectare_db.php");
+/*if($_SESSION['online']!=true)
+    header("Location:../../INTRO/FRONT/HTML/login_content.html");*/
+include("conectare_db.php");
 $query = 'select name, instructions, game_link from games where name=:name';
 $stid = oci_parse($connection, $query);
 $game_name = $_POST["game_title"];
@@ -27,7 +25,7 @@ oci_close($connection);
 <html>
 
 <head>
-    <link rel="stylesheet" href="../PLAYER/FRONT/CSS/game_page.css">
+    <link rel="stylesheet" href="../FRONT/CSS/game_page.css">
 </head>
 
 <body>
@@ -36,11 +34,11 @@ oci_close($connection);
     <div class="page-title">
         <?php echo $_POST['game_title']?>
     </div>
-
+    <br>
     <div class="game-info">
         <?php echo $game_info[1];?>
     </div>
-
+    <br>
     <div class="game-window">
         GAME WINDOW
     </div>
