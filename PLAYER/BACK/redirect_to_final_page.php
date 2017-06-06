@@ -1,6 +1,8 @@
 <?php
 
 session_start();
+/*if ($_SESSION['online'] != true)
+    header("Location:../../INTRO/FRONT/HTML/login_content.html");*/
 include("conectare_db.php");
 $answers = json_decode($_POST['answers']);
 $_SESSION['score'] = 0;

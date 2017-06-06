@@ -1,6 +1,8 @@
 <?php
-
+//deschid sesiunea si incarc raspunsurile date de utilizator
 session_start();
+/*if($_SESSION['online']!=true)
+    header("Location:../../INTRO/FRONT/HTML/login_content.html");*/
 $answers = $_SESSION['userAnswers'];
 
 ?>
@@ -12,6 +14,7 @@ $answers = $_SESSION['userAnswers'];
 
 <body>
 <div class="container">
+    <!--divul cu clasa format are doar rol in spatierea elementelor pe pagina-->
     <div class="format"></div>
     <div class="score">
         <?php echo "Scor final: " . $_SESSION['score'] . "/10" ?>
@@ -37,6 +40,7 @@ $answers = $_SESSION['userAnswers'];
         </td>
     </table>
     <br>
+    <!--afisez dificultatea testului-->
     <div class="test-stats">
         <?php
         switch ($_SESSION['difficulty']) {
@@ -53,12 +57,13 @@ $answers = $_SESSION['userAnswers'];
                 break;
             }
         }
+        //afisez intrebarile atat raspunsurile date de utilizator cat si pe cele corecte
         for ($i = 0; $i < 10; $i++) {
             if ($_SESSION['test'][1][$i][3] == $answers[$i]) {
                 echo '<p><span style="color:gold">' . ($i + 1) . ')</span> ' . $_SESSION['test'][0][$i][1] . '</p>';
                 echo "<p>Ati raspuns: <span style='color:greenyellow'>" . $answers[$i] . '</span></p>';
                 echo "<p>Raspunsul corect este: " . $_SESSION['test'][1][$i][3] . '</p>';
-            } elseif ($answers[$i] == "null") {
+            } elseif ($answers[$i] == "null" || $answers[$i] == null) {
                 echo '<p><span style="color:gold">' . ($i + 1) . ')</span> ' . $_SESSION['test'][0][$i][1] . '</p>';
                 echo "<p><span style='color:yellow'>Nu ati rapsuns la aceasta intrebare.</span></p>";
                 echo "<p>Raspunsul corect este: " . $_SESSION['test'][1][$i][3] . '</p>';
