@@ -2,6 +2,7 @@ create or replace PACKAGE user_pachet
 IS
   FUNCTION login(
       p_username player.username%TYPE, p_password passwords.hash%TYPE) RETURN VARCHAR2;
+  FUNCTION insert_suport(v_username VARCHAR2,v_categorie VARCHAR2,v_text VARCHAR2)RETURN VARCHAR2;
   PROCEDURE reset_dificultate;
   PROCEDURE radiaza_conturi;
   PROCEDURE register_user(p_f_name VARCHAR2,p_s_name VARCHAR2,p_username VARCHAR2,p_password VARCHAR2,p_nr_rand VARCHAR2,p_img VARCHAR2,p_email VARCHAR2,p_bday VARCHAR2,p_relation VARCHAR2,t_f_name VARCHAR2,t_s_name VARCHAR2,t_username VARCHAR2,t_password VARCHAR2,t_nr_rand VARCHAR2,t_img VARCHAR2,t_email VARCHAR2);
@@ -59,6 +60,21 @@ IS
       return mesaj;
     END login;
     
+    FUNCTION insert_suport(v_username VARCHAR2,v_categorie VARCHAR2, v_text VARCHAR2)RETURN VARCHAR2 IS 
+      v_n_id INTEGER;
+      v_count INTEGER;
+      BEGIN
+           SELECT count(suport_id) into v_count from suport;
+           if(v_count = 0) then
+              v_n_id := 1;
+           else
+              SELECT max(suport_id) + 1 into v_n_id from suport;
+           end if;
+           insert into suport(suport_id, username, categorie, text, data) 
+              values (v_n_id, v_username, v_categorie, v_text, TO_CHAR(SYSDATE, 'dd/mm/YYYY'));
+           return 'Plangere inserata.';
+      END insert_suport;
+      
     PROCEDURE reset_dificultate
     AS
     v_id INTEGER;
