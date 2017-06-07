@@ -2,10 +2,15 @@
 include("conectare_db.php");
 $error_flag = 1;
 if (isset($_POST["uid"]) || isset($_POST["uname"])) {
-
     $flag=true;
     if ($_POST["uname"]!=null && $_POST['uid']==0) {
         $stid = oci_parse($connection, "SELECT t.tutor_id,t.first_name,t.last_name,t.username,t.email,p.username,p.email FROM tutor t join player p on t.tutor_id = p.tutor_id where t.username like '%".$_POST["uname"]."%'");
+        if(preg_match('/\W/', $_POST["uname"])){
+            session_start();
+            $_SESSION["mesaj_err"] = "Textul introdus contine caractere invalide!";
+            header('Location: ../FRONT/HTML/pagina_eroare_admin.html');
+            exit;
+        }
         if(!oci_execute($stid))
         {
             $error_flag = 0;
@@ -26,6 +31,12 @@ if (isset($_POST["uid"]) || isset($_POST["uname"])) {
         }else
             if ($_POST['uid']!=0 && $_POST["uname"]!=null) {
                 $stid = oci_parse($connection, "SELECT t.tutor_id,t.first_name,t.last_name,t.username,t.email,p.username,p.email FROM tutor t join player p on t.tutor_id = p.tutor_id where t.tutor_id=".$_POST["uid"]." and t.username like '%".$_POST["uname"]."%'");
+                if(preg_match('/\W/', $_POST["uname"])){
+                    session_start();
+                    $_SESSION["mesaj_err"] = "Textul introdus contine caractere invalide!";
+                    header('Location: ../FRONT/HTML/pagina_eroare_admin.html');
+                    exit;
+                }
                 if(!oci_execute($stid))
                 {
                     $error_flag = 0;
