@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <?php
+        include ("../../BACK/conectare_db.php");
+    ?>
+    <title>JFK</title>
+    <link type="text/css" rel="stylesheet" href="../CSS/admin_insereaza_update.css">
+</head>
+
+<body>
+<form action="admin_insereaza_update.html" method="post">
+    <div class="container_insert_u">
+        <label><b>Titlu</b></label><br/>
+        <input type="text" placeholder="Titlu..." name="titlu" required>
+        <br/>
+        <label><b>Continut</b></label><br/>
+        <textarea rows="3" cols="50" name="content" required></textarea>
+        <br/>
+        <button type="submit">Trimite</button>
+    </div>
+</form>
+<?php
+if ($_SERVER['REQUEST_METHOD'] == 'POST')
+{
+    include ("../../BACK/admin_insereaza_update.php");
+}
+?>
+</body>
+
+</html>
