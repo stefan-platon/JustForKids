@@ -99,14 +99,36 @@
                 xhttp.open("GET", "admin_insereaza_joc.html", true);
                 xhttp.send();
             }
+            if(x == 19)
+            {
+                xhttp.open("GET", "admin_insereaza_update.html", true);
+                xhttp.send();
+            }
+            if(x == 20)
+            {
+                xhttp.open("GET", "admin_insereaza_stire.html", true);
+                xhttp.send();
+            }
         }
     </script>
 </head>
 
+<?php
+		/* daca s-a apasat butonul de logout */
+        if ($_SERVER['REQUEST_METHOD'] == 'POST')
+        {
+		session_start();
+        	session_unset();
+        	session_destroy();
+            header('Location: ../../../INTRO/FRONT/HTML/login_frame.html');
+            exit;
+        }
+?>
+
 <body>
 <!-- logo-ul sitului -->
 <div class = "logo">
-    <img class="logo_picture" src="../IMG/OTHER/logo.png" alt="alt">
+    <img class="logo_picture" src="../../../IMG/OTHER/logo.png" alt="alt">
 </div>
 <!-- div ce contine intreaga pagina -->
 <div class = "container">
@@ -116,10 +138,10 @@
         <div class = "dropdown-content">
             <button type = "button" class = "btn" onclick="return loadDoc(1);">Cauta utilizator</button>
             <button type = "button" class = "btn" onclick="return loadDoc(3);">Gaseste utilizatori</button>
-            <form action="../../BACK/admin_reset_dificultate.php" method="post">
+            <form action="../../BACK/admin_reset_dificultate.php" method="get">
                 <button type="submit" class="btn">Reset dificultate</button>
             </form>
-            <form action="../../BACK/admin_radiaza_conturi.php" method="post">
+            <form action="../../BACK/admin_radiaza_conturi.php" method="get">
                 <button type="submit" class="btn">Radiaza conturi</button>
             </form>
         </div>
@@ -169,6 +191,20 @@
             <button type = "button" class = "btn" onclick="return loadDoc(18);">Insereaza joc</button>
         </div>
     </div>
+    <!-- setul de butoane pentru stiri/update-uri -->
+    <div class="dropdown_7">
+        <button type = "button" class = "btn" >Stiri/Upds</button>
+        <div class = "dropdown-content">
+            <button type = "button" class = "btn" onclick="return loadDoc(19);">Insereaza update</button>
+            <button type = "button" class = "btn" onclick="return loadDoc(20);">Insereaza joc</button>
+        </div>
+    </div>
+    <!-- butonul de logout -->
+    <div class="dropdown_8">
+        <form method="post" action="admin_frame.html">
+            <button type="submit" class="btn">Logout</button>
+        </form>
+    </div>
     <!-- divul unde se va face inserarea celorlalte pagini -->
     <div id = "page" class = "page">
 
@@ -176,9 +212,9 @@
 </div>
     <!-- link-uri externe catre paginile sitului -->
 <div class = "external_links">
-    <a href = "http://facebook.com/"><img src="../IMG/MEDIA_ICONS/facebook.png" width="35" height="35" alt="alt"></a>
-    <a href = "https://twitter.com/?lang=en"><img src="../IMG/MEDIA_ICONS/twitter.png" width="35" height="35" alt="alt"></a>
-    <a href = "https://www.youtube.com/"><img src="../IMG/MEDIA_ICONS/youtube.png" width="35" height="35" alt="alt"></a>
+    <a href = "http://facebook.com/"><img src="../../../IMG/MEDIA_ICONS/facebook.png" width="35" height="35" alt="alt"></a>
+    <a href = "https://twitter.com/?lang=en"><img src="../../../IMG/MEDIA_ICONS/twitter.png" width="35" height="35" alt="alt"></a>
+    <a href = "https://www.youtube.com/"><img src="../../../IMG/MEDIA_ICONS/youtube.png" width="35" height="35" alt="alt"></a>
 </div>
     <!-- footer cu drepturile de autor -->
 <div class = "footer">
