@@ -1,7 +1,7 @@
 /* container ce contine intreaga pagina */
 .container{
     position: relative;
-    left: 21%;
+    left: 15%;
     width: 850px;
     height: 725px;
     margin-left: 40px;
@@ -30,13 +30,13 @@
 .dropdown_1 {
     margin: 0;
     padding: 0;
-    left: 40px;
+    left: 0;
     position: absolute;
     display: inline-block;
     z-index: 2;
 }
 .dropdown_2 {
-    left:147px;
+    left:110px;
     margin: 0;
     padding: 0;
     position: absolute;
@@ -44,7 +44,7 @@
     z-index: 2;
 }
 .dropdown_3 {
-    left:257px;
+    left:220px;
     margin: 0;
     padding: 0;
     position: absolute;
@@ -52,7 +52,7 @@
     z-index: 2;
 }
 .dropdown_4 {
-      left:367px;
+      left:330px;
       margin: 0;
       padding: 0;
       position: absolute;
@@ -60,15 +60,31 @@
       z-index: 2;
   }
 .dropdown_5 {
-    left:477px;
+     left:440px;
+     margin: 0;
+     padding: 0;
+     position: absolute;
+     display: inline-block;
+     z-index: 2;
+ }
+.dropdown_6 {
+    left:550px;
     margin: 0;
     padding: 0;
     position: absolute;
     display: inline-block;
     z-index: 2;
 }
-.dropdown_6 {
-    left:587px;
+.dropdown_7 {
+    left:660px;
+    margin: 0;
+    padding: 0;
+    position: absolute;
+    display: inline-block;
+    z-index: 2;
+}
+.dropdown_8 {
+    left:770px;
     margin: 0;
     padding: 0;
     position: absolute;
@@ -101,6 +117,9 @@
 .dropdown_6:hover .dropdown-content {
     display: block;
 }
+.dropdown_7:hover .dropdown-content {
+    display: block;
+}
 /* stilul butonului */
 .btn{
     background-color: #25243D;
@@ -110,14 +129,13 @@
     color: #dde1db;
     border: double;
     height: 80px;
-    width: 110px;
+    width: 115px;
 }
 /* div-ul unde se insereaza pagina straina */
 .page{
     top:12%;
-    left: 5%;
     position: absolute;
-    width: 76%;
+    width: 104%;
     height: auto;
     border: solid 2px;
 }
