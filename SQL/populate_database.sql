@@ -45,7 +45,7 @@ CREATE TABLE news
     news_id   INTEGER NOT NULL ,
     titlu     VARCHAR2(100) NOT NULL,
     continut  VARCHAR2(200) NOT NULL,
-    data      VARCHAR2(50)  NOT NULL
+    data      date  NOT NULL
   ) ;
 ALTER TABLE news ADD CONSTRAINT news_PK PRIMARY KEY ( news_id ) ;
 
@@ -54,7 +54,7 @@ CREATE TABLE updates
     updates_id   INTEGER NOT NULL ,
     titlu     VARCHAR2(100) NOT NULL,
     continut  VARCHAR2(200) NOT NULL,
-    data      VARCHAR2(50)  NOT NULL
+    data      date  NOT NULL
   ) ;
 ALTER TABLE updates ADD CONSTRAINT updates_PK PRIMARY KEY ( updates_id ) ;
 
@@ -63,7 +63,8 @@ CREATE TABLE suport
     suport_id   INTEGER NOT NULL ,
     username    VARCHAR2(100) NOT NULL ,
     categorie   VARCHAR2(100) NOT NULL ,
-    text        VARCHAR2(2000) NOT NULL
+    text        VARCHAR2(2000) NOT NULL ,
+    data        date NOT NULL
   ) ;
 ALTER TABLE suport ADD CONSTRAINT suport_PK PRIMARY KEY ( suport_id ) ;
 
