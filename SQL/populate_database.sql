@@ -221,27 +221,27 @@ ALTER TABLE tutor ADD CONSTRAINT tutor_PK PRIMARY KEY ( tutor_id ) ;
 --ALTER TABLE tutor ADD CONSTRAINT tutor_unique1 UNIQUE ( username ) ;
 ALTER TABLE tutor ADD CONSTRAINT tutor_unique2 UNIQUE ( email ) ;
 
-ALTER TABLE questions_answers ADD CONSTRAINT questions_answers_FK FOREIGN KEY ( question_id ) REFERENCES tw_questions ( question_id );
+ALTER TABLE questions_answers ADD CONSTRAINT questions_answers_FK FOREIGN KEY ( question_id ) REFERENCES tw_questions ( question_id ) ON DELETE CASCADE;
 
-ALTER TABLE tw_questions ADD CONSTRAINT questions_domains_FK FOREIGN KEY ( domain_id ) REFERENCES domains ( domain_id );
+ALTER TABLE tw_questions ADD CONSTRAINT questions_domains_FK FOREIGN KEY ( domain_id ) REFERENCES domains ( domain_id ) ON DELETE CASCADE;
 
-ALTER TABLE games ADD CONSTRAINT games_domains_FK FOREIGN KEY ( domain_id ) REFERENCES domains ( domain_id );
+ALTER TABLE games ADD CONSTRAINT games_domains_FK FOREIGN KEY ( domain_id ) REFERENCES domains ( domain_id ) ON DELETE CASCADE;
 
-ALTER TABLE player_stats ADD CONSTRAINT player_stats_domains_FK FOREIGN KEY ( domain_id ) REFERENCES domains ( domain_id );
+ALTER TABLE player_stats ADD CONSTRAINT player_stats_domains_FK FOREIGN KEY ( domain_id ) REFERENCES domains ( domain_id ) ON DELETE CASCADE;
 
-ALTER TABLE player_stats ADD CONSTRAINT player_stats_player_FK FOREIGN KEY ( player_id ) REFERENCES player ( player_id );
+ALTER TABLE player_stats ADD CONSTRAINT player_stats_player_FK FOREIGN KEY ( player_id ) REFERENCES player ( player_id ) ON DELETE CASCADE;
 
 ALTER TABLE tests ADD CONSTRAINT tests_domains_FK FOREIGN KEY (domain_id) REFERENCES domains (domain_id) ON DELETE CASCADE;
 
-ALTER TABLE achievements_link ADD CONSTRAINT achievements_player_FK FOREIGN KEY ( player_id ) REFERENCES player ( player_id );
+ALTER TABLE achievements_link ADD CONSTRAINT achievements_player_FK FOREIGN KEY ( player_id ) REFERENCES player ( player_id ) ON DELETE CASCADE;
 
-ALTER TABLE achievements_link ADD CONSTRAINT achievements_ach_FK FOREIGN KEY ( achievement_id ) REFERENCES achievements ( achievement_id );
+ALTER TABLE achievements_link ADD CONSTRAINT achievements_ach_FK FOREIGN KEY ( achievement_id ) REFERENCES achievements ( achievement_id ) ON DELETE CASCADE;
 
-ALTER TABLE player_activity ADD CONSTRAINT player_activity_player_FK FOREIGN KEY ( player_id ) REFERENCES player ( player_id );
+ALTER TABLE player_activity ADD CONSTRAINT player_activity_player_FK FOREIGN KEY ( player_id ) REFERENCES player ( player_id ) ON DELETE CASCADE;
 
-ALTER TABLE player_dates ADD CONSTRAINT player_dates_player_FK FOREIGN KEY ( player_id ) REFERENCES player ( player_id );
+ALTER TABLE player_dates ADD CONSTRAINT player_dates_player_FK FOREIGN KEY ( player_id ) REFERENCES player ( player_id ) ON DELETE CASCADE;
 
-ALTER TABLE player ADD CONSTRAINT player_tutor_FK FOREIGN KEY ( tutor_id ) REFERENCES tutor ( tutor_id );
+ALTER TABLE player ADD CONSTRAINT player_tutor_FK FOREIGN KEY ( tutor_id ) REFERENCES tutor ( tutor_id ) ON DELETE CASCADE;
 /
 --------------------------------------------------------------------------------------------------------------------------------insert 1
 
