@@ -17,11 +17,47 @@ $t_username = '%' . $_POST["tutor_username"] . '%';
 $t_email = '%' . $_POST["tutor_email"] . '%';
 $t_logged = '%' . $_POST["logged"] . '%';
 
+if (preg_match('/\W/', $p_name_sec)) {
+    session_start();
+    $_SESSION["mesaj_err"] = "Textul contine caractere invalide!";
+    header('Location: ../FRONT/HTML/pagina_eroare_admin.html');
+    exit;
+}
 oci_bind_by_name($stid, ":p_name", $p_name_sec);
+if (preg_match('/\W/', $p_username)) {
+    session_start();
+    $_SESSION["mesaj_err"] = "Textul contine caractere invalide!";
+    header('Location: ../FRONT/HTML/pagina_eroare_admin.html');
+    exit;
+}
 oci_bind_by_name($stid, ":p_username", $p_username);
+if (preg_match('/\W/', $p_email) && $p_email != null) {
+    session_start();
+    $_SESSION["mesaj_err"] = "Textul contine caractere invalide!";
+    header('Location: ../FRONT/HTML/pagina_eroare_admin.html');
+    exit;
+}
 oci_bind_by_name($stid, ":p_email", $p_email);
+if (preg_match('/\W/', $t_name_sec) && $t_name_sec != null) {
+    session_start();
+    $_SESSION["mesaj_err"] = "Textul contine caractere invalide!";
+    header('Location: ../FRONT/HTML/pagina_eroare_admin.html');
+    exit;
+}
 oci_bind_by_name($stid, ":t_name", $t_name_sec);
+if (preg_match('/\W/', $t_username) && $t_username != null) {
+    session_start();
+    $_SESSION["mesaj_err"] = "Textul contine caractere invalide!";
+    header('Location: ../FRONT/HTML/pagina_eroare_admin.html');
+    exit;
+}
 oci_bind_by_name($stid, ":t_username", $t_username);
+if (preg_match('/\W/', $t_email) && $t_email != null) {
+    session_start();
+    $_SESSION["mesaj_err"] = "Textul contine caractere invalide!";
+    header('Location: ../FRONT/HTML/pagina_eroare_admin.html');
+    exit;
+}
 oci_bind_by_name($stid, ":t_email", $t_email);
 oci_bind_by_name($stid, ":logged", $t_logged);
 
@@ -35,8 +71,7 @@ $flag_primar = $flag;
 echo "<div class = 'clasa_2'>";
 if ($flag_primar == false)
     $result = "No result with given parameters was found.";
-else
-{
+else {
     $result = '<table border="1">' . '<tr>' . '<td>Player ID</td>' . '<td>First Name</td>' . '<td>Last Name</td>' . '<td>Username</td>' . '<td>Email</td>' . '</tr>';
 }
 while ($flag != false) {
@@ -45,7 +80,7 @@ while ($flag != false) {
     if (($row = oci_fetch_array($stid, OCI_BOTH)) != false)
         $flag = true;
     else
-        $flag=false;
+        $flag = false;
 }
 if ($flag_primar != false) {
     $result = $result . "</table>";
