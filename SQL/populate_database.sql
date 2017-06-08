@@ -63,7 +63,7 @@ CREATE TABLE suport
     suport_id   INTEGER NOT NULL ,
     username    VARCHAR2(100) ,
     categorie   VARCHAR2(100) NOT NULL ,
-    text        VARCHAR2(5000) NOT NULL ,
+    text        VARCHAR2(1000) NOT NULL ,
     data        date NOT NULL
   ) ;
 ALTER TABLE suport ADD CONSTRAINT suport_PK PRIMARY KEY ( suport_id ) ;
