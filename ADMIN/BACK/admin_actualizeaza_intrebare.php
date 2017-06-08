@@ -4,7 +4,7 @@
     $stid = oci_parse($connection, $sql);
     oci_bind_by_name($stid, ":v_id", $_POST["q_id"]);
     oci_bind_by_name($stid, ":v_domeniu", $_POST["domeniu"]);
-    if(preg_match('/\W/', $_POST["text"])){
+    if(preg_match('/\W/', $_POST["text"]) && $_POST['text']!=null){
         session_start();
         $_SESSION["mesaj_err"] = "Textul contine caractere invalide!";
         header('Location: ../FRONT/HTML/pagina_eroare_admin.html');
@@ -13,28 +13,28 @@
     oci_bind_by_name($stid, ":v_text", $_POST["text"]);
     oci_bind_by_name($stid, ":v_dificultate", $_POST["dificultate"]);
     oci_bind_by_name($stid, ":v_tip", $_POST["tip_intrebare"]);
-    if(preg_match('/\W/', $_POST["r_1"])){
+    if(preg_match('/\W/', $_POST["r_1"]) && $_POST['r_1']!=null){
         session_start();
         $_SESSION["mesaj_err"] = "Textul contine caractere invalide!";
         header('Location: ../FRONT/HTML/pagina_eroare_admin.html');
         exit;
     }
     oci_bind_by_name($stid, ":v_r1", $_POST["r_1"]);
-    if(preg_match('/\W/', $_POST["r_2"])){
+    if(preg_match('/\W/', $_POST["r_2"]) && $_POST['r_2']!=null){
         session_start();
         $_SESSION["mesaj_err"] = "Textul contine caractere invalide!";
         header('Location: ../FRONT/HTML/pagina_eroare_admin.html');
         exit;
     }
     oci_bind_by_name($stid, ":v_r2", $_POST["r_2"]);
-    if(preg_match('/\W/', $_POST["r_3"])){
+    if(preg_match('/\W/', $_POST["r_3"]) && $_POST['r_3']!=null){
         session_start();
         $_SESSION["mesaj_err"] = "Textul contine caractere invalide!";
         header('Location: ../FRONT/HTML/pagina_eroare_admin.html');
         exit;
     }
     oci_bind_by_name($stid, ":v_r3", $_POST["r_3"]);
-    if(preg_match('/\W/', $_POST["r_c"])){
+    if(preg_match('/\W/', $_POST["r_c"]) && $_POST['r_c']!=null){
         session_start();
         $_SESSION["mesaj_err"] = "Textul contine caractere invalide!";
         header('Location: ../FRONT/HTML/pagina_eroare_admin.html');
