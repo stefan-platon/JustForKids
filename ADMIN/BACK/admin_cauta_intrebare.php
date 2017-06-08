@@ -27,7 +27,7 @@
         $var3 = '%'.$_POST["dificultate"].'%';
         $var4 = '%'.$_POST["tip_intrebare"].'%';
         oci_bind_by_name($stid, ":v_domain_id", $var1);
-        if(preg_match('/\W/', $var2)){
+        if(preg_match('/\W/', $var2) && $_POST['q_text_seq']!=null){
             session_start();
             $_SESSION["mesaj_err"] = "Textul introdus contine caractere invalide!";
             header('Location: ../FRONT/HTML/pagina_eroare_admin.html');
