@@ -15,11 +15,47 @@ $t_name_sec = '%' . $_POST["tutor_name"] . '%';
 $t_username = '%' . $_POST["tutor_username"] . '%';
 $t_email = '%' . $_POST["tutor_email"] . '%';
 
+if(preg_match('/\W/', $_POST["player_name"]) && $_POST["player_name"]!=null){
+  session_start();
+  $_SESSION["mesaj_err"] = "Textul contine caractere invalide!";
+  header('Location: ../FRONT/HTML/pagina_eroare_admin.html');
+  exit;
+}
 oci_bind_by_name($stid, ":p_name", $p_name_sec);
+if(preg_match('/\W/', $_POST["player_username"]) && $_POST["player_username"]!=null){
+  session_start();
+  $_SESSION["mesaj_err"] = "Textul contine caractere invalide!";
+  header('Location: ../FRONT/HTML/pagina_eroare_admin.html');
+  exit;
+}
 oci_bind_by_name($stid, ":p_username", $p_username);
+if(preg_match('/\W/', $_POST["player_email"]) && $_POST["player_email"]!=null){
+  session_start();
+  $_SESSION["mesaj_err"] = "Textul contine caractere invalide!";
+  header('Location: ../FRONT/HTML/pagina_eroare_admin.html');
+  exit;
+}
 oci_bind_by_name($stid, ":p_email", $p_email);
+if(preg_match('/\W/', $_POST["tutor_name"]) && $_POST["tutor_name"]!=null){
+  session_start();
+  $_SESSION["mesaj_err"] = "Textul contine caractere invalide!";
+  header('Location: ../FRONT/HTML/pagina_eroare_admin.html');
+  exit;
+}
 oci_bind_by_name($stid, ":t_name", $t_name_sec);
+if(preg_match('/\W/', $_POST["tutor_username"]) && $_POST["tutor_username"]!=null){
+  session_start();
+  $_SESSION["mesaj_err"] = "Textul contine caractere invalide!";
+  header('Location: ../FRONT/HTML/pagina_eroare_admin.html');
+  exit;
+}
 oci_bind_by_name($stid, ":t_username", $t_username);
+if(preg_match('/\W/', $_POST["tutor_email"]) && $_POST["tutor_email"]!=null ){
+  session_start();
+  $_SESSION["mesaj_err"] = "Textul contine caractere invalide!";
+  header('Location: ../FRONT/HTML/pagina_eroare_admin.html');
+  exit;
+}
 oci_bind_by_name($stid, ":t_email", $t_email);
 
 oci_execute($stid);
