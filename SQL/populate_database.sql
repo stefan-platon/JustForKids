@@ -191,7 +191,7 @@ CREATE TABLE tw_questions
   (
     question_id                   INTEGER NOT NULL ,
     domain_id                     INTEGER ,
-    question_text                 VARCHAR2 (50) ,
+    question_text                 VARCHAR2 (200) ,
     difficulty                    INTEGER ,
     tip                          VARCHAR2(5)
   ) ;
