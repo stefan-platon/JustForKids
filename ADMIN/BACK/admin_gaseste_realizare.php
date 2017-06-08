@@ -20,6 +20,12 @@ else if($_POST["name_r"]!=null)
             where LOWER(a.name) = LOWER(:v_name)";
     $stid = oci_parse($connection, $sql);
     $var1 = $_POST["name_r"];
+    if(preg_match('/\W/', $var1)){
+        session_start();
+        $_SESSION["mesaj_err"] = "Textul contine caractere invalide!";
+        header('Location: ../FRONT/HTML/pagina_eroare_admin.html');
+        exit;
+    }
     oci_bind_by_name($stid, ":v_name", $var1);
     if(!oci_execute($stid))
     {
@@ -35,6 +41,12 @@ else
             where a.description like :v_descr";
     $stid = oci_parse($connection, $sql);
     $var2 = '%'.$_POST["descr_r"].'%';
+    if(preg_match('/\W/', $_POST["descr_r"])){
+        session_start();
+        $_SESSION["mesaj_err"] = "Textul contine caractere invalide!";
+        header('Location: ../FRONT/HTML/pagina_eroare_admin.html');
+        exit;
+    }
     oci_bind_by_name($stid, ":v_descr", $var2);
     if(!oci_execute($stid))
     {
