@@ -21,6 +21,12 @@ else if($_POST["cauta_j_nume"]!=null)
             where LOWER(g.name) = LOWER(:v_name)";
     $stid = oci_parse($connection, $sql);
     $var1 = $_POST["cauta_j_nume"];
+    if(preg_match('/\W/', $var1)){
+        session_start();
+        $_SESSION["mesaj_err"] = "Textul contine caractere invalide!";
+        header('Location: ../FRONT/HTML/pagina_eroare_admin.html');
+        exit;
+    }
     oci_bind_by_name($stid, ":v_name", $var1);
     if(!oci_execute($stid))
     {
@@ -40,7 +46,19 @@ else
     $var4 = '%'.$_POST["j_instr_seq"].'%';
     $var5 = '%'.$_POST["dificultate"].'%';
     oci_bind_by_name($stid, ":v_dom", $var2);
+    if(preg_match('/\W/', $_POST["j_descr_seq"])){
+        session_start();
+        $_SESSION["mesaj_err"] = "Textul contine caractere invalide!";
+        header('Location: ../FRONT/HTML/pagina_eroare_admin.html');
+        exit;
+    }
     oci_bind_by_name($stid, ":v_descr", $var3);
+    if(preg_match('/\W/', $_POST["j_instr_seq"])){
+        session_start();
+        $_SESSION["mesaj_err"] = "Textul contine caractere invalide!";
+        header('Location: ../FRONT/HTML/pagina_eroare_admin.html');
+        exit;
+    }
     oci_bind_by_name($stid, ":v_instr", $var4);
     oci_bind_by_name($stid, ":v_dif", $var5);
     if(!oci_execute($stid))
