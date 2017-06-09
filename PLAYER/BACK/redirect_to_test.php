@@ -1,17 +1,19 @@
 <?php
 session_start();
-/*if ($_SESSION['online'] != true)
-    header("Location:../../INTRO/FRONT/HTML/login_content.html");*/
-/*$_SESSION["domain"] = $_POST['domain'];*/
+if($_SESSION['secret']!=$_POST['secret'])
+    header('Location: ../../../INTRO/FRONT/HTML/session_error.html');
+if(!$_SESSION['online'] === true || !$_SESSION['rights'] == 'player')
+    header('Location: ../../../INTRO/FRONT/HTML/logged_user_frame.html');
+if($_SESSION['last_page']!="select_domain_test.php")
+    header('Location: ../../../INTRO/FRONT/HTML/logged_user_frame.html');
+
 include('conectare_db.php');
-$_SESSION['domain']='Istorie';
+$_SESSION['domain']=$_POST['domain'];
+
 //iau din baza de date dificultatea corespunzatoare userului
 $query = 'select pd.difficulty from player p join player_dates pd on p.player_id=pd.player_id where p.username=:username';
 $stid = oci_parse($connection, $query);
-/*$username = $_SESSION['username'];*/
-
-/*HARDCODAT*/$username = 'Abaza.Casandra';
-/*HARDCODAT*/$_POST['tip'] = 'Variante';
+$username = $_SESSION['username'];
 
 oci_bind_by_name($stid, ":username", $username);
 if (!oci_execute($stid)) {
@@ -22,22 +24,11 @@ if (!oci_execute($stid)) {
 if (($row = oci_fetch_array($stid, OCI_BOTH)) != false) {
     $user = $row;
 }
-//iau din baza de date numarul de teste care au fost facute pentru update-ul de dupa test
-$query = 'select count(*) from tests';
-$stid = oci_parse($connection, $query);
-if (!oci_execute($stid)) {
-    $e = oci_error($stid);
-    echo "Something went wrong :( <br/>";
-    echo "Error: " . $e['message'];
-}
-if (($row = oci_fetch_array($stid, OCI_BOTH)) != false) {
-    $nrTests = $row;
-}
-$_SESSION['testId']=$nrTests[0]+1;
 
 oci_free_statement($stid);
 
 oci_close($connection);
+
 //setez timpul pentru test in functie de dificultate
 $_SESSION['difficulty'] = $user[0];
 
@@ -55,11 +46,20 @@ switch ($_SESSION['difficulty']) {
 //redirectez la pagina cu tipul de test corespunzator alegerii utilizatorului
 switch ($_POST['tip']) {
     case 'Text':
-        header("Location:test_text.php");
+        $location="test_text.php";
         break;
     case 'Variante':
-        header("Location:test_variante.php");
+        $location="test_variante.php";
         break;
 }
-
+$_SESSION['last_page']="redirect_to_test.php";
 ?>
+<html>
+<head></head>
+<body>
+<script src="../JAVASCRIPT/redirect.js">submitForm()</script>
+<form action="<?php echo $location;?>" id="submit-secret">
+    <input type="hidden" name="secret" value="<?php if(session_status()==PHP_SESSION_NONE)session_start();echo $_SESSION['secret'];?>"/>
+</form>
+</body>
+</html>

@@ -1,7 +1,11 @@
 <?php
+
 session_start();
-/*if($_SESSION['online']!=true)
-    header("Location:../../INTRO/FRONT/HTML/login_content.html");*/
+if($_SESSION['secret']!=$_POST['secret'])
+    header('Location: ../../../INTRO/FRONT/HTML/session_error.html');
+if(!$_SESSION['online'] === true || !$_SESSION['rights'] == 'player')
+    header('Location: ../../../INTRO/FRONT/HTML/logged_user_frame.html');
+
 include("conectare_db.php");
 $query = 'select domain_id, domain_name, icon_link from domains';
 $stid = oci_parse($connection, $query);
@@ -20,6 +24,7 @@ while (($row = oci_fetch_array($stid, OCI_BOTH)) != false){
 oci_free_statement($stid);
 
 oci_close($connection);
+$_SESSION['last_page']="select_domain.php";
 ?>
 <html>
 
@@ -46,6 +51,7 @@ oci_close($connection);
             <?php } ?>
             <div class="filler"></div>
         </div>
+        <input type="hidden" name="secret" value="<?php if(session_status()==PHP_SESSION_NONE)session_start();echo $_SESSION['secret'];?>"/>
     </form>
 </div>
 </body>

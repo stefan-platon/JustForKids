@@ -1,7 +1,12 @@
 <?php
 session_start();
-/*if($_SESSION['online']!=true)
-    header("Location:../../INTRO/FRONT/HTML/login_content.html");*/
+if($_SESSION['secret']!=$_POST['secret'])
+    header('Location: ../../../INTRO/FRONT/HTML/session_error.html');
+if(!$_SESSION['online'] === true || !$_SESSION['rights'] == 'player')
+    header('Location: ../../../INTRO/FRONT/HTML/logged_user_frame.html');
+if($_SESSION['last_page']!="select_domain.php")
+    header('Location: ../../../INTRO/FRONT/HTML/logged_user_frame.html');
+
 include("conectare_db.php");
 
 $questions = array();
@@ -21,6 +26,8 @@ while (($row = oci_fetch_array($stid, OCI_BOTH)) != false) {
     $nr_questions[$cont] = $row;
     $cont++;
 }
+if($cont<10)
+    header('Location: ../../../INTRO/FRONT/HTML/number_of_questions_error.html');
 for ($i = 0; $i < 10; $i++)
     $ids[$i] = 0;
 $qLimit = count($nr_questions) - 1;
@@ -62,11 +69,10 @@ oci_close($connection);
 $i = 0;
 $timeleft = $_SESSION['max_time'];
 
-/*$timeleft = 3;*/
-
 $_SESSION['test'][0] = $questions;
 $_SESSION['test'][1] = $answers;
 
+$_SESSION['last_page']="test_variante.php";
 ?>
 
 <html>
@@ -76,7 +82,7 @@ $_SESSION['test'][1] = $answers;
 </head>
 
 <body>
-<script src="print_elements_variante.js"></script>
+<script src="../FRONT/JAVASCRIPT/print_elements_variante.js"></script>
 <div class="container">
     <div class="test-time">
         <div id="text-time" class="text-time"></div>
@@ -85,7 +91,7 @@ $_SESSION['test'][1] = $answers;
     <div class="quiz">
         <div id="question" class="question"></div>
         <?php
-        echo "<script type='text/javascript'>saveInfo(".json_encode($questions).','. json_encode($answers).")</script>";
+        echo "<script type='text/javascript'>saveInfo(".json_encode($questions).','. json_encode($answers).','. json_encode($_SESSION['secret']).")</script>";
         ?>
     </div>
     <form id="submit-test" action="redirect_to_final_page.php" class="submit-form" method="post"></form>

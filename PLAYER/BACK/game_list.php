@@ -1,7 +1,12 @@
 <?php
 session_start();
-/*if($_SESSION['online']!=true)
-    header("Location:../../INTRO/FRONT/HTML/login_content.html");*/
+if($_SESSION['secret']!=$_POST['secret'])
+    header('Location: ../../../INTRO/FRONT/HTML/session_error.html');
+if(!$_SESSION['online'] === true || !$_SESSION['rights'] == 'player')
+    header('Location: ../../../INTRO/FRONT/HTML/logged_user_frame.html');
+if($_SESSION['last_page']!="select_domain.php" && $_SESSION['last_page']!="game_list.php")
+    header('Location: ../../../INTRO/FRONT/HTML/logged_user_frame.html');
+
 include("conectare_db.php");
 $query = 'select name, difficulty, description, icon_link from games where domain_id=:domain_id';
 $stid = oci_parse($connection, $query);
@@ -22,8 +27,10 @@ while (($row = oci_fetch_array($stid, OCI_BOTH)) != false){
     $cont=$cont+1;
 }
 oci_free_statement($stid);
-$query = 'select domain_name from domains where domain_id='.$_POST['domain'];
+$query = 'select domain_name from domains where domain_id=:domain_id';
 $stid = oci_parse($connection, $query);
+$the_domain=$_POST['domain'];
+oci_bind_by_name($stid, ":domain_id", $the_domain);
 if(!oci_execute($stid))
 {
     $e = oci_error($stid);
@@ -40,6 +47,7 @@ if(($row = oci_fetch_array($stid, OCI_BOTH)) != false){
 oci_free_statement($stid);
 
 oci_close($connection);
+$_SESSION['last_page']="game_list.php";
 ?>
 <html>
 
@@ -83,6 +91,7 @@ oci_close($connection);
 
                     } ?>
             </tr>
+            <input type="hidden" name="secret" value="<?php if(session_status()==PHP_SESSION_NONE)session_start();echo $_SESSION['secret'];?>"/>
         </form>
         <?php } ?>
     </table>
