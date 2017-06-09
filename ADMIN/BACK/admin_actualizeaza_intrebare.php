@@ -1,9 +1,4 @@
 <?php
-session_start();
-if($_SESSION['secret']!=$_POST['secret'])
-    header("Location:../FRONT/HTML/session_error.html");
-else
-    session_write_close();
 
     include ("conectare_db.php");
     $sql = 'begin :rezultat :=  admin_pachet.update_intrebare(:v_id,:v_domeniu,:v_text,:v_dificultate,:v_tip,:v_r1,:v_r2,:v_r3,:v_rc);END;';
