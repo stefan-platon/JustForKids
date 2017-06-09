@@ -11,12 +11,12 @@ if(preg_match('/\W/', $_POST["name"]))
     header('Location: ../FRONT/HTML/pagina_eroare_register.html');
     exit;
 }
-if(strlen($_POST["name"] > 29)
+if(strlen($_POST["name"] > 29))
 {
-    session_start();
-    $_SESSION["mesaj_err"] = "Numele tau contine prea multe caractere!";
-    header('Location: ../FRONT/HTML/pagina_eroare_register.html');
-    exit;
+session_start();
+$_SESSION["mesaj_err"] = "Numele tau contine prea multe caractere!";
+header('Location: ../FRONT/HTML/pagina_eroare_register.html');
+exit;
 }
 oci_bind_by_name($stid, ":p_f_name", $_POST["name"]);
 
@@ -28,12 +28,12 @@ if(preg_match('/\W/', $_POST["surname"]))
     header('Location: ../FRONT/HTML/pagina_eroare_register.html');
     exit;
 }
-if(strlen($_POST["surname"] > 29)
+if(strlen($_POST["surname"] > 29))
 {
-    session_start();
-    $_SESSION["mesaj_err"] = "Preumele tau contine prea multe caractere!";
-    header('Location: ../FRONT/HTML/pagina_eroare_register.html');
-    exit;
+session_start();
+$_SESSION["mesaj_err"] = "Preumele tau contine prea multe caractere!";
+header('Location: ../FRONT/HTML/pagina_eroare_register.html');
+exit;
 }
 oci_bind_by_name($stid, ":p_s_name", $_POST["surname"]);
 
@@ -45,12 +45,12 @@ if(preg_match('/\W/', $_POST["t_name"]))
     header('Location: ../FRONT/HTML/pagina_eroare_register.html');
     exit;
 }
-if(strlen($_POST["t_name"] > 29)
+if(strlen($_POST["t_name"] > 29))
 {
-    session_start();
-    $_SESSION["mesaj_err"] = "Numele tutorelui contine prea multe caractere!";
-    header('Location: ../FRONT/HTML/pagina_eroare_register.html');
-    exit;
+session_start();
+$_SESSION["mesaj_err"] = "Numele tutorelui contine prea multe caractere!";
+header('Location: ../FRONT/HTML/pagina_eroare_register.html');
+exit;
 }
 oci_bind_by_name($stid, ":t_f_name", $_POST["t_name"]);
 
@@ -62,12 +62,12 @@ if(preg_match('/\W/', $_POST["t_surname"]))
     header('Location: ../FRONT/HTML/pagina_eroare_register.html');
     exit;
 }
-if(strlen($_POST["t_surname"] > 29)
+if(strlen($_POST["t_surname"] > 29))
 {
-    session_start();
-    $_SESSION["mesaj_err"] = "Prenumele tutorelui contine prea multe caractere!";
-    header('Location: ../FRONT/HTML/pagina_eroare_register.html');
-    exit;
+session_start();
+$_SESSION["mesaj_err"] = "Prenumele tutorelui contine prea multe caractere!";
+header('Location: ../FRONT/HTML/pagina_eroare_register.html');
+exit;
 }
 oci_bind_by_name($stid, ":t_s_name", $_POST["t_surname"]);
 
@@ -91,12 +91,12 @@ if (empty($user) || empty($domain) || !checkdnsrr($domain))
     header('Location: ../FRONT/HTML/pagina_eroare_register.html');
     exit;
 }
-if(strlen($_POST["email"] > 49)
+if(strlen($_POST["email"] > 49))
 {
-    session_start();
-    $_SESSION["mesaj_err"] = "Emailul tau contine prea multe caractere!";
-    header('Location: ../FRONT/HTML/pagina_eroare_register.html');
-    exit;
+session_start();
+$_SESSION["mesaj_err"] = "Emailul tau contine prea multe caractere!";
+header('Location: ../FRONT/HTML/pagina_eroare_register.html');
+exit;
 }
 
 /* verific daca mailul introdus pentru jucator nu e existent deja */
@@ -144,12 +144,12 @@ if (empty($user) || empty($domain) || !checkdnsrr($domain))
     header('Location: ../FRONT/HTML/pagina_eroare_register.html');
     exit;
 }
-if(strlen($_POST["t_email"] > 29)
+if(strlen($_POST["t_email"] > 29))
 {
-    session_start();
-    $_SESSION["mesaj_err"] = "Emailul tutorelui contine prea multe caractere!";
-    header('Location: ../FRONT/HTML/pagina_eroare_register.html');
-    exit;
+session_start();
+$_SESSION["mesaj_err"] = "Emailul tutorelui contine prea multe caractere!";
+header('Location: ../FRONT/HTML/pagina_eroare_register.html');
+exit;
 }
 /* verific daca mailul introdus pentru tutore nu e existent deja */
 $sql20 = 'select email from tutor where email like :t_email';
@@ -228,12 +228,12 @@ oci_bind_by_name($stid, ":nr_rand", $nr_random_p);
 $parola_completa_p = $_POST["psw"] . $nr_random_p;
 $parola_hash_p = hash('ripemd160', $parola_completa_p);
 oci_bind_by_name($stid, ":p_password", $parola_hash_p);
-if(strlen($parola_hash_p > 999)
+if(strlen($parola_hash_p > 999))
 {
-    session_start();
-    $_SESSION["mesaj_err"] = "Parola ta contine prea multe caractere!";
-    header('Location: ../FRONT/HTML/pagina_eroare_register.html');
-    exit;
+session_start();
+$_SESSION["mesaj_err"] = "Parola ta contine prea multe caractere!";
+header('Location: ../FRONT/HTML/pagina_eroare_register.html');
+exit;
 }
 /* criptez parola tutorelui */
 $nr_random_t = rand();
@@ -241,12 +241,12 @@ oci_bind_by_name($stid, ":t_nr_rand", $nr_random_t);
 $parola_completa_t = $_POST["t_psw"] . $nr_random_t;
 $parola_hash_t = hash('ripemd160', $parola_completa_t);
 oci_bind_by_name($stid, ":t_password", $parola_hash_t);
-if(strlen($parola_hash_t > 999)
+if(strlen($parola_hash_t > 999))
 {
-    session_start();
-    $_SESSION["mesaj_err"] = "Parola tutorelui contine prea multe caractere!";
-    header('Location: ../FRONT/HTML/pagina_eroare_register.html');
-    exit;
+session_start();
+$_SESSION["mesaj_err"] = "Parola tutorelui contine prea multe caractere!";
+header('Location: ../FRONT/HTML/pagina_eroare_register.html');
+exit;
 }
 /* verific daca numele de utilizator introdus pentru tutore nu e existent deja */
 /* verific daca numele de utilizator contine caractere invalide */
@@ -257,12 +257,12 @@ if(preg_match('/\W/', $_POST["t_username"]))
     header('Location: ../FRONT/HTML/pagina_eroare_register.html');
     exit;
 }
-if(strlen($_POST["t_username"] > 29)
+if(strlen($_POST["t_username"] > 29))
 {
-    session_start();
-    $_SESSION["mesaj_err"] = "Numele de utilizator al tutorelui contine prea multe caractere!";
-    header('Location: ../FRONT/HTML/pagina_eroare_register.html');
-    exit;
+session_start();
+$_SESSION["mesaj_err"] = "Numele de utilizator al tutorelui contine prea multe caractere!";
+header('Location: ../FRONT/HTML/pagina_eroare_register.html');
+exit;
 }
 $sql2 = 'select username from tutor where username like :t_usr';
 $stid2 = oci_parse($connection, $sql2);
@@ -315,12 +315,12 @@ if(preg_match('/\W/', $_POST["username"]))
     header('Location: ../FRONT/HTML/pagina_eroare_register.html');
     exit;
 }
-if(strlen($_POST["username"] > 29)
+if(strlen($_POST["username"] > 29))
 {
-    session_start();
-    $_SESSION["mesaj_err"] = "Numele tau de utilizator contine prea multe caractere!";
-    header('Location: ../FRONT/HTML/pagina_eroare_register.html');
-    exit;
+session_start();
+$_SESSION["mesaj_err"] = "Numele tau de utilizator contine prea multe caractere!";
+header('Location: ../FRONT/HTML/pagina_eroare_register.html');
+exit;
 }
 $sql2 = 'select username from player where username like :p_usr';
 $stid2 = oci_parse($connection, $sql2);
