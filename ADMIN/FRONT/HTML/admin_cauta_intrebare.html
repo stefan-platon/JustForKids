@@ -59,6 +59,7 @@
         <br/>
         <button type="submit">Cauta</button>
     </div>
+    <input type="hidden" name="secret" value="<?php echo $_SESSION['secret'];?>"/>
 </form>
 <?php
 if ($_SERVER['REQUEST_METHOD'] == 'POST')
