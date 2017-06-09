@@ -88,6 +88,21 @@
                 exit;
             }
             oci_close($connection);
+            //creez cookie daca a fost selectata optiunea de remember_username
+            if(isset($_POST['remember']))
+            {
+                $cookie_name = "remember";
+                $cookie_value = $_POST["username"];
+                setrawcookie($cookie_name, $cookie_value, time() + (86400 * 30), "/"); // 86400 = o zi
+            }
+            else{
+                if(isset($_COOKIE["remember"]))
+                {
+                    $cookie_name = "remember";
+                    $cookie_value = "";
+                    setrawcookie($cookie_name, $cookie_value, time() + (86400 * 30), "/"); // 86400 = o zi
+                }
+            }
             header('Location: ../../PLAYER/FRONT/HTML/logged_user_frame.html');
         }
         // daca este tutore
@@ -120,6 +135,21 @@
                 exit;
             }
             oci_close($connection);
+            //creez cookie daca a fost selectata optiunea de remember_username
+            if(isset($_POST['remember']))
+            {
+                $cookie_name = "remember";
+                $cookie_value = $_POST["username"];
+                setrawcookie($cookie_name, $cookie_value, time() + (86400 * 30), "/"); // 86400 = o zi
+            }
+            else{
+                if(isset($_COOKIE["remember"]))
+                {
+                    $cookie_name = "remember";
+                    $cookie_value = "";
+                    setrawcookie($cookie_name, $cookie_value, time() + (86400 * 30), "/"); // 86400 = o zi
+                }
+            }
             header('Location: ../../TUTOR/FRONT/HTML/logged_tutor_frame.html');
         }
         // daca este admin
@@ -129,6 +159,22 @@
             $_SESSION['username'] = $_POST["username"];
             $_SESSION['rights'] = 'admin';
             $_SESSION['secret'] = base64_encode( openssl_random_pseudo_bytes(32));
+            oci_close($connection);
+            //creez cookie daca a fost selectata optiunea de remember_username
+            if(isset($_POST['remember']))
+            {
+                $cookie_name = "remember";
+                $cookie_value = $_POST["username"];
+                setrawcookie($cookie_name, $cookie_value, time() + (86400 * 30), "/"); // 86400 = o zi
+            }
+            else{
+                if(isset($_COOKIE["remember"]))
+                {
+                    $cookie_name = "remember";
+                    $cookie_value = "";
+                    setrawcookie($cookie_name, $cookie_value, time() + (86400 * 30), "/"); // 86400 = o zi
+                }
+            }
             header('Location: ../../ADMIN/FRONT/HTML/admin_frame.html');
         }
         //daca exista numele de utilizator insa parola e gresita
