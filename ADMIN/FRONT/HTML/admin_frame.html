@@ -4,7 +4,7 @@
 <?php
     if(session_id() == '') {
         session_start();
-        if(!$_SESSION['online'] === true || !$_SESSION['rights'] = 'admin')
+        if(!$_SESSION['online'] === true || !$_SESSION['rights'] == 'admin')
             header('Location: ../../../INTRO/FRONT/HTML/login_frame.html');
     }
 ?>
