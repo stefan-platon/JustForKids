@@ -125,7 +125,7 @@ if(($row = oci_fetch_array($stid, OCI_BOTH)) != false)
             exit;
         }
         if(($row2 = oci_fetch_array($stid2, OCI_BOTH)) != false) {
-            $_SESSION['player_id'] = $row2[0];
+            $_SESSION['tutor_id'] = $row2[0];
         }
         else{
             $_SESSION["mesaj_err"] = "A aparut o eroare neasteptata...";
