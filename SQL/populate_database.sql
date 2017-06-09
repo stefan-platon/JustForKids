@@ -88,8 +88,8 @@ ALTER TABLE achievements ADD CONSTRAINT ach_unique1 UNIQUE ( name ) ;
 CREATE TABLE passwords
   (
     username        VARCHAR2(30),
-    hash            VARCHAR2(1000),
-    random_string   VARCHAR2(1000)
+    hash            VARCHAR2(3000),
+    random_string   VARCHAR2(3000)
   ) ;
 ALTER TABLE passwords ADD CONSTRAINT passwords_PK PRIMARY KEY ( username ) ;
 
@@ -355,9 +355,9 @@ BEGIN
     end loop;
   end loop;
   INSERT INTO achievements_link(achievement_id,player_id) VALUES(1,1);
-  INSERT INTO admins(admins_id,first_name,last_name,username,email,rights) VALUES(1,'Dimache','Nicolae-Alexandru','nicolae.dimache','dimache.alexandru96@gmail.com',3);
-  INSERT INTO admins(admins_id,first_name,last_name,username,email,rights) VALUES(2,'Dragomirescu','Catalin-Gabriel','catalin.dragomirescu','dragomirescu.catalin96@gmail.com',3);
-  INSERT INTO admins(admins_id,first_name,last_name,username,email,rights) VALUES(3,'Platon','Stefan','stefan.platon','platon.stefan97@gmail.com',3);
+  
+  INSERT INTO admins(admins_id,first_name,last_name,username,email,rights) VALUES(1,'Platon','Stefan','stefan_admin','platon.stefan97@gmail.com',3);
+  INSERT INTO passwords(username,hash, random_string) VALUES('stefan_admin','7e7c8166ef7aae16dfcd1ee572aee0889319c61b','2105251273');
 END;
 /
 DECLARE
