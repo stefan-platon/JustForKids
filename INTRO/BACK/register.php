@@ -264,26 +264,12 @@ oci_bind_by_name($stid, ":nr_rand", $nr_random_p);
 $parola_completa_p = $_POST["psw"] . $nr_random_p;
 $parola_hash_p = hash('ripemd160', $parola_completa_p);
 oci_bind_by_name($stid, ":p_password", $parola_hash_p);
-if(strlen($parola_hash_p > 2999))
-{
-    session_start();
-    $_SESSION["mesaj_err"] = "Parola ta contine prea multe caractere!";
-    header('Location: ../FRONT/HTML/pagina_eroare_register.html');
-    exit;
-}
 /* criptez parola tutorelui */
 $nr_random_t = rand(5);
 oci_bind_by_name($stid, ":t_nr_rand", $nr_random_t);
 $parola_completa_t = $_POST["t_psw"] . $nr_random_t;
 $parola_hash_t = hash('ripemd160', $parola_completa_t);
 oci_bind_by_name($stid, ":t_password", $parola_hash_t);
-if(strlen($parola_hash_t > 2999))
-{
-    session_start();
-    $_SESSION["mesaj_err"] = "Parola tutorelui contine prea multe caractere!";
-    header('Location: ../FRONT/HTML/pagina_eroare_register.html');
-    exit;
-}
 /* verific daca numele de utilizator introdus pentru tutore nu e existent deja */
 /* verific daca numele de utilizator contine caractere invalide */
 if(!preg_match('/[a-zA-Z]\w/', $_POST["t_username"]))
