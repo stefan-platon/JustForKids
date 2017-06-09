@@ -15,6 +15,7 @@
         <br/>
         <button type="submit">Sterge</button>
     </div>
+    <input type="hidden" name="secret" value="<?php if(session_status()==PHP_SESSION_NONE)session_start();echo $_SESSION['secret'];?>"/>
 </form>
 <?php
 if ($_SERVER['REQUEST_METHOD'] == 'POST')
