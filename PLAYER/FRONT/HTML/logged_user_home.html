@@ -1,7 +1,5 @@
 <?php
-session_start();
-$_SESSION['username'] = 'Abaza.Catalin';
-$_SESSION['player_id'] = 10;
+	session_start();
 ?>
 
 <!doctype html>
@@ -19,11 +17,36 @@ $_SESSION['player_id'] = 10;
 		/* daca s-a apasat butonul de logout */
         if ($_SERVER['REQUEST_METHOD'] == 'POST')
         {
-		session_start();
+			$_SESSION['logout_time'] = date('d-m-Y H:i:s');
+		//fac update in baza de date cu delogarea
+            $sql2 = 'update player set logged = 0 where username = :name';
+            $stid2 = oci_parse($connection, $sql2);
+            oci_bind_by_name($stid2, ":name", $_SESSION['username']);
+            if(!oci_execute($stid2))
+            {
+                $_SESSION["mesaj_err"] = "A aparut o eroare neasteptata...";
+                header('Location: ../../../INTRO/FRONT/HTML/pagina_eroare_login.html');
+                oci_free_statement($stid2);
+                oci_close($connection);
+                exit;
+            }
+            oci_free_statement($stid2);
+        //inserez in tabela player_activity orele in care s-a logat si delogat
+            $sql2 = "insert into player_activity(player_id, logged_in, logged_out) values (TO_NUMBER('".$_SESSION['player_id']."'), to_date('".$_SESSION['logged_time']."', 'DD-MM-YYYY HH24:MI:SS'), to_date('".$_SESSION['logout_time']."', 'DD-MM-YYYY HH24:MI:SS'))";
+            $stid2 = oci_parse($connection, $sql2);
+            if(!oci_execute($stid2))
+            {
+                $_SESSION["mesaj_err"] = "A aparut o eroare neasteptata...";
+                header('Location: ../../../INTRO/FRONT/HTML/pagina_eroare_login.html');
+                oci_free_statement($stid2);
+                oci_close($connection);
+                exit;
+            }
+		//incep procesul de delogare
         	session_unset();
         	session_destroy();
             header('Location: ../../../INTRO/FRONT/HTML/login_frame.html');
-            exit;
+            exit;}
         }
 ?>
 
