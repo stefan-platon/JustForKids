@@ -36,7 +36,7 @@ CREATE INDEX player_dates_birthday ON player_dates (birthday);
 --view pt popularea paginii de profil
 CREATE MATERIALIZED VIEW player_profile_view
      BUILD IMMEDIATE
-     REFRESH COMPLETE
+     REFRESH COMPLETE ON COMMIT
      AS SELECT pl.username, pl.last_name, pl.first_name, pl.email, pd.birthday, pd.difficulty, pd.total_time, pa.logged_in, pa.logged_out, pl.ROWID as PL_ROWID, pd.ROWID as PD_ROWID, pa.ROWID as PA_ROWID 
         FROM player pl, player_dates pd, player_activity pa 
         WHERE pl.player_id = pd.player_id and pa.player_id = pl.player_id;
