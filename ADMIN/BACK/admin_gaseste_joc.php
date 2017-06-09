@@ -1,4 +1,10 @@
 <?php
+session_start();
+if($_SESSION['secret']!=$_POST['secret'])
+    header("Location:../FRONT/HTML/session_error.html");
+else
+    session_write_close();
+
 include ("conectare_db.php");
 $error_flag = 1;
 if($_POST["cauta_j_id"]!=null)
