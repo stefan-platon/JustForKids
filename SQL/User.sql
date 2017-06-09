@@ -79,10 +79,10 @@ IS
     AS
     v_id INTEGER;
     BEGIN
-      update player_dates set difficulty = 1 where birthday between TO_DATE('01/01/08','dd/mm/yy') and TO_DATE('31/12/11','dd/mm/yy');
-      update player_dates set difficulty = 2 where birthday between TO_DATE('01/01/04','dd/mm/yy') and TO_DATE('31/12/07','dd/mm/yy');
-      update player_dates set difficulty = 3 where birthday between TO_DATE('01/01/00','dd/mm/yy') and TO_DATE('31/12/03','dd/mm/yy');
-      COMMIT;
+      update player_dates set difficulty = 1, RECOMMENDED_DIFFICULTY = 1 where birthday between TO_DATE('01/01/08','dd/mm/yy') and TO_DATE('31/12/11','dd/mm/yy');
+      update player_dates set difficulty = 2, RECOMMENDED_DIFFICULTY = 2 where birthday between TO_DATE('01/01/04','dd/mm/yy') and TO_DATE('31/12/07','dd/mm/yy');
+      update player_dates set difficulty = 3, RECOMMENDED_DIFFICULTY = 3 where birthday between TO_DATE('01/01/90','dd/mm/yy') and TO_DATE('31/12/03','dd/mm/yy');
+      commit;
     END reset_dificultate;
     
     PROCEDURE radiaza_conturi
