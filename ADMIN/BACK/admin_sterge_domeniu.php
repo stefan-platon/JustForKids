@@ -1,4 +1,10 @@
 <?php
+session_start();
+if($_SESSION['secret']!=$_POST['secret'])
+    header("Location:../FRONT/HTML/session_error.html");
+else
+    session_write_close();
+
 include ("conectare_db.php");
 $sql = 'begin :rezultat :=  admin_pachet.sterge_domeniu(:v_id); END;';
 $stid = oci_parse($connection, $sql);
