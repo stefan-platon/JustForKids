@@ -126,3 +126,5 @@ session_destroy();
 session_start();
 $_SESSION['username'] = $username;
 $_SESSION['tutor_id'] = $_POST['tutor_id'];
+
+header('Location: ../FRONT/HTML/logged_tutor_frame.html');
