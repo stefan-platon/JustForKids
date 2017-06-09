@@ -30,6 +30,7 @@
         <input type="text" placeholder="email" name="tutor_email">
         <br/>
         <button type="submit">Search</button>
+        <input type="hidden" name="secret" value="<?php if(session_status()==PHP_SESSION_NONE)session_start();echo $_SESSION['secret'];?>"/>
     </form>
 
 </div>
