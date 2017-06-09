@@ -259,7 +259,7 @@ if($_POST["t_psw"] != $_POST["t_r_psw"])
     exit;
 }
 /* criptez parola userului */
-$nr_random_p = rand(5,10);
+$nr_random_p = rand(5);
 oci_bind_by_name($stid, ":nr_rand", $nr_random_p);
 $parola_completa_p = $_POST["psw"] . $nr_random_p;
 $parola_hash_p = hash('ripemd160', $parola_completa_p);
@@ -272,7 +272,7 @@ if(strlen($parola_hash_p > 2999))
     exit;
 }
 /* criptez parola tutorelui */
-$nr_random_t = rand(5,10);
+$nr_random_t = rand(5);
 oci_bind_by_name($stid, ":t_nr_rand", $nr_random_t);
 $parola_completa_t = $_POST["t_psw"] . $nr_random_t;
 $parola_hash_t = hash('ripemd160', $parola_completa_t);
