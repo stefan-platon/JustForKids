@@ -1,7 +1,5 @@
 <?php
 session_start();
-$_SESSION["t_username"] = 'Abaza.Marioara.t';
-$_SESSION["tutor_id"] = 19;
 ?>
 
 <!doctype html>
@@ -76,9 +74,11 @@ $_SESSION["tutor_id"] = 19;
 
 <div class = "info">
     <div class = "info_icon">
-        <img src="../../../IMG/OTHER/user_icon.jpg" width="80" height="80" alt="alt">
+        <?php
+        include ("../../BACK/profile_picture_home.php");
+        ?>
     </div>
-    <p class = "user_name"><?php echo $_SESSION["t_username"]; ?></p>
+    <p class = "user_name"><?php echo $_SESSION["username"]; ?></p>
     <div class = "info_body">
     </div>
     <form method="post" action="logged_tutor_home.html">
