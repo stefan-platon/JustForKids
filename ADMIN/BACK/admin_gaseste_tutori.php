@@ -1,4 +1,10 @@
 <?php
+session_start();
+if($_SESSION['secret']!=$_POST['secret'])
+    header("Location:../FRONT/HTML/session_error.html");
+else
+    session_write_close();
+
 include("conectare_db.php");
 
 $query = "SELECT t.tutor_id,t.first_name,t.last_name,t.username,t.email,p.username,p.email from PLAYER p join TUTOR t on p.tutor_id=t.tutor_id
