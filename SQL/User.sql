@@ -110,6 +110,7 @@ IS
       v_t_id integer;
       v_t_nr integer;
       v_p_nr integer;
+      v_domain_nb integer;
     BEGIN
       SELECT count(tutor_id) into v_t_nr from tutor where username = t_username;
       if(v_t_nr > 0) then
@@ -136,13 +137,23 @@ IS
           insert into player values (v_p_id, p_f_name, p_s_name, p_username, p_email, p_img, 1, 0, p_relation, v_t_id);
       end if;
       
-      insert into player_dates values (v_p_id, TO_DATE(p_bday,'dd/mm/yyyy'), 5, 5, 0);
+      if TO_DATE(p_bday,'dd/mm/yyyy') between TO_DATE('01/01/2008','dd/mm/yyyy') and TO_DATE('31/12/2011','dd/mm/yyyy') then
+        insert into player_dates values (v_p_id, TO_DATE(p_bday,'dd/mm/yyyy'), 1, 1, 0);
+      elsif TO_DATE(p_bday,'dd/mm/yyyy') between TO_DATE('01/01/2004','dd/mm/yyyy') and TO_DATE('31/12/2007','dd/mm/yyyy') then
+        insert into player_dates values (v_p_id, TO_DATE(p_bday,'dd/mm/yyyy'), 2, 2, 0);
+      elsif TO_DATE(p_bday,'dd/mm/yyyy') between TO_DATE('01/01/1990','dd/mm/yyyy') and TO_DATE('31/12/2003','dd/mm/yyyy') then
+        insert into player_dates values (v_p_id, TO_DATE(p_bday,'dd/mm/yyyy'), 3, 3, 0);
+      end if;
+      
+      insert into player_activity values (v_p_id, sysdate, sysdate);
       
       insert into passwords values (p_username, p_password, TO_NUMBER(p_nr_rand));
       
-      update player_dates set difficulty = 1 where birthday between TO_DATE('01/01/08','dd/mm/yy') and TO_DATE('31/12/11','dd/mm/yy');
-      update player_dates set difficulty = 2 where birthday between TO_DATE('01/01/04','dd/mm/yy') and TO_DATE('31/12/07','dd/mm/yy');
-      update player_dates set difficulty = 3 where birthday between TO_DATE('01/01/00','dd/mm/yy') and TO_DATE('31/12/03','dd/mm/yy');
+      select count(*) into v_domain_nb from domains;
+      for i in 1 .. v_domain_nb loop
+        insert into player_stats (player_id, domain_id, highest_score, total_score, number_of_plays) values (v_p_id, i, 0, 0, 0);
+      end loop;
+      
     END register_user;
     
 END user_pachet;
