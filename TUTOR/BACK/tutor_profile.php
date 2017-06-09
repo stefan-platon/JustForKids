@@ -8,7 +8,7 @@
 
 
 $stid = oci_parse($connection, 'SELECT last_name, first_name, email FROM tutor WHERE username = :username');
-$t_username = $_SESSION["t_username"];
+$t_username = $_SESSION["username"];
 oci_bind_by_name($stid, ':username', $t_username);
 oci_execute($stid);
 $row = oci_fetch_array($stid, OCI_BOTH);
