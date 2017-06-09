@@ -11,7 +11,7 @@ if(preg_match('/\W/', $_POST["name"]))
     header('Location: ../FRONT/HTML/pagina_eroare_register.html');
     exit;
 }
-if(strlen($_POST["name"] > 29)
+if(strlen($_POST["name"] > 29))
 {
     session_start();
     $_SESSION["mesaj_err"] = "Numele tau contine prea multe caractere!";
@@ -28,7 +28,7 @@ if(preg_match('/\W/', $_POST["surname"]))
     header('Location: ../FRONT/HTML/pagina_eroare_register.html');
     exit;
 }
-if(strlen($_POST["surname"] > 29)
+if(strlen($_POST["surname"] > 29))
 {
     session_start();
     $_SESSION["mesaj_err"] = "Preumele tau contine prea multe caractere!";
@@ -45,7 +45,7 @@ if(preg_match('/\W/', $_POST["t_name"]))
     header('Location: ../FRONT/HTML/pagina_eroare_register.html');
     exit;
 }
-if(strlen($_POST["t_name"] > 29)
+if(strlen($_POST["t_name"] > 29))
 {
     session_start();
     $_SESSION["mesaj_err"] = "Numele tutorelui contine prea multe caractere!";
@@ -62,7 +62,7 @@ if(preg_match('/\W/', $_POST["t_surname"]))
     header('Location: ../FRONT/HTML/pagina_eroare_register.html');
     exit;
 }
-if(strlen($_POST["t_surname"] > 29)
+if(strlen($_POST["t_surname"] > 29))
 {
     session_start();
     $_SESSION["mesaj_err"] = "Prenumele tutorelui contine prea multe caractere!";
@@ -91,7 +91,7 @@ if (empty($user) || empty($domain) || !checkdnsrr($domain))
     header('Location: ../FRONT/HTML/pagina_eroare_register.html');
     exit;
 }
-if(strlen($_POST["email"] > 49)
+if(strlen($_POST["email"] > 49))
 {
     session_start();
     $_SESSION["mesaj_err"] = "Emailul tau contine prea multe caractere!";
@@ -144,7 +144,7 @@ if (empty($user) || empty($domain) || !checkdnsrr($domain))
     header('Location: ../FRONT/HTML/pagina_eroare_register.html');
     exit;
 }
-if(strlen($_POST["t_email"] > 29)
+if(strlen($_POST["t_email"] > 29))
 {
     session_start();
     $_SESSION["mesaj_err"] = "Emailul tutorelui contine prea multe caractere!";
@@ -228,7 +228,7 @@ oci_bind_by_name($stid, ":nr_rand", $nr_random_p);
 $parola_completa_p = $_POST["psw"] . $nr_random_p;
 $parola_hash_p = hash('ripemd160', $parola_completa_p);
 oci_bind_by_name($stid, ":p_password", $parola_hash_p);
-if(strlen($parola_hash_p > 999)
+if(strlen($parola_hash_p > 999))
 {
     session_start();
     $_SESSION["mesaj_err"] = "Parola ta contine prea multe caractere!";
@@ -241,7 +241,7 @@ oci_bind_by_name($stid, ":t_nr_rand", $nr_random_t);
 $parola_completa_t = $_POST["t_psw"] . $nr_random_t;
 $parola_hash_t = hash('ripemd160', $parola_completa_t);
 oci_bind_by_name($stid, ":t_password", $parola_hash_t);
-if(strlen($parola_hash_t > 999)
+if(strlen($parola_hash_t > 999))
 {
     session_start();
     $_SESSION["mesaj_err"] = "Parola tutorelui contine prea multe caractere!";
@@ -257,7 +257,7 @@ if(preg_match('/\W/', $_POST["t_username"]))
     header('Location: ../FRONT/HTML/pagina_eroare_register.html');
     exit;
 }
-if(strlen($_POST["t_username"] > 29)
+if(strlen($_POST["t_username"] > 29))
 {
     session_start();
     $_SESSION["mesaj_err"] = "Numele de utilizator al tutorelui contine prea multe caractere!";
@@ -315,7 +315,7 @@ if(preg_match('/\W/', $_POST["username"]))
     header('Location: ../FRONT/HTML/pagina_eroare_register.html');
     exit;
 }
-if(strlen($_POST["username"] > 29)
+if(strlen($_POST["username"] > 29))
 {
     session_start();
     $_SESSION["mesaj_err"] = "Numele tau de utilizator contine prea multe caractere!";
@@ -382,12 +382,12 @@ if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) {
 }
 
 /* verific poza de profil a tutorelui */
-$target_dir = "../../IMG/PROFILE/";
-$info = pathinfo($_FILES['fileToUpload2']['name']);
-$ext = $info['extension']; // get the extension of the file
-$newname = $_POST["t_username"].".".$ext;
-$target_file2 = $target_dir . $newname;
-$uploadOk = 1;
+$target_dir2 = "../../IMG/PROFILE/";
+$info2 = pathinfo($_FILES['fileToUpload2']['name']);
+$ext2 = $info2['extension']; // get the extension of the file
+$newname2 = $_POST["t_username"].".".$ext2;
+$target_file2 = $target_dir2 . $newname2;
+$uploadOk2 = 1;
 if(isset($_POST["submit"])) {
     $check = getimagesize($_FILES["fileToUpload2"]["tmp_name"]);
     if($check !== false) {
@@ -400,13 +400,13 @@ if(isset($_POST["submit"])) {
     }
 }
 // Allow certain file formats
-if($ext != "jpg" && $ext != "png" && $ext != "jpeg") {
+if($ext2 != "jpg" && $ext2 != "png" && $ext2 != "jpeg") {
     session_start();
     $_SESSION["mesaj_err"] = "Se accepta doar formatele JPG, PNG si JPEG.";
     header('Location: ../FRONT/HTML/pagina_eroare_register.html');
     exit;
 }
-if (move_uploaded_file($_FILES["fileToUpload2"]["tmp_name"], $target_file)) {
+if (move_uploaded_file($_FILES["fileToUpload2"]["tmp_name"], $target_file2)) {
     oci_bind_by_name($stid, ":t_img", $target_file2);
 } else {
     session_start();
@@ -427,5 +427,7 @@ if(!oci_execute($stid))
     header('Location: ../FRONT/HTML/pagina_eroare_register.html');
     exit;
 }
+
+
 header('Location: ../FRONT/HTML/login_frame.html');
 ?>
