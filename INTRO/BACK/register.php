@@ -228,7 +228,7 @@ oci_bind_by_name($stid, ":nr_rand", $nr_random_p);
 $parola_completa_p = $_POST["psw"] . $nr_random_p;
 $parola_hash_p = hash('ripemd160', $parola_completa_p);
 oci_bind_by_name($stid, ":p_password", $parola_hash_p);
-if(strlen($parola_hash_p > 99)
+if(strlen($parola_hash_p > 999)
 {
     session_start();
     $_SESSION["mesaj_err"] = "Parola ta contine prea multe caractere!";
@@ -241,7 +241,7 @@ oci_bind_by_name($stid, ":t_nr_rand", $nr_random_t);
 $parola_completa_t = $_POST["t_psw"] . $nr_random_t;
 $parola_hash_t = hash('ripemd160', $parola_completa_t);
 oci_bind_by_name($stid, ":t_password", $parola_hash_t);
-if(strlen($parola_hash_t > 99)
+if(strlen($parola_hash_t > 999)
 {
     session_start();
     $_SESSION["mesaj_err"] = "Parola tutorelui contine prea multe caractere!";
