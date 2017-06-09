@@ -1,4 +1,10 @@
 <?php
+session_start();
+if($_SESSION['secret']!=$_POST['secret'])
+    header("Location:../FRONT/HTML/session_error.html");
+else
+    session_write_close();
+
 include("conectare_db.php");
 
 $sql = 'begin :rezultat :=  admin_pachet.insert_joc(:v_nume,:v_dif,:v_descr,:v_instr,:v_domeniu,:i_link,:g_link); END;';
