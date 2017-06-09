@@ -51,6 +51,7 @@
             $_SESSION['username'] = $_POST["username"];
             $_SESSION['rights'] = 'player';
             $_SESSION['logged_time'] = date("d-m-Y");
+            $_SESSION['secret'] = base64_encode( openssl_random_pseudo_bytes(32));
             //fac update in baza de date cu logarea
             $sql2 = 'update player set logged = 1 where username = :name';
             $stid2 = oci_parse($connection, $sql2);
@@ -64,6 +65,28 @@
                 exit;
             }
             oci_free_statement($stid2);
+            //selectez id-ul playerului pentru sesiune
+            $sql2 = 'select player_id from player where username = :name';
+            $stid2 = oci_parse($connection, $sql2);
+            oci_bind_by_name($stid2, ":name", $_POST["username"]);
+            if(!oci_execute($stid2))
+            {
+                $_SESSION["mesaj_err"] = "A aparut o eroare neasteptata...";
+                header('Location: ../FRONT/HTML/pagina_eroare_login.html');
+                oci_free_statement($stid2);
+                oci_close($connection);
+                exit;
+            }
+            if(($row2 = oci_fetch_array($stid2, OCI_BOTH)) != false) {
+                $_SESSION['player_id'] = $row2[0];
+            }
+            else{
+                $_SESSION["mesaj_err"] = "A aparut o eroare neasteptata...";
+                header('Location: ../FRONT/HTML/pagina_eroare_login.html');
+                oci_free_statement($stid2);
+                oci_close($connection);
+                exit;
+            }
             oci_close($connection);
             header('Location: ../../PLAYER/FRONT/HTML/logged_user_frame.html');
         }
@@ -73,6 +96,30 @@
             $_SESSION['online'] = true;
             $_SESSION['username'] = $_POST["username"];
             $_SESSION['rights'] = 'tutor';
+            $_SESSION['secret'] = base64_encode( openssl_random_pseudo_bytes(32));
+            //selectez id-ul tutorelui pentru sesiune
+            $sql2 = 'select tutor_id from tutor where username = :name';
+            $stid2 = oci_parse($connection, $sql2);
+            oci_bind_by_name($stid2, ":name", $_POST["username"]);
+            if(!oci_execute($stid2))
+            {
+                $_SESSION["mesaj_err"] = "A aparut o eroare neasteptata...";
+                header('Location: ../FRONT/HTML/pagina_eroare_login.html');
+                oci_free_statement($stid2);
+                oci_close($connection);
+                exit;
+            }
+            if(($row2 = oci_fetch_array($stid2, OCI_BOTH)) != false) {
+                $_SESSION['player_id'] = $row2[0];
+            }
+            else{
+                $_SESSION["mesaj_err"] = "A aparut o eroare neasteptata...";
+                header('Location: ../FRONT/HTML/pagina_eroare_login.html');
+                oci_free_statement($stid2);
+                oci_close($connection);
+                exit;
+            }
+            oci_close($connection);
             header('Location: ../../TUTOR/FRONT/HTML/logged_tutor_frame.html');
         }
         // daca este admin
@@ -81,6 +128,7 @@
             $_SESSION['online'] = true;
             $_SESSION['username'] = $_POST["username"];
             $_SESSION['rights'] = 'admin';
+            $_SESSION['secret'] = base64_encode( openssl_random_pseudo_bytes(32));
             header('Location: ../../ADMIN/FRONT/HTML/admin_frame.html');
         }
         //daca exista numele de utilizator insa parola e gresita
