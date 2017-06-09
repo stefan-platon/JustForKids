@@ -6,7 +6,6 @@
         setrawcookie($cookie_name, $cookie_value, time() + (86400 * 30), "/"); // 86400 = o zi
     }
 ?>
-
 <!doctype html>
 <html lang="en">
 
@@ -74,7 +73,7 @@
             <label><b>Username</b></label>
             <input type="text" value='<?php if(isset($_COOKIE["remember"]))echo($_COOKIE["remember"]); else echo ""; ?>' placeholder="Nume utilizator" name="username" required>
             <label><b>Password</b></label>
-            <input type="password" placeholder="Enter Password" name="password" required>
+            <input type="password" placeholder="Parola" name="password" required>
             <br/>
             <button type="submit" class="login_btn">Login</button>
             <br/>
@@ -92,7 +91,7 @@
     <hr/>
     <div class = "jucatori_top_10">
         <ol>
-        	<?php
+            <?php
             $stid = oci_parse($connection, 'select username, total_score from (select username, total_score from player_stats join player on player.player_id = player_stats.player_id order by total_score desc) where rownum <= 10');
             oci_execute($stid);
             while (($row = oci_fetch_array($stid, OCI_BOTH)) != false)
