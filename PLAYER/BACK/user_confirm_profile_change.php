@@ -3,140 +3,116 @@
  * Created by PhpStorm.
  * User: Catalin
  * Date: 01-Jun-17
- * Time: 22:29
+ * Time: 23:14
  */
-include ("conectare_db.php");
-
-
-$name = $_POST["name"];
-
-if(preg_match('/\W/', $name))
-{
-    session_start();
-    $_SESSION["mesaj_err"] = "Numele tau contine caractere invalide!";
-    header('Location: ../FRONT/HTML/eroare_editare.html');
-    exit;
-}
-
-$surname = $_POST["surname"];
-
-
-if(preg_match('/\W/', $surname))
-{
-    session_start();
-    $_SESSION["mesaj_err"] = "Prenumele tau contine caractere invalide!";
-    header('Location: ../FRONT/HTML/eroare_editare.html');
-    exit;
-}
-
-
-$username = $_POST["username"];
-
-
-/* verific daca numele de utilizator introdus pentru jucator nu e existent deja */
-/* verific daca numele utilizatorului contine caractere invalide */
-if(preg_match('/\W/', $username))
-{
-    session_start();
-    $_SESSION["mesaj_err"] = "Numele tau de utilizator contine caractere invalide!";
-    header('Location: ../FRONT/HTML/eroare_editare.html');
-    exit;
-}
-$sql2 = 'select username from player where username like :p_usr';
-$stid2 = oci_parse($connection, $sql2);
-oci_bind_by_name($stid2, ":p_usr", $username);
-if(!oci_execute($stid2))
-{
-    session_start();
-    $_SESSION["mesaj_err"] = "A aparut o eroare neasteptata...";
-    header('Location: ../FRONT/HTML/eroare_editare.html');
-    exit;
-}
-else
-{
-    if(($row2 = oci_fetch_array($stid2, OCI_BOTH)) != false)
-    {
-        session_start();
-        $_SESSION["mesaj_err"] = "Numele de utilizator " . $username . " e existent deja.";
-        header('Location: ../FRONT/HTML/eroare_editare.html');
-        exit;
-    }
-}
-
-
-$email = $_POST["email"];
-
-/* verific forma email-ului userului */
-$domain = ltrim(stristr($email, '@'), '@');
-$user   = stristr($email, '@', TRUE);
-/*verific daca trunchiul emailului contine caractere invalide */
-if(preg_match('/\W/', $user))
-{
-    session_start();
-    $_SESSION["mesaj_err"] = "Emailul tau contine caractere invalide!";
-    header('Location: ../FRONT/HTML/eroare_editare.html');
-    exit;
-}
-if (empty($user) || empty($domain) || !checkdnsrr($domain))
-{
-    session_start();
-    $_SESSION["mesaj_err"] = "Email invalid pentru jucator!";
-    header('Location: ../FRONT/HTML/eroare_editare.html');
-    exit;
-}
-
-/* verific daca mailul introdus pentru jucator nu e existent deja */
-$sql20 = 'select email from player where email like :p_email';
-$stid20 = oci_parse($connection, $sql20);
-oci_bind_by_name($stid20, ":p_email", $email);
-if(!oci_execute($stid20))
-{
-    session_start();
-    $_SESSION["mesaj_err"] = "A aparut o eroare neasteptata...";
-    header('Location: ../FRONT/HTML/eroare_editare.html');
-    exit;
-}
-else
-{
-    if(($row20 = oci_fetch_array($stid20, OCI_BOTH)) != false)
-    {
-        session_start();
-        $_SESSION["mesaj_err"] = "Emailul introdus pentru tine e existent deja.";
-        header('Location: ../FRONT/HTML/eroare_editare.html');
-        exit;
-    }
-}
-
-
-/* formatez data nasterii */
-$birthday = $_POST["day"] . '/' . $_POST["month"] . '/' . $_POST["year"];
-
-echo $_POST['player_id'];
-$stid = oci_parse($connection, 'UPDATE player SET first_name = :name, last_name = :surname, username = :username, email = :email where player_id = :player_id');
-oci_bind_by_name($stid, ':name', $name);
-oci_bind_by_name($stid, ':surname', $surname);
-oci_bind_by_name($stid, ':username', $username);
-oci_bind_by_name($stid, ':email', $email);
-oci_bind_by_name($stid, ':player_id', $_POST['player_id']);
-
-$result = oci_execute($stid, OCI_COMMIT_ON_SUCCESS);
-if (!$result) {
-    echo oci_error();
-}
-oci_free_statement($stid);
-
-echo $_POST['player_id'];
-$stid = oci_parse($connection, "UPDATE player_dates SET birthday = TO_DATE(:birthday,'DD/MM/YYYY') where player_id = :player_id");
-oci_bind_by_name($stid, ':birthday', $birthday);
-oci_bind_by_name($stid, ':player_id', $_POST['player_id']);
-
-oci_execute($stid, OCI_COMMIT_ON_SUCCESS);
-
-oci_free_statement($stid);
-
-session_unset();
-session_destroy();
 
 session_start();
-$_SESSION['username'] = $username;
-$_SESSION['player_id'] = $_POST['player_id'];
+include ("conectare_db.php");
+$username = $_SESSION["username"];
+echo $username;
+$sql = "SELECT random_string from passwords where username = :username";
+$stid = oci_parse($connection, $sql);
+
+//verific daca parola contine caractere invalide
+if(preg_match('/\W/', $_POST["c_psw"]))
+{
+    $_SESSION["mesaj_err"] = "Parola contine caractere invalide!";
+    header('Location: ../FRONT/HTML/eroare_editare.html');
+    oci_close($connection);
+    exit;
+}
+oci_bind_by_name($stid, ":username", $username);
+
+//eroare la oci_execute
+if(!oci_execute($stid))
+{
+    $_SESSION["mesaj_err"] = "A aparut o eroare neasteptata...";
+    header('Location: ../FRONT/HTML/eroare_editare.html');
+    oci_close($connection);
+    exit;
+}
+
+//verificare parola actuala
+if(($row = oci_fetch_array($stid, OCI_BOTH)) != false) {
+    $nr_random = $row[0];
+    $parola_completa = $_POST["c_psw"] . $nr_random;
+    $parola_hash = hash('ripemd160', $parola_completa);
+    $sql2 = 'begin :rezultat := user_pachet.login(:v_username,:v_password); end;';
+    $stid2 = oci_parse($connection, $sql2);
+    oci_bind_by_name($stid2, ":v_username", $username);
+    oci_bind_by_name($stid2, ":v_password", $parola_hash);
+    oci_bind_by_name($stid2, ':rezultat', $rezultat2, 100);
+    if (!oci_execute($stid2)) {
+        $_SESSION["mesaj_err"] = "A aparut o eroare neasteptata...";
+        header('Location: ../FRONT/HTML/eroare_editare.html');
+        oci_free_statement($stid2);
+        oci_close($connection);
+        exit;
+    }
+    echo $rezultat2;
+    oci_free_statement($stid2);
+    //parola actuala este corecta
+    if(strcmp($rezultat2 ,'p') == 0) {
+        //actualizare parola
+
+
+        if(preg_match('/\W/', $_POST["psw"]))
+        {
+            session_start();
+            $_SESSION["mesaj_err"] = "Parola ta contine caractere invalide!";
+            header('Location: ../FRONT/HTML/eroare_editare.html');
+            exit;
+        }
+        if(preg_match('/\W/', $_POST["r_psw"]))
+        {
+            session_start();
+            $_SESSION["mesaj_err"] = "Parola ta repetata contine caractere invalide!";
+            header('Location: ../FRONT/HTML/eroare_editare.html');
+            exit;
+        }
+
+        /* verific daca parola noua si cea repetata coincid */
+        if($_POST["psw"] != $_POST["r_psw"])
+        {
+            session_start();
+            $_SESSION["mesaj_err"] = "Parola si parola repetata pentru contul tau nu coincid!";
+            header('Location: ../FRONT/HTML/eroare_editare.html');
+            exit;
+        }
+
+
+
+        /* criptez parola userului */
+        $nr_random_p = rand();
+        $parola_completa_p = $_POST["psw"] . $nr_random_p;
+        $parola_hash_p = hash('ripemd160', $parola_completa_p);
+
+        echo $username;
+        //introduc parola noua in baza de date
+        $sql4 = "update PASSWORDS set HASH=:parola_hash, RANDOM_STRING=:nr_random where USERNAME=:username";
+        $stid2 = oci_parse($connection, $sql4);
+        oci_bind_by_name($stid2, ":username", $username);
+        oci_bind_by_name($stid2, ":parola_hash", $parola_hash_p);
+        oci_bind_by_name($stid2, ":nr_random", $nr_random_p);
+
+        //eroare la oci_execute
+        $result = oci_execute($stid2, OCI_COMMIT_ON_SUCCESS);
+        if(!$result)
+        {
+            $_SESSION["mesaj_err"] = "A aparut o eroare neasteptata...";
+            header('Location: ../FRONT/HTML/eroare_editare.html');
+            oci_close($connection);
+            exit;
+        }
+        oci_free_statement($stid2);
+    }
+    //parola actuala este gresita
+    else {
+        $_SESSION["mesaj_err"] = "Parola actuala este gresita!";
+        header('Location: ../FRONT/HTML/eroare_editare.html');
+    }
+}
+
+oci_close($connection);
+
+header('Location: ../FRONT/HTML/logged_user_frame.html');
