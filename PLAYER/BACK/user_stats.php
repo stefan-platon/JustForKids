@@ -34,21 +34,30 @@ $stid = oci_parse($connection, 'SELECT d.DOMAIN_NAME, p.total_score from PLAYER_
 oci_bind_by_name($stid, ':player_id', $player_id);
 oci_execute($stid);
 $row = oci_fetch_array($stid, OCI_BOTH);
-echo '<tr class="profil_tr">' . '<td class="profil_td">Domeniul cu scorul cel mai mare:</td>' . '<td class="profil_td">' . $row[0] . ' (' . $row[1] . ')</td></tr>';
+if ($row[0] != 0)
+    echo '<tr class="profil_tr">' . '<td class="profil_td">Domeniul cu scorul cel mai mare:</td>' . '<td class="profil_td">' . $row[0] . ' (' . $row[1] . ')</td></tr>';
+else
+    echo '<tr class="profil_tr">' . '<td class="profil_td">Domeniul cu scorul cel mai mare:</td>' . '<td class="profil_td"> - </td></tr>';
 oci_free_statement($stid);
 
 $stid = oci_parse($connection, 'SELECT d.DOMAIN_NAME, p.total_score from PLAYER_STATS p join DOMAINS d on p.DOMAIN_ID = d.DOMAIN_ID where p.PLAYER_ID = :player_id order by p.total_score');
 oci_bind_by_name($stid, ':player_id', $player_id);
 oci_execute($stid);
 $row = oci_fetch_array($stid, OCI_BOTH);
-echo '<tr class="profil_tr">' . '<td class="profil_td">Domeniul cu scorul cel mai mic:</td>' . '<td class="profil_td">' . $row[0] . ' (' . $row[1] . ')</td></tr>';
+if ($row[0] != 0)
+    echo '<tr class="profil_tr">' . '<td class="profil_td">Domeniul cu scorul cel mai mic:</td>' . '<td class="profil_td">' . $row[0] . ' (' . $row[1] . ')</td></tr>';
+else
+    echo '<tr class="profil_tr">' . '<td class="profil_td">Domeniul cu scorul cel mai mic:</td>' . '<td class="profil_td"> - </td></tr>';
+
 oci_free_statement($stid);
 
-$stid = oci_parse($connection, 'SELECT round(sum(score)/count(score)*10, 2) FROM tests where PLAYER_ID = :player_id');
+$stid = oci_parse($connection, 'SELECT round(sum(score)/count(score)*10, 2) FROM tests where PLAYER_ID = :player_id and score>0');
 oci_bind_by_name($stid, ':player_id', $player_id);
 oci_execute($stid);
-$row = oci_fetch_array($stid, OCI_BOTH);
-echo '<tr class="profil_tr">' . '<td class="profil_td">Procentajul de raspunsuri corecte:</td>' . '<td class="profil_td">' . $row[0] . '%</td></tr>';
+if ($row = oci_fetch_array($stid, OCI_BOTH) == true)
+    echo '<tr class="profil_tr">' . '<td class="profil_td">Procentajul de raspunsuri corecte:</td>' . '<td class="profil_td">' . $row[0] . '%</td></tr>';
+else
+    echo '<tr class="profil_tr">' . '<td class="profil_td">Procentajul de raspunsuri corecte:</td>' . '<td class="profil_td"> - </td></tr>';
 oci_free_statement($stid);
 
 $stid = oci_parse($connection, 'select sum(number_of_plays) from player_stats where PLAYER_ID = :player_id group by player_id');
