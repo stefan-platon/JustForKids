@@ -1,10 +1,17 @@
 <?php
-//deschid sesiunea si incarc raspunsurile date de utilizator
+
 session_start();
-/*if($_SESSION['online']!=true)
-    header("Location:../../INTRO/FRONT/HTML/login_content.html");*/
+if ($_SESSION['secret'] != $_POST['secret'])
+    header('Location: ../../../INTRO/FRONT/HTML/session_error.html');
+if (!$_SESSION['online'] === true || !$_SESSION['rights'] == 'player')
+    header('Location: ../../../INTRO/FRONT/HTML/logged_user_frame.html');
+if($_SESSION['last_page']!="redirect_to_final_page.php" && $_SESSION['last_page']!="final_page.php")
+    header('Location: ../../../INTRO/FRONT/HTML/logged_user_frame.html');
+
+//deschid sesiunea si incarc raspunsurile date de utilizator
 $answers = $_SESSION['userAnswers'];
 
+$_SESSION['last_page']="final_page.php";
 ?>
 <html>
 
@@ -22,17 +29,17 @@ $answers = $_SESSION['userAnswers'];
     <br>
     <table class="final-command">
         <td class="column">
-            <form action="">
+            <form action="../FRONT/HTML/logged_user_frame.html">
                 <button type="submit" class="button">Pagina principala</button>
             </form>
         </td>
-
 
         <td class="column">
             <form action="">
                 <button type="submit" class="button">ATOM</button>
             </form>
         </td>
+
         <td class="column">
             <form action="">
                 <button type="submit" class="button">Trimite EMAIL</button>

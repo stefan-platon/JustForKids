@@ -1,10 +1,11 @@
 <?php
-
 session_start();
-if($_SESSION['online']!=true)
-    header("Location:../");
+if($_SESSION['secret']!=$_POST['secret'])
+    header('Location: ../../../INTRO/FRONT/HTML/session_error.html');
+if(!$_SESSION['online'] === true || !$_SESSION['rights'] == 'player')
+    header('Location: ../../../INTRO/FRONT/HTML/logged_user_frame.html');
 
-include("../PLAYER/BACK/conectare_db.php");
+include("conectare_db.php");
 $query = 'select domain_name , icon_link from domains';
 $stid = oci_parse($connection, $query);
 if (!oci_execute($stid)) {
@@ -21,11 +22,12 @@ while (($row = oci_fetch_array($stid, OCI_BOTH)) != false) {
 oci_free_statement($stid);
 
 oci_close($connection);
+$_SESSION['last_page']="select_domain_test.php";
 ?>
 <html>
 
 <head>
-    <link rel="stylesheet" href="../PLAYER/FRONT/CSS/select_domain_test.css">
+    <link rel="stylesheet" href="../FRONT/CSS/select_domain_test.css">
 </head>
 
 <body>
@@ -61,7 +63,7 @@ oci_close($connection);
                 <label class="label-item">
                     <input type="radio" class="label-input" name="tip"
                            value="Text">
-                    <img src="../IMG/OTHER/HOURGLASS.jpg" class="item-thumbnail">
+                    <img src="../../IMG/OTHER/HOURGLASS.jpg" class="item-thumbnail">
                 </label>
             </div>
             <div class="tip">
@@ -72,7 +74,7 @@ oci_close($connection);
                 <label class="label-item">
                     <input type="radio" class="label-input" name="tip"
                            value="Variante">
-                    <img src="../IMG/OTHER/HOURGLASS.jpg" class="item-thumbnail">
+                    <img src="../../IMG/OTHER/HOURGLASS.jpg" class="item-thumbnail">
                 </label>
             </div>
             <div class="tip-filler"></div>
@@ -80,8 +82,8 @@ oci_close($connection);
         <div class="submit">
             <input type="submit" value="START" class="submit-button">
         </div>
+        <input type="hidden" name="secret" value="<?php if(session_status()==PHP_SESSION_NONE)session_start();echo $_SESSION['secret'];?>"/>
     </form>
 </div>
 </body>
-
 </html>

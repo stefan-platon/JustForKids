@@ -1,7 +1,12 @@
 <?php
 session_start();
-/*if($_SESSION['online']!=true)
-    header("Location:../../INTRO/FRONT/HTML/login_content.html");*/
+if($_SESSION['secret']!=$_POST['secret'])
+    header('Location: ../../../INTRO/FRONT/HTML/session_error.html');
+if(!$_SESSION['online'] === true || !$_SESSION['rights'] == 'player')
+    header('Location: ../../../INTRO/FRONT/HTML/logged_user_frame.html');
+if($_SESSION['last_page']!="game_list.php" && $_SESSION['last_page']!="game_page.php")
+    header('Location: ../../../INTRO/FRONT/HTML/logged_user_frame.html');
+
 include("conectare_db.php");
 $query = 'select name, instructions, game_link from games where name=:name';
 $stid = oci_parse($connection, $query);
@@ -21,6 +26,7 @@ if(($row = oci_fetch_array($stid, OCI_BOTH)) != false){
 oci_free_statement($stid);
 
 oci_close($connection);
+$_SESSION['last_page']="game_page.php";
 ?>
 <html>
 
@@ -41,6 +47,14 @@ oci_close($connection);
     <br>
     <div class="game-window">
         GAME WINDOW
+    </div>
+
+    <br>
+
+    <div>
+        <form action="logged_user_frame.html">
+            <input type="submit" name="return" value="Prima pagina" class="button">
+        </form>
     </div>
 </div>
 

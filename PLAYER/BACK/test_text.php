@@ -1,13 +1,18 @@
 <?php
 session_start();
-/*if($_SESSION['online']!=true)
-    header("Location:../../INTRO/FRONT/HTML/login_content.html");*/
-include("conectare_db.php");
+if($_SESSION['secret']!=$_POST['secret'])
+    header('Location: ../../../INTRO/FRONT/HTML/session_error.html');
+if(!$_SESSION['online'] === true || !$_SESSION['rights'] == 'player')
+    header('Location: ../../../INTRO/FRONT/HTML/logged_user_frame.html');
+if($_SESSION['last_page']!="redirect_to_test.php")
+    header('Location: ../../../INTRO/FRONT/HTML/logged_user_frame.html');
 
+include("conectare_db.php");
+//vectori pentru intrebari si raspunsui
 $questions = array();
 $cont = 0;
 $answers = array();
-
+//iau intrebarile din baza de date corespunzatoare unei dificultati
 $query = 'select question_id, question_text from tw_questions where difficulty=:diff';
 $stid = oci_parse($connection, $query);
 $diff = $_SESSION['difficulty'];
@@ -21,6 +26,8 @@ while (($row = oci_fetch_array($stid, OCI_BOTH)) != false) {
     $nr_questions[$cont] = $row;
     $cont++;
 }
+if($cont<10)
+    header('Location: ../../../INTRO/FRONT/HTML/number_of_questions_error.html');
 for ($i = 0; $i < 10; $i++)
     $ids[$i] = 0;
 $qLimit = count($nr_questions) - 1;
@@ -60,13 +67,12 @@ oci_free_statement($stid);
 oci_close($connection);
 
 $i = 0;
-/*$timeleft = $_SESSION['max_time'];*/
-
-$timeleft = 10;
+$timeleft = $_SESSION['max_time'];
 
 $_SESSION['test'][0] = $questions;
 $_SESSION['test'][1] = $answers;
 
+$_SESSION['last_page']="test_text.php";
 ?>
 
 <html>
@@ -85,7 +91,7 @@ $_SESSION['test'][1] = $answers;
     <div class="quiz">
         <div id="question" class="question"></div>
         <?php
-        echo "<script type='text/javascript'>saveInfo(".json_encode($questions).")</script>";
+        echo "<script type='text/javascript'>saveInfo(".json_encode($questions).','. json_encode($_SESSION['secret']).")</script>";
         ?>
     </div>
     <form id="submit-test" action="redirect_to_final_page.php" class="submit-form" method="post"></form>
