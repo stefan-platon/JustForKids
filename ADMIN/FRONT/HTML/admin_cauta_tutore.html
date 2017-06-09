@@ -20,7 +20,7 @@
         <input id="uname" placeholder="Username sequence" name="uname">
         <br/>
         <button type="submit">Cauta</button>
-        <input type="hidden" name="secret" value="<?php echo $_SESSION['secret'];?>"/>
+        <input type="hidden" name="secret" value="<?php session_start();echo $_SESSION['secret'];?>"/>
     </form>
 </div>
 </body>
