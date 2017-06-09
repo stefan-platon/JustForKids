@@ -140,9 +140,11 @@
             <button type = "button" class = "btn" onclick="return loadDoc(3);">Gaseste utilizatori</button>
             <form action="../../BACK/admin_reset_dificultate.php" method="get">
                 <button type="submit" class="btn">Reset dificultate</button>
+		<input type="hidden" name="secret" value="<?php echo $_SESSION['secret'];?>"/>
             </form>
             <form action="../../BACK/admin_radiaza_conturi.php" method="get">
                 <button type="submit" class="btn">Radiaza conturi</button>
+		<input type="hidden" name="secret" value="<?php echo $_SESSION['secret'];?>"/>
             </form>
         </div>
     </div>
@@ -203,6 +205,7 @@
     <div class="dropdown_8">
         <form method="post" action="admin_frame.html">
             <button type="submit" class="btn">Logout</button>
+	    <input type="hidden" name="secret" value="<?php echo $_SESSION['secret'];?>"/>
         </form>
     </div>
     <!-- divul unde se va face inserarea celorlalte pagini -->
