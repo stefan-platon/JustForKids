@@ -94,7 +94,7 @@ CREATE OR REPLACE PACKAGE BODY admin_pachet AS
               SELECT max(news_id) + 1 into v_n_id from news;
            end if;
            insert into news(news_id, titlu, continut, data) 
-              values (v_n_id, v_titlu, v_content, TO_CHAR(SYSDATE, 'dd/mm/YYYY'));
+              values (v_n_id, v_titlu, v_content, TO_CHAR(SYSDATE));
            return 'Stire inserata.';
       END insert_stire;
       
@@ -109,7 +109,7 @@ CREATE OR REPLACE PACKAGE BODY admin_pachet AS
               SELECT max(updates_id) + 1 into v_u_id from updates;
            end if;
            insert into updates(updates_id, titlu, continut, data) 
-              values (v_u_id, v_titlu, v_content, TO_CHAR(SYSDATE, 'dd/mm/YYYY'));
+              values (v_u_id, v_titlu, v_content, TO_CHAR(SYSDATE));
            return 'Update inserat.';
       END insert_update;
       
