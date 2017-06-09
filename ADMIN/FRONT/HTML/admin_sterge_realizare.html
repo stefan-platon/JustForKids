@@ -1,6 +1,19 @@
 <!doctype html>
 <html lang="en">
 
+<?php
+    if($_SERVER['REQUEST_METHOD'] == 'POST')
+    {
+        if(session_id() == '') {
+            session_start();
+        }
+        if($_SESSION['secret']!=$_POST['secret'])
+            header("Location:../FRONT/HTML/session_error.html");
+        else
+            session_write_close();
+    }
+?>
+
 <head>
     <link type="text/css" rel="stylesheet" href="../CSS/admin_sterge_realizare.css">
     <title>JFK</title>
@@ -11,7 +24,7 @@
     <div class="container_sterge_r">
         <label><b>Id-ul realizarii</b></label>
         <br/>
-        <input type="text" placeholder="Enter Id" name="r_id" required>
+        <input id="uid" type="number" placeholder="Enter Id" name="r_id" required>
         <br/>
         <button type="submit">Sterge</button>
     </div>

@@ -1,6 +1,19 @@
 <!doctype html>
 <html lang="en">
 
+<?php
+    if($_SERVER['REQUEST_METHOD'] == 'POST')
+    {
+        if(session_id() == '') {
+            session_start();
+        }
+        if($_SESSION['secret']!=$_POST['secret'])
+            header("Location:../FRONT/HTML/session_error.html");
+        else
+            session_write_close();
+    }
+?>
+
 <head>
     <link rel="stylesheet" href="../CSS/admin_gaseste_realizare.css">
     <title>JFK</title>

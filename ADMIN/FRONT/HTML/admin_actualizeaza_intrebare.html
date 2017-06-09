@@ -1,6 +1,19 @@
 <!doctype html>
 <html lang="en">
 
+<?php
+    if($_SERVER['REQUEST_METHOD'] == 'POST')
+    {
+        if(session_id() == '') {
+            session_start();
+        }
+        if($_SESSION['secret']!=$_POST['secret'])
+            header("Location:../FRONT/HTML/session_error.html");
+        else
+            session_write_close();
+    }
+?>
+
 <head>
     <?php
         include("../../BACK/conectare_db.php");
@@ -19,7 +32,7 @@
 <form action="admin_actualizeaza_intrebare.html" method="post">
     <div class="container_update_q">
         <label><b>ID-ul intrebarii</b></label><br/>
-        <input type="text" placeholder="ID..." name="q_id" required>
+        <input id="uid" type="number" placeholder="Enter Id" name="q_id" required>
         <br/>
         <label><b>Domeniu</b></label><br/>
         <select name="domeniu" id="domeniu">

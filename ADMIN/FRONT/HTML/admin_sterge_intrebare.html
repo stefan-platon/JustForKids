@@ -1,6 +1,19 @@
 <!doctype html>
 <html lang="en">
 
+<?php
+    if($_SERVER['REQUEST_METHOD'] == 'POST')
+    {
+        if(session_id() == '') {
+            session_start();
+        }
+        if($_SESSION['secret']!=$_POST['secret'])
+            header("Location:../FRONT/HTML/session_error.html");
+        else
+            session_write_close();
+    }
+?>
+
 <head>
     <style>
         .container_sterge_q{
@@ -17,7 +30,7 @@
     <div class="container_sterge_q">
         <label><b>Id-ul intrebarii</b></label>
         <br/>
-        <input type="text" placeholder="Enter Id" name="q_id" required>
+        <input id="uid" type="number" placeholder="Enter Id" name="q_id">
         <br/>
         <button type="submit">Sterge</button>
     </div>
