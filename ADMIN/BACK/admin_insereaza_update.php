@@ -11,6 +11,9 @@ if(!oci_execute($stid))
     $e = oci_error($stid);
     echo "Something went wrong :( <br/>";
     echo "Error: " . $e['message'];
+}else
+{
+    echo "Update inserat cu succes.";
 }
 oci_free_statement($stid);
 oci_close($connection);
