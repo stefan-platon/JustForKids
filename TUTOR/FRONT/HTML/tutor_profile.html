@@ -22,11 +22,19 @@ session_start();
                         include ("../../BACK/profile_picture.php");
                         ?>
                     </div>
+                    <div id = "change_picture">
+                        <b>Schimba avatarul:</b>
+                        <form action="../../BACK/change_profile_picture.php" enctype="multipart/form-data" method="post">
+
+                            <input type="file" name="fileToUpload" id="p_poza" required>
+                            <input type="submit" value="Upload Image" name="submit">
+                        </form>
+                    </div>
                 </th>
                 <th class="profil_th">
                     <div id = "profile_user">
                         <?php
-                        echo $_SESSION["t_username"];
+                        echo $_SESSION["username"];
                         ?>
                     </div>
                 </th>
