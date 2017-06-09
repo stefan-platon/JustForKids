@@ -88,8 +88,8 @@ ALTER TABLE achievements ADD CONSTRAINT ach_unique1 UNIQUE ( name ) ;
 CREATE TABLE passwords
   (
     username        VARCHAR2(30),
-    hash            VARCHAR2(1000),
-    random_string   VARCHAR2(1000)
+    hash            VARCHAR2(3000),
+    random_string   VARCHAR2(3000)
   ) ;
 ALTER TABLE passwords ADD CONSTRAINT passwords_PK PRIMARY KEY ( username ) ;
 
