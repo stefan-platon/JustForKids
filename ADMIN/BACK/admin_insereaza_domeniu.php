@@ -1,10 +1,4 @@
 <?php
-session_start();
-if($_SESSION['secret']!=$_POST['secret'])
-    header("Location:../FRONT/HTML/session_error.html");
-else
-    session_write_close();
-
 include("conectare_db.php");
 $sql = 'begin :rezultat :=  admin_pachet.insert_domeniu(:v_nume,:v_tip, :v_img); END;';
 $stid = oci_parse($connection, $sql);
@@ -22,7 +16,7 @@ if (preg_match('/\W/', $_POST["tip"]) && $_POST["tip"] != null) {
     exit;
 }
 oci_bind_by_name($stid, ":v_tip", $_POST["tip"]);
-$target_dir = "../IMG/DOMENII/";
+$target_dir = "../../../IMG/DOMENII/";
 $info = pathinfo($_FILES['fileToUpload']['name']);
 $ext = $info['extension']; // get the extension of the file
 $newname = $_POST["nume"] . "." . $ext;

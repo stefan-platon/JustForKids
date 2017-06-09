@@ -1,9 +1,4 @@
 <?php
-session_start();
-if($_SESSION['secret']!=$_POST['secret'])
-    header("Location:../FRONT/HTML/session_error.html");
-else
-    session_write_close();
 
     include("conectare_db.php");
     $error_flag = 1;
@@ -11,13 +6,15 @@ else
 
         $flag=true;
         if ($_POST["uname"]!=null && $_POST['uid']==0) {
-            $stid = oci_parse($connection, "SELECT player_id,first_name,last_name,username,email FROM player where username like '%".$_POST["uname"]."%'");
+            $stid = oci_parse($connection, "SELECT player_id,first_name,last_name,username,email FROM player where username like :uname");
             if(preg_match('/\W/', $_POST["uname"])){
-                session_start();
+
                 $_SESSION["mesaj_err"] = "Textul contine caractere invalide!";
-                header('Location: ../FRONT/HTML/pagina_eroare_admin.html');
+                header('Location: ../../../INTRO/FRONT/HTML/pagina_eroare_login.html');
                 exit;
             }
+            $uname='%'.$_POST["uname"].'%';
+            oci_bind_by_name($stid, ":uname", $uname);
             if(!oci_execute($stid))
             {
                 $error_flag = 0;
@@ -27,7 +24,9 @@ else
             }
         }else
             if ($_POST['uid']!=0 && $_POST["uname"]==null) {
-                $stid = oci_parse($connection, "SELECT player_id,first_name,last_name,username,email FROM player where player_id =".$_POST["uid"]);
+                $stid = oci_parse($connection, "SELECT player_id,first_name,last_name,username,email FROM player where player_id =:uid");
+                $uid=$_POST["uid"];
+                oci_bind_by_name($stid, ":uid", $uid);
                 if(!oci_execute($stid))
                 {
                     $error_flag = 0;
@@ -37,13 +36,17 @@ else
                 }
             }else
                 if ($_POST['uid']!=0 && $_POST["uname"]!=null) {
-                    $stid = oci_parse($connection, "SELECT player_id,first_name,last_name,username,email FROM player where player_id=".$_POST["uid"]." and username like '%".$_POST["uname"]."%'");
+                    $stid = oci_parse($connection, "SELECT player_id,first_name,last_name,username,email FROM player where player_id=:uid and username like :uname");
                     if(preg_match('/\W/', $_POST["uname"])){
-                        session_start();
+
                         $_SESSION["mesaj_err"] = "Textul contine caractere invalide!";
-                        header('Location: ../FRONT/HTML/pagina_eroare_admin.html');
+                        header('Location: ../../../INTRO/FRONT/HTML/pagina_eroare_login.html');
                         exit;
                     }
+                    $uname='%'.$_POST["uname"].'%';
+                    $uid=$_POST["uid"];
+                    oci_bind_by_name($stid, ":uname", $uname);
+                    oci_bind_by_name($stid, ":uid", $uid);
                     if(!oci_execute($stid))
                     {
                         $error_flag = 0;
@@ -67,7 +70,7 @@ else
 
             while ($flag != false) {
                 if ($row['PLAYER_ID'] != null)
-                    $result = $result . "<tr><td>" . $row['PLAYER_ID'] . "</td><td>" . $row['FIRST_NAME'] . "</td><td>" . $row['SECOND_NAME'] . "</td><td>" . $row['USERNAME'] . "</td><td>" . $row['EMAIL'] . "</td></tr>";
+                    $result = $result . "<tr><td>" . $row['PLAYER_ID'] . "</td><td>" . $row['FIRST_NAME'] . "</td><td>" . $row['LAST_NAME'] . "</td><td>" . $row['USERNAME'] . "</td><td>" . $row['EMAIL'] . "</td></tr>";
                 if (($row = oci_fetch_array($stid, OCI_BOTH)) != false)
                     $flag = true;
                 else

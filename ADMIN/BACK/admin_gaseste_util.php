@@ -1,10 +1,4 @@
 <?php
-session_start();
-if($_SESSION['secret']!=$_POST['secret'])
-    header("Location:../FRONT/HTML/session_error.html");
-else
-    session_write_close();
-
 include("conectare_db.php");
 
 $query = "SELECT p.player_id, p.first_name, p.last_name, p.username, p.email from PLAYER p join TUTOR t on p.tutor_id=t.tutor_id
@@ -23,45 +17,45 @@ $t_username = '%' . $_POST["tutor_username"] . '%';
 $t_email = '%' . $_POST["tutor_email"] . '%';
 $t_logged = '%' . $_POST["logged"] . '%';
 
-if (preg_match('/\W/', $p_name_sec)) {
+if (preg_match('/\W/', $_POST["player_name"]) && $_POST["player_name"] != null) {
     session_start();
-    $_SESSION["mesaj_err"] = "Textul contine caractere invalide!";
-    header('Location: ../FRONT/HTML/pagina_eroare_admin.html');
+    $_SESSION["mesaj_err"] = "Textul cccontine caractere invalide!";
+    header('Location: ../../../INTRO/FRONT/HTML/pagina_eroare_login.html');
     exit;
 }
 oci_bind_by_name($stid, ":p_name", $p_name_sec);
-if (preg_match('/\W/', $p_username)) {
+if (preg_match('/\W/', $_POST["player_username"]) && $_POST["player_username"] != null) {
     session_start();
     $_SESSION["mesaj_err"] = "Textul contine caractere invalide!";
-    header('Location: ../FRONT/HTML/pagina_eroare_admin.html');
+    header('Location: ../../../INTRO/FRONT/HTML/pagina_eroare_login.html');
     exit;
 }
 oci_bind_by_name($stid, ":p_username", $p_username);
-if (preg_match('/\W/', $p_email) && $p_email != null) {
+if (preg_match('/\W/', $_POST["player_email"]) && $_POST["player_email"] != null) {
     session_start();
     $_SESSION["mesaj_err"] = "Textul contine caractere invalide!";
-    header('Location: ../FRONT/HTML/pagina_eroare_admin.html');
+    header('Location: ../../../INTRO/FRONT/HTML/pagina_eroare_login.html');
     exit;
 }
 oci_bind_by_name($stid, ":p_email", $p_email);
-if (preg_match('/\W/', $t_name_sec) && $t_name_sec != null) {
+if (preg_match('/\W/', $_POST["tutor_name"]) && $_POST["tutor_name"] != null) {
     session_start();
     $_SESSION["mesaj_err"] = "Textul contine caractere invalide!";
-    header('Location: ../FRONT/HTML/pagina_eroare_admin.html');
+    header('Location: ../../../INTRO/FRONT/HTML/pagina_eroare_login.html');
     exit;
 }
 oci_bind_by_name($stid, ":t_name", $t_name_sec);
-if (preg_match('/\W/', $t_username) && $t_username != null) {
+if (preg_match('/\W/', $_POST["tutor_username"]) && $_POST["tutor_username"] != null) {
     session_start();
     $_SESSION["mesaj_err"] = "Textul contine caractere invalide!";
-    header('Location: ../FRONT/HTML/pagina_eroare_admin.html');
+    header('Location: ../../../INTRO/FRONT/HTML/pagina_eroare_login.html');
     exit;
 }
 oci_bind_by_name($stid, ":t_username", $t_username);
-if (preg_match('/\W/', $t_email) && $t_email != null) {
+if (preg_match('/\W/', $_POST["tutor_email"]) && $_POST["tutor_email"] != null) {
     session_start();
     $_SESSION["mesaj_err"] = "Textul contine caractere invalide!";
-    header('Location: ../FRONT/HTML/pagina_eroare_admin.html');
+    header('Location: ../../../INTRO/FRONT/HTML/pagina_eroare_login.html');
     exit;
 }
 oci_bind_by_name($stid, ":t_email", $t_email);
@@ -82,7 +76,7 @@ else {
 }
 while ($flag != false) {
     if ($row['PLAYER_ID'] != null)
-        $result = $result . "<tr><td>" . $row['PLAYER_ID'] . "</td><td>" . $row['FIRST_NAME'] . "</td><td>" . $row['SECOND_NAME'] . "</td><td>" . $row['USERNAME'] . "</td><td>" . $row['EMAIL'] . "</td></tr>";
+        $result = $result . "<tr><td>" . $row['PLAYER_ID'] . "</td><td>" . $row['FIRST_NAME'] . "</td><td>" . $row['LAST_NAME'] . "</td><td>" . $row['USERNAME'] . "</td><td>" . $row['EMAIL'] . "</td></tr>";
     if (($row = oci_fetch_array($stid, OCI_BOTH)) != false)
         $flag = true;
     else

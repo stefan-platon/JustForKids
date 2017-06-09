@@ -1,28 +1,22 @@
 <?php
-session_start();
-if($_SESSION['secret']!=$_POST['secret'])
-    header("Location:../FRONT/HTML/session_error.html");
-else
-    session_write_close();
-
 include("conectare_db.php");
 $sql = 'begin :rezultat :=  admin_pachet.insert_realizare(:v_nume,:v_descr, :v_img); END;';
 $stid = oci_parse($connection, $sql);
-if (preg_match('/\W/', $_POST["nume"]) && $_POST["nume"] != null) {
+if (preg_match('/\W /', $_POST["nume"]) && $_POST["nume"] != null) {
     session_start();
     $_SESSION["mesaj_err"] = "Textul contine caractere invalide!";
     header('Location: ../FRONT/HTML/pagina_eroare_admin.html');
     exit;
 }
 oci_bind_by_name($stid, ":v_nume", $_POST["nume"]);
-if (preg_match('/\W/', $_POST["descriere"]) && $_POST["descriere"] != null) {
+if (preg_match('/\W /', $_POST["descriere"]) && $_POST["descriere"] != null) {
     session_start();
     $_SESSION["mesaj_err"] = "Textul contine caractere invalide!";
     header('Location: ../FRONT/HTML/pagina_eroare_admin.html');
     exit;
 }
 oci_bind_by_name($stid, ":v_descr", $_POST["descriere"]);
-$target_dir = "../IMG/REALIZARI/";
+$target_dir = "../../../IMG/REALIZARI/";
 if (isset($_FILES['fileToUpload'])) {
     $info = pathinfo($_FILES['fileToUpload']['name']);
     $ext = $info['extension']; // get the extension of the file
@@ -62,5 +56,5 @@ if (isset($_FILES['fileToUpload'])) {
         }
     }
 } else
-    echo "Sorrysadsasadding your picture.";
+    echo "Sorry, your picture didn't save.";
 ?>
