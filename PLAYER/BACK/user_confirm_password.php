@@ -114,3 +114,5 @@ if(($row = oci_fetch_array($stid, OCI_BOTH)) != false) {
 }
 
 oci_close($connection);
+
+header('Location: ../FRONT/HTML/logged_user_frame.html');
