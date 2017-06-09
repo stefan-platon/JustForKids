@@ -1,22 +1,16 @@
 <?php
-session_start();
-if($_SESSION['secret']!=$_POST['secret'])
-    header("Location:../FRONT/HTML/session_error.html");
-else
-    session_write_close();
-
 include("conectare_db.php");
 
 $sql = 'begin :rezultat :=  admin_pachet.insert_update(:v_titlu,:v_continut); END;';
 $stid = oci_parse($connection, $sql);
-if (preg_match('/\W/', $_POST["titlu"]) && $_POST["titlu"] != null) {
+if (preg_match('/\W /', $_POST["titlu"]) && $_POST["titlu"] != null) {
     session_start();
     $_SESSION["mesaj_err"] = "Textul contine caractere invalide!";
     header('Location: ../FRONT/HTML/pagina_eroare_admin.html');
     exit;
 }
 oci_bind_by_name($stid, ":v_titlu", $_POST["titlu"]);
-if (preg_match('/\W/', $_POST["content"]) && $_POST["content"] != null) {
+if (preg_match('/\W /', $_POST["content"]) && $_POST["content"] != null) {
     session_start();
     $_SESSION["mesaj_err"] = "Textul contine caractere invalide!";
     header('Location: ../FRONT/HTML/pagina_eroare_admin.html');

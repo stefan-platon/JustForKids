@@ -1,10 +1,4 @@
 <?php
-session_start();
-if($_SESSION['secret']!=$_POST['secret'])
-    header("Location:../FRONT/HTML/session_error.html");
-else
-    session_write_close();
-
 include ("conectare_db.php");
 $error_flag = 1;
 if($_POST["cauta_a_id"]!=null)
@@ -26,7 +20,7 @@ else if($_POST["name_r"]!=null)
             where LOWER(a.name) = LOWER(:v_name)";
     $stid = oci_parse($connection, $sql);
     $var1 = $_POST["name_r"];
-    if(preg_match('/\W/', $var1)){
+    if(preg_match('/\W /', $var1)){
         session_start();
         $_SESSION["mesaj_err"] = "Textul contine caractere invalide!";
         header('Location: ../FRONT/HTML/pagina_eroare_admin.html');
@@ -47,7 +41,7 @@ else
             where a.description like :v_descr";
     $stid = oci_parse($connection, $sql);
     $var2 = '%'.$_POST["descr_r"].'%';
-    if(preg_match('/\W/', $_POST["descr_r"])){
+    if(preg_match('/\W /', $_POST["descr_r"])){
         session_start();
         $_SESSION["mesaj_err"] = "Textul contine caractere invalide!";
         header('Location: ../FRONT/HTML/pagina_eroare_admin.html');

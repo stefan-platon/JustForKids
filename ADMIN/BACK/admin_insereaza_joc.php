@@ -1,15 +1,9 @@
 <?php
-session_start();
-if($_SESSION['secret']!=$_POST['secret'])
-    header("Location:../FRONT/HTML/session_error.html");
-else
-    session_write_close();
-
 include("conectare_db.php");
 
 $sql = 'begin :rezultat :=  admin_pachet.insert_joc(:v_nume,:v_dif,:v_descr,:v_instr,:v_domeniu,:i_link,:g_link); END;';
 $stid = oci_parse($connection, $sql);
-if (preg_match('/\W/', $_POST["nume"]) && $_POST["nume"] != null) {
+if (preg_match('/\W /', $_POST["nume"]) && $_POST["nume"] != null) {
     session_start();
     $_SESSION["mesaj_err"] = "Textul contine caractere invalide!";
     header('Location: ../FRONT/HTML/pagina_eroare_admin.html');
@@ -17,14 +11,14 @@ if (preg_match('/\W/', $_POST["nume"]) && $_POST["nume"] != null) {
 }
 oci_bind_by_name($stid, ":v_nume", $_POST["nume"]);
 oci_bind_by_name($stid, ":v_dif", $_POST["dificultate"]);
-if (preg_match('/\W/', $_POST["descr"]) && $_POST["descr"] != null) {
+if (preg_match('/\W /', $_POST["descr"]) && $_POST["descr"] != null) {
     session_start();
     $_SESSION["mesaj_err"] = "Textul contine caractere invalide!";
     header('Location: ../FRONT/HTML/pagina_eroare_admin.html');
     exit;
 }
 oci_bind_by_name($stid, ":v_descr", $_POST["descr"]);
-if (preg_match('/\W/', $_POST["instr"]) && $_POST["instr"] != null) {
+if (preg_match('/\W /', $_POST["instr"]) && $_POST["instr"] != null) {
     session_start();
     $_SESSION["mesaj_err"] = "Textul contine caractere invalide!";
     header('Location: ../FRONT/HTML/pagina_eroare_admin.html');
@@ -32,7 +26,7 @@ if (preg_match('/\W/', $_POST["instr"]) && $_POST["instr"] != null) {
 }
 oci_bind_by_name($stid, ":v_instr", $_POST["instr"]);
 oci_bind_by_name($stid, ":v_domeniu", $_POST["domeniu"]);
-$target_dir = "../IMG/JOCURI/";
+$target_dir = "../../../IMG/JOCURI/";
 $info = pathinfo($_FILES['fileToUpload']['name']);
 $ext = $info['extension']; // get the extension of the file
 $newname = $_POST["nume"] . "." . $ext;
