@@ -29,7 +29,7 @@ session_start();
                         </div>
                         <div id = "change_picture">
                             <b>Schimba imaginea de profil:</b>
-                            <form action="../../BACK/change_profile_picture.php">
+                            <form action="../../BACK/change_profile_picture.php" enctype="multipart/form-data" method="post">
 
                                 <input type="file" name="fileToUpload" id="p_poza" required>
                                 <input type="submit" value="Upload Image" name="submit">
