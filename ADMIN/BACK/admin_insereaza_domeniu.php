@@ -1,4 +1,10 @@
 <?php
+session_start();
+if($_SESSION['secret']!=$_POST['secret'])
+    header("Location:../FRONT/HTML/session_error.html");
+else
+    session_write_close();
+
 include("conectare_db.php");
 $sql = 'begin :rezultat :=  admin_pachet.insert_domeniu(:v_nume,:v_tip, :v_img); END;';
 $stid = oci_parse($connection, $sql);
