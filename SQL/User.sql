@@ -82,6 +82,7 @@ IS
       update player_dates set difficulty = 1 where birthday between TO_DATE('01/01/08','dd/mm/yy') and TO_DATE('31/12/11','dd/mm/yy');
       update player_dates set difficulty = 2 where birthday between TO_DATE('01/01/04','dd/mm/yy') and TO_DATE('31/12/07','dd/mm/yy');
       update player_dates set difficulty = 3 where birthday between TO_DATE('01/01/00','dd/mm/yy') and TO_DATE('31/12/03','dd/mm/yy');
+      COMMIT;
     END reset_dificultate;
     
     PROCEDURE radiaza_conturi
@@ -89,10 +90,19 @@ IS
     CURSOR lista_player  IS
        SELECT player_id FROM player;
     v_id INTEGER;
+    v_data DATE;
     BEGIN
       OPEN lista_player;
-      --ceva ceva
+      LOOP
+        FETCH lista_player INTO v_id;
+        EXIT WHEN lista_player%NOTFOUND;
+        select max(logged_out) into v_data from player_activity where player_id = v_id;
+        if (sysdate - v_data > 1000) then
+          delete from player where player_id = v_id;
+        end if;
+      END LOOP;
       CLOSE lista_player;   
+      COMMIT;
     END radiaza_conturi;
     
     PROCEDURE register_user(p_f_name VARCHAR2,p_s_name VARCHAR2,p_username VARCHAR2,p_password VARCHAR2,p_nr_rand VARCHAR2,p_img VARCHAR2,p_email VARCHAR2,p_bday VARCHAR2,p_relation VARCHAR2,t_f_name VARCHAR2,t_s_name VARCHAR2,t_username VARCHAR2,t_password VARCHAR2,t_nr_rand VARCHAR2,t_img VARCHAR2,t_email VARCHAR2) AS
