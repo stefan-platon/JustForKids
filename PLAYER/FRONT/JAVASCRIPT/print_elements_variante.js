@@ -3,6 +3,7 @@ var givenAnswers=[];
 var cont=0;
 var allQuestions=[];
 var allAnswers=[];
+var secretCode;
 //vector pentru randomizarea ordinii in care apar variantele de raspuns
 //pentru a evita ca raspunsul corect sa se afle in acelasi loc de fiecare data
 var randomAnswers = [0, 0, 0, 0];
@@ -53,11 +54,12 @@ function reloadQuestion() {
 //functie pentru submit fortat in cazul in care au fost parcurse toate 10 intrebarile sau se termina timpul alocat
 function submitForm() {
     var fElement = document.getElementById("submit-test");
-    fElement.innerHTML="<input id='givenAnswers' type='hidden' name='answers' value=''>";
+    fElement.innerHTML="<input id='givenAnswers' type='hidden' name='answers' value=''><input id='secret' type='hidden' name='secret' value=''/>";
     if(cont!==10)
         for(var c=cont;c<10;c++)
             givenAnswers[c]="null";
     document.getElementById("givenAnswers").value=JSON.stringify(givenAnswers);
+    document.getElementById("secret").value=JSON.stringify((secretCode));
     fElement.submit();
 }
 //functie de memorare locala a raspunsurilor date
@@ -70,8 +72,9 @@ function memAnswer(givenValue) {
         reloadQuestion();
 }
 //functie de salvare locala a intrebarilor si raspunsurilor primite de la server
-function saveInfo(questions, answers){
+function saveInfo(questions, answers,secret){
     allQuestions=questions;
     allAnswers=answers;
+    secretCode=secret;
     reloadQuestion();
 }
