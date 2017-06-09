@@ -1,6 +1,19 @@
 <!doctype html>
 <html lang="en">
 
+<?php
+    if($_SERVER['REQUEST_METHOD'] == 'POST')
+    {
+        if(session_id() == '') {
+            session_start();
+        }
+        if($_SESSION['secret']!=$_POST['secret'])
+            header("Location:../FRONT/HTML/session_error.html");
+        else
+            session_write_close();
+    }
+?>
+
 <head>
     <?php
         include ("../../BACK/conectare_db.php");
@@ -21,7 +34,7 @@
     <div class="container_gaseste_j">
         <label><b>Id-ul jocului</b></label>
         <br/>
-        <input type="text" placeholder="Enter Id" name="cauta_j_id">
+        <input id="uid" type="number" placeholder="Enter Id" name="cauta_j__id" required>
         <br/>
         <label><b>Numele jocului</b></label>
         <br/>

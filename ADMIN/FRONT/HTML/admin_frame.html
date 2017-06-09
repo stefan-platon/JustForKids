@@ -1,6 +1,14 @@
 <!doctype html>
 <html lang="en">
 
+<?php
+    if(session_id() == '') {
+        session_start();
+        if(!$_SESSION['online'] === true || !$_SESSION['rights'] = 'admin')
+            header('Location: ../../../INTRO/FRONT/HTML/login_frame.html');
+    }
+?>
+
 <head>
     <meta charset="UTF-8">
     <title> JFK </title>
