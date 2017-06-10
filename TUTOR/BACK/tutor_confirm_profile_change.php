@@ -7,12 +7,13 @@
  */
 include ("conectare_db.php");
 session_start();
+if($_SESSION['secret']!=$_POST['secret'])
+    header('Location: ../../../INTRO/FRONT/HTML/session_error.html');
 
 $name = $_POST["name"];
 
 if(preg_match('/\W/', $name))
 {
-    session_start();
     $_SESSION["mesaj_err"] = "Numele tau contine caractere invalide!";
     header('Location: ../FRONT/HTML/eroare_editare.html');
     exit;
@@ -23,7 +24,6 @@ $surname = $_POST["surname"];
 
 if(preg_match('/\W/', $surname))
 {
-    session_start();
     $_SESSION["mesaj_err"] = "Prenumele tau contine caractere invalide!";
     header('Location: ../FRONT/HTML/eroare_editare.html');
     exit;
@@ -37,7 +37,6 @@ $username = $_POST["username"];
 /* verific daca numele utilizatorului contine caractere invalide */
 if(preg_match('/\W/', $username))
 {
-    session_start();
     $_SESSION["mesaj_err"] = "Numele tau de utilizator contine caractere invalide!";
     header('Location: ../FRONT/HTML/eroare_editare.html');
     exit;
@@ -47,7 +46,6 @@ $stid2 = oci_parse($connection, $sql2);
 oci_bind_by_name($stid2, ":p_usr", $username);
 if(!oci_execute($stid2))
 {
-    session_start();
     $_SESSION["mesaj_err"] = "A aparut o eroare neasteptata...";
     header('Location: ../FRONT/HTML/eroare_editare.html');
     exit;
@@ -56,7 +54,6 @@ else
 {
     if(($row2 = oci_fetch_array($stid2, OCI_BOTH)) != false)
     {
-        session_start();
         $_SESSION["mesaj_err"] = "Numele de utilizator " . $username . " e existent deja.";
         header('Location: ../FRONT/HTML/eroare_editare.html');
         exit;
@@ -72,14 +69,12 @@ $user   = stristr($email, '@', TRUE);
 /*verific daca trunchiul emailului contine caractere invalide */
 if(preg_match('/\W/', $user))
 {
-    session_start();
     $_SESSION["mesaj_err"] = "Emailul tau contine caractere invalide!";
     header('Location: ../FRONT/HTML/eroare_editare.html');
     exit;
 }
 if (empty($user) || empty($domain) || !checkdnsrr($domain))
 {
-    session_start();
     $_SESSION["mesaj_err"] = "Email invalid pentru jucator!";
     header('Location: ../FRONT/HTML/eroare_editare.html');
     exit;
@@ -91,7 +86,6 @@ $stid20 = oci_parse($connection, $sql20);
 oci_bind_by_name($stid20, ":p_email", $email);
 if(!oci_execute($stid20))
 {
-    session_start();
     $_SESSION["mesaj_err"] = "A aparut o eroare neasteptata...";
     header('Location: ../FRONT/HTML/eroare_editare.html');
     exit;
@@ -100,7 +94,6 @@ else
 {
     if(($row20 = oci_fetch_array($stid20, OCI_BOTH)) != false)
     {
-        session_start();
         $_SESSION["mesaj_err"] = "Emailul introdus pentru tine e existent deja.";
         header('Location: ../FRONT/HTML/eroare_editare.html');
         exit;
