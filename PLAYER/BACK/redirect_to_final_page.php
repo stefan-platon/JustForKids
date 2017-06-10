@@ -1,9 +1,7 @@
 <?php
 
 session_start();
-$the_secret=json_decode($_POST['score']);
-if ($_SESSION['secret'] != $the_secret)
-    header('Location: ../../../INTRO/FRONT/HTML/session_error.html');
+
 if (!$_SESSION['online'] === true || !$_SESSION['rights'] == 'player')
     header('Location: ../../../INTRO/FRONT/HTML/login_frame.html');
 if($_SESSION['last_page']!="test_text.php" && $_SESSION['last_page']!="test_variante.php")
@@ -34,24 +32,14 @@ if (($row = oci_fetch_array($stid, OCI_BOTH)) != false) {
 }
 
 //iau din baza de date id-ul domeniului
-$query = 'select domain_id from domains where domain_name=:domain';
-$stid = oci_parse($connection, $query);
-$domain = $_SESSION['domain'];
 
-oci_bind_by_name($stid, ":domain", $domain);
-if (!oci_execute($stid)) {
-    $e = oci_error($stid);
-    echo "Something went wrong :( <br/>";
-    echo "Error: " . $e['message'];
-}
-if (($row = oci_fetch_array($stid, OCI_BOTH)) != false) {
-    $domainId = $row;
-}
+$domainId = $_SESSION['domain'];
+
 
 //verific daca exista deja domeniul in tabela player_stats
 $query = 'select count(domain_id) from player_stats where domain_id=:domainId and player_id=:playerId';
 $stid = oci_parse($connection, $query);
-$domainId2 = $domainId[0];
+$domainId2 = $domainId;
 
 oci_bind_by_name($stid, ":domainId", $domainId2);
 oci_bind_by_name($stid, ":playerId", $userId[0]);
@@ -72,7 +60,7 @@ if($existsDomainId[0]!=0){
     $domain = $_SESSION['domain'];
 
     oci_bind_by_name($stid, ':userId', $userId[0]);
-    oci_bind_by_name($stid, ":domainId", $domainId[0]);
+    oci_bind_by_name($stid, ":domainId", $domainId);
     if (!oci_execute($stid)) {
         $e = oci_error($stid);
         echo "Something went wrong :( <br/>";
@@ -129,7 +117,7 @@ if (!oci_execute($stid)) {
     //inserez in baza de date detaliile despre ultimul test facut de player
     $stid = oci_parse($connection, $update);
     oci_bind_by_name($stid, ':userId', $userId[0]);
-    oci_bind_by_name($stid, ':domainId', $domainId[0]);
+    oci_bind_by_name($stid, ':domainId', $domainId);
     oci_bind_by_name($stid, ':highestScore', $highestScore);
     oci_bind_by_name($stid, ':totalScore', $totalScore);
     oci_bind_by_name($stid, ':numberOfPlays', $numberOfPlays);
@@ -153,9 +141,7 @@ $_SESSION['last_page']="redirect_to_final_page.php";
 <html>
 <head></head>
 <body>
-<script src="../JAVASCRIPT/redirect.js">submitForm()</script>
-<form action="final_page.php" id="submit-secret">
-    <input type="hidden" name="secret" value="<?php if(session_status()==PHP_SESSION_NONE)session_start();echo $_SESSION['secret'];?>"/>
-</form>
+<script src="../FRONT/JAVASCRIPT/redirect.js">submitForm()</script>
+<?php header("Location: final_page.php"); ?>
 </body>
 </html>
