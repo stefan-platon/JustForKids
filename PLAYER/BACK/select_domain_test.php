@@ -1,7 +1,7 @@
 <?php
 session_start();
 if(!$_SESSION['online'] === true || !$_SESSION['rights'] == 'player')
-    header('Location: ../../../INTRO/FRONT/HTML/login_framee.html');
+    header('Location: ../../../INTRO/FRONT/HTML/login_frame.html');
 
 include("conectare_db.php");
 $query = 'select domain_name , icon_link from domains';
