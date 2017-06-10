@@ -8,6 +8,10 @@
 
 session_start();
 include ("conectare_db.php");
+
+if($_SESSION['secret']!=$_POST['secret'])
+    header('Location: ../../../INTRO/FRONT/HTML/session_error.html');
+
 $username = $_SESSION["username"];
 echo $username;
 $sql = "SELECT random_string from passwords where username = :username";
