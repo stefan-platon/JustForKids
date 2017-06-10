@@ -51,15 +51,6 @@ else
 
 oci_free_statement($stid);
 
-$stid = oci_parse($connection, 'SELECT round(sum(score)/count(score)*10, 2) FROM tests where PLAYER_ID = :player_id and score>0');
-oci_bind_by_name($stid, ':player_id', $player_id);
-oci_execute($stid);
-if ($row = oci_fetch_array($stid, OCI_BOTH) == true)
-    echo '<tr class="profil_tr">' . '<td class="profil_td">Procentajul de raspunsuri corecte:</td>' . '<td class="profil_td">' . $row[0] . '%</td></tr>';
-else
-    echo '<tr class="profil_tr">' . '<td class="profil_td">Procentajul de raspunsuri corecte:</td>' . '<td class="profil_td"> - </td></tr>';
-oci_free_statement($stid);
-
 $stid = oci_parse($connection, 'select sum(number_of_plays) from player_stats where PLAYER_ID = :player_id group by player_id');
 oci_bind_by_name($stid, ':player_id', $player_id);
 oci_execute($stid);
