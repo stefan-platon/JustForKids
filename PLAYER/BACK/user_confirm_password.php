@@ -7,6 +7,8 @@
  */
 
 session_start();
+if($_SESSION['secret']!=$_POST['secret'])
+    header('Location: ../../../INTRO/FRONT/HTML/session_error.html');
 include ("conectare_db.php");
 $username = $_SESSION["username"];
 echo $username;
