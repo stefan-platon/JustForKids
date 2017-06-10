@@ -4,7 +4,7 @@ session_start();
 if($_SESSION['secret']!=$_POST['secret'])
     header('Location: ../../../INTRO/FRONT/HTML/session_error.html');
 if(!$_SESSION['online'] === true || !$_SESSION['rights'] == 'player')
-    header('Location: ../../../INTRO/FRONT/HTML/logged_user_frame.html');
+    header('Location: ../../../INTRO/FRONT/HTML/login_frame.html');
 
 include("conectare_db.php");
 $query = 'select domain_id, domain_name, icon_link from domains';
