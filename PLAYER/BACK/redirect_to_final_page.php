@@ -5,9 +5,9 @@ $the_secret=json_decode($_POST['score']);
 if ($_SESSION['secret'] != $the_secret)
     header('Location: ../../../INTRO/FRONT/HTML/session_error.html');
 if (!$_SESSION['online'] === true || !$_SESSION['rights'] == 'player')
-    header('Location: ../../../INTRO/FRONT/HTML/logged_user_frame.html');
+    header('Location: ../../../INTRO/FRONT/HTML/login_frame.html');
 if($_SESSION['last_page']!="test_text.php" && $_SESSION['last_page']!="test_variante.php")
-    header('Location: ../../../INTRO/FRONT/HTML/logged_user_frame.html');
+    header('Location: ../FRONT/HTML/logged_user_frame.html');
 
 include("conectare_db.php");
 $answers = json_decode($_POST['answers']);
