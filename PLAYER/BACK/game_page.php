@@ -52,7 +52,7 @@ $_SESSION['last_page']="game_page.php";
     <br>
 
     <div>
-        <form action="logged_user_frame.html">
+        <form action="../FRONT/HTML/logged_user_frame.html">
             <input type="submit" name="return" value="Prima pagina" class="button">
         </form>
     </div>
