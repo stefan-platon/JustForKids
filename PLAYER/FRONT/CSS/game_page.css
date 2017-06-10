@@ -38,3 +38,27 @@ body {
     border: solid 1px darkgoldenrod;
     background: rgba(0,0,0,0.55);
 }
+
+.button{
+    width: 15%;
+    border-radius: 25%;
+    font-size: 200%;
+    font-family: Arial;
+    background: rgba(0,0,0,0.4);
+    color: gold;
+    border: 1.5px solid;
+    border-color: darkgoldenrod;
+    border-style: groove;
+    padding: 1%;
+    cursor:pointer;
+    display: block;
+    margin: 0 auto;
+}
+
+.button:hover{
+    border-radius: 25%;
+    background: gold;
+    color: black;
+    border-color: black;
+    box-shadow: 0  5px 50px 0 gold;
+}
