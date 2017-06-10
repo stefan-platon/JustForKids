@@ -3,7 +3,7 @@ include ("conectare_db.php");
 $sql = 'begin user_pachet.register_user(:p_f_name,:p_s_name,:p_username,:p_password,:nr_rand,:p_img,:p_email,:p_bday,:p_relation,:t_f_name,:t_s_name,:t_username,:t_password,:t_nr_rand,:t_img,:t_email);END;';
 $stid = oci_parse($connection, $sql);
 /*verific daca numele contine caractere invalide */
-if(!preg_match('/[a-zA-Z]\w/', $_POST["name"]))
+if(preg_match('/[a-zA-Z0-9]*/', $_POST["name"]) === FALSE)
 {
     session_start();
     $_SESSION["mesaj_err"] = "Numele tau contine caractere invalide!";
@@ -19,7 +19,7 @@ if(strlen($_POST["name"] > 29))
 }
 oci_bind_by_name($stid, ":p_f_name", $_POST["name"]);
 /*verific daca prenumele contine caractere invalide */
-if(!preg_match('/[a-zA-Z]\w/', $_POST["surname"]))
+if(!preg_match('/[a-zA-Z0-9]*/', $_POST["surname"]))
 {
     session_start();
     $_SESSION["mesaj_err"] = "Prenumele tau contine caractere invalide!";
@@ -35,7 +35,7 @@ if(strlen($_POST["surname"] > 29))
 }
 oci_bind_by_name($stid, ":p_s_name", $_POST["surname"]);
 /*verific daca numele tutorelui contine caractere invalide */
-if(!preg_match('/[a-zA-Z]\w/', $_POST["t_name"]))
+if(!preg_match('/[a-zA-Z0-9]*/', $_POST["t_name"]))
 {
     session_start();
     $_SESSION["mesaj_err"] = "Numele tutorelui contine caractere invalide!";
@@ -51,7 +51,7 @@ if(strlen($_POST["t_name"] > 29))
 }
 oci_bind_by_name($stid, ":t_f_name", $_POST["t_name"]);
 /*verific daca prenumele tutorelui contine caractere invalide */
-if(!preg_match('/[a-zA-Z]\w/', $_POST["t_surname"]))
+if(!preg_match('/[a-zA-Z0-9]*/', $_POST["t_surname"]))
 {
     session_start();
     $_SESSION["mesaj_err"] = "Preumele tutorelui contine caractere invalide!";
@@ -71,7 +71,7 @@ oci_bind_by_name($stid, ":p_relation", $_POST["relation"]);
 $domain = ltrim(stristr($_POST["email"], '@'), '@');
 $user   = stristr($_POST["email"], '@', TRUE);
 /*verific daca trunchiul emailului contine caractere invalide */
-if(!preg_match('/[a-zA-Z]\w/', $user))
+if(!preg_match('/[a-zA-Z0-9]*/', $user))
 {
     session_start();
     $_SESSION["mesaj_err"] = "Emailul tau contine caractere invalide!";
@@ -145,7 +145,7 @@ else
 $domain = ltrim(stristr($_POST["t_email"], '@'), '@');
 $user   = stristr($_POST["t_email"], '@', TRUE);
 /*verific daca trunchiul emailului tutorelui contine caractere invalide */
-if(!preg_match('/[a-zA-Z]\w/', $user))
+if(!preg_match('/[a-zA-Z0-9]*/', $user))
 {
     session_start();
     $_SESSION["mesaj_err"] = "Emailul tutorelui contine caractere invalide!";
@@ -216,14 +216,14 @@ else
     }
 }
 /* verific daca parola si parola repetata coincid */
-if(!preg_match('/[a-zA-Z]\w/', $_POST["psw"]))
+if(!preg_match('/[a-zA-Z0-9]*/', $_POST["psw"]))
 {
     session_start();
     $_SESSION["mesaj_err"] = "Parola ta contine caractere invalide!";
     header('Location: ../FRONT/HTML/pagina_eroare_register.html');
     exit;
 }
-if(!preg_match('/[a-zA-Z]\w/', $_POST["r_psw"]))
+if(!preg_match('/[a-zA-Z0-9]*/', $_POST["r_psw"]))
 {
     session_start();
     $_SESSION["mesaj_err"] = "Parola ta repetata contine caractere invalide!";
@@ -237,14 +237,14 @@ if($_POST["psw"] != $_POST["r_psw"])
     header('Location: ../FRONT/HTML/pagina_eroare_register.html');
     exit;
 }
-if(!preg_match('/[a-zA-Z]\w/', $_POST["t_psw"]))
+if(!preg_match('/[a-zA-Z0-9]*/', $_POST["t_psw"]))
 {
     session_start();
     $_SESSION["mesaj_err"] = "Parola tutorelui contine caractere invalide!";
     header('Location: ../FRONT/HTML/pagina_eroare_register.html');
     exit;
 }
-if(!preg_match('/[a-zA-Z]\w/', $_POST["t_r_psw"]))
+if(!preg_match('/[a-zA-Z0-9]*/', $_POST["t_r_psw"]))
 {
     session_start();
     $_SESSION["mesaj_err"] = "Parola tutorelui repetata contine caractere invalide!";
@@ -272,7 +272,7 @@ $parola_hash_t = hash('ripemd160', $parola_completa_t);
 oci_bind_by_name($stid, ":t_password", $parola_hash_t);
 /* verific daca numele de utilizator introdus pentru tutore nu e existent deja */
 /* verific daca numele de utilizator contine caractere invalide */
-if(!preg_match('/[a-zA-Z]\w/', $_POST["t_username"]))
+if(!preg_match('/[a-zA-Z0-9]*/', $_POST["t_username"]))
 {
     session_start();
     $_SESSION["mesaj_err"] = "Numele de utilizator al tutorelui contine caractere invalide!";
@@ -329,7 +329,7 @@ else
 }
 /* verific daca numele de utilizator introdus pentru jucator nu e existent deja */
 /* verific daca numele utilizatorului contine caractere invalide */
-if(!preg_match('/[a-zA-Z]\w/', $_POST["username"]))
+if(!preg_match('/[a-zA-Z0-9]*/', $_POST["username"]))
 {
     session_start();
     $_SESSION["mesaj_err"] = "Numele tau de utilizator contine caractere invalide!";
