@@ -4,9 +4,9 @@ session_start();
 if ($_SESSION['secret'] != $_POST['secret'])
     header('Location: ../../../INTRO/FRONT/HTML/session_error.html');
 if (!$_SESSION['online'] === true || !$_SESSION['rights'] == 'player')
-    header('Location: ../../../INTRO/FRONT/HTML/logged_user_frame.html');
+    header('Location: ../../../INTRO/FRONT/HTML/login_frame.html');
 if($_SESSION['last_page']!="redirect_to_final_page.php" && $_SESSION['last_page']!="final_page.php")
-    header('Location: ../../../INTRO/FRONT/HTML/logged_user_frame.html');
+    header('Location: ../FRONT/HTML/logged_user_frame.html');
 
 //deschid sesiunea si incarc raspunsurile date de utilizator
 $answers = $_SESSION['userAnswers'];
