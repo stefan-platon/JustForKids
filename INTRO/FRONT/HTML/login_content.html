@@ -1,11 +1,3 @@
-<?php
-    if(!isset($_COOKIE["remember"]))
-    {
-        $cookie_name = "remember";
-        $cookie_value = "";
-        setrawcookie($cookie_name, $cookie_value, time() + (86400 * 30), "/"); // 86400 = o zi
-    }
-?>
 <!doctype html>
 <html lang="en">
 
@@ -22,47 +14,17 @@
 <div class = "news">
     <div class = "title">News</div>
     <hr/>
-    <table class="tabel_news">
-        <tr class="news_tr">
-            <td class="news_td"><div class = "item_header">Ziua Pamantului</div></td>
-            <td class="news_td">22.04.2017</td>
-        </tr>
-        <tr class="news_content_tr">
-            <td class="news_td"><div class = "content">Astazi, 22 Aprilie, este Ziua Pamantului, moment ce ne aminteste ca trebuie sa il protejam.</div></td>
-            <td class="news_td"></td>
-        </tr>
-        <tr class="news_tr">
-            <td class="news_td"><div class = "item_header">Concurs in domeniul Istorie pe 25 Aprilie</div></td>
-            <td class="news_td">19.04.2017</td>
-        </tr>
-        <tr class="news_content_tr">
-            <td class="news_td"><div class = "content">Asteptam cati mai multi participanti la acest concurs.</div></td>
-            <td class="news_td"></td>
-        </tr>
-    </table>
+    <?php
+    include ("../../BACK/news.php");
+    ?>
 </div>
 
 <div class = "updates">
     <div class = "title">Updates</div>
     <hr/>
-    <table class="tabel_news">
-        <tr class="news_tr">
-            <td class="news_td"><div class = "item_header">O nou domeniu, astronomia, va aparea incepand cu 1 Mai</div></td>
-            <td class="news_td">20.04.2017</td>
-        </tr>
-        <tr class="news_content_tr">
-            <td class="news_td"><div class = "content">O multime de noi intrebari vor aparea o data cu adaugarea acestui domeniu.</div></td>
-            <td class="news_td"></td>
-        </tr>
-        <tr class="news_tr">
-            <td class="news_td"><div class = "item_header">Patch 1.201 </div></td>
-            <td class="news_td">18.04.2017</td>
-        </tr>
-        <tr class="news_content_tr">
-            <td class="news_td"><div class = "content">In acest patch vor fi rezolvate mai multe bug-uri raportate de playeri.</div></td>
-            <td class="news_td"></td>
-        </tr>
-    </table>
+    <?php
+    include ("../../BACK/updates.php");
+    ?>
 </div>
 
 <div class = "info">
@@ -71,13 +33,14 @@
     <form action="../../BACK/login_verify.php" method="post">
         <div class="container_login">
             <label><b>Username</b></label>
-            <input type="text" value='<?php if(isset($_COOKIE["remember"]))echo($_COOKIE["remember"]); else echo ""; ?>' placeholder="Nume utilizator" name="username" required>
+            <input type="text" placeholder="Enter Username" name="username" required>
+
             <label><b>Password</b></label>
-            <input type="password" placeholder="Parola" name="password" required>
+            <input type="password" placeholder="Enter Password" name="password" required>
             <br/>
             <button type="submit" class="login_btn">Login</button>
             <br/>
-            <input type="checkbox" id="remember" name="remember" value="remember_username" checked="checked"> Remember username
+            <input type="checkbox" value="remember_username" checked="checked"> Remember username
             <p class="fgt_password"><a href="forgot_password.html">Forgot password?</a></p>
         </div>
     </form>
@@ -91,7 +54,7 @@
     <hr/>
     <div class = "jucatori_top_10">
         <ol>
-            <?php
+        	<?php
             $stid = oci_parse($connection, 'select username, total_score from (select username, total_score from player_stats join player on player.player_id = player_stats.player_id order by total_score desc) where rownum <= 10');
             oci_execute($stid);
             while (($row = oci_fetch_array($stid, OCI_BOTH)) != false)
