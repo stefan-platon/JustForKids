@@ -2,10 +2,9 @@
 /**
  * Created by PhpStorm.
  * User: Catalin
- * Date: 03-Jun-17
- * Time: 20:14
+ * Date: 10-Jun-17
+ * Time: 00:33
  */
-include ("../../BACK/conectare_db.php");
 
 $username = $_SESSION["username"];
 $stid = oci_parse($connection, 'SELECT LINK FROM tutor WHERE username = :username');
@@ -15,4 +14,5 @@ $row = oci_fetch_array($stid, OCI_BOTH);
 $link = $row[0];
 oci_free_statement($stid);
 
-    echo '<img src="../'. $link . '" style="max-width:100%; max-height:100%;" alt="alt2">';
+
+    echo '<img src="../'. $link . '" style="max-width:75%; max-height:75%;" alt="alt2">';

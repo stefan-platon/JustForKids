@@ -52,7 +52,7 @@ if(($row = oci_fetch_array($stid, OCI_BOTH)) != false) {
     echo $rezultat2;
     oci_free_statement($stid2);
     //parola actuala este corecta
-    if(strcmp($rezultat2 ,'p') == 0) {
+    if(strcmp($rezultat2 ,'t') == 0) {
         //actualizare parola
 
 
@@ -114,3 +114,5 @@ if(($row = oci_fetch_array($stid, OCI_BOTH)) != false) {
 }
 
 oci_close($connection);
+
+//header('Location: ../FRONT/HTML/logged_tutor_frame.html');

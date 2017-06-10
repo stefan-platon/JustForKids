@@ -6,18 +6,20 @@
  * Time: 21:45
  */
 session_start();
-$t_username = $_SESSION["t_username"];
+$t_username = $_SESSION["username"];
 $tutor_id = $_SESSION["tutor_id"];
 
 $players = array();
 $players_id = array();
+$players_username = array();
 
-$stid = oci_parse($connection, 'select LAST_NAME, FIRST_NAME, PLAYER_ID from player where TUTOR_ID = :tutor_id');
+$stid = oci_parse($connection, 'select LAST_NAME, FIRST_NAME, PLAYER_ID, USERNAME from player where TUTOR_ID = :tutor_id');
 oci_bind_by_name($stid, ':tutor_id', $tutor_id);
 oci_execute($stid);
 while (($row = oci_fetch_array($stid, OCI_BOTH)) != false) {
     array_push($players, $row[1] . ' ' . $row[0]);
     array_push($players_id, $row[2]);
+    array_push($players_username, $row[3]);
 }
 oci_free_statement($stid);
 
@@ -28,6 +30,8 @@ echo '<div class="container_tutor_statistics">
 $_SESSION["tplayer_id"] = $players_id;
 for ($i = 0; $i < count($players); $i++) {
     echo '<div class="player">';
+    echo '<input type="hidden" id= "'.$i.'" value="'.$players_id[$i].'" name="player_id" >';
+    echo '<input type="hidden" id= "'.$i.'" value="'.$players_username[$i].'" name="player_username" >';
     echo '<input type="submit" id= "'.$i.'" value="'.$players[$i].'" name="name" class="player_button" style="">';
     echo '</div>';
 }
